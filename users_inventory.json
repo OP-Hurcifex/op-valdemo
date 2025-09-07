@@ -1,0 +1,89 @@
+{
+  "Legenda": [],
+  "Abdulmalik": [
+    {
+      "id": 6,
+      "name": "Muhamadali zapalllar Toʻplami",
+      "cost": 99,
+      "type": "video",
+      "image": "/static/images/Ali.jpg",
+      "time": "2025-07-09T22:12:50.210442",
+      "quantity": 1
+    },
+    {
+      "id": 19,
+      "name": "Power Admin-Panel",
+      "cost": 1309,
+      "type": "powers",
+      "image": "/static/images/admin-Panel.jpg",
+      "time": "2025-08-25T20:18:12.579929"
+    }
+  ],
+  "Muhammadiso": [
+    {
+      "id": 17,
+      "name": "Power Save STRIKE ",
+      "cost": 1100,
+      "type": "powers",
+      "image": "/static/icons/powers_flash.png",
+      "time": "2025-08-19T10:42:09.621481"
+    }
+  ],
+  "Elbek": [
+    {
+      "id": 14,
+      "name": "Basseyn Ticket",
+      "cost": 109,
+      "type": "Special",
+      "image": "/static/images/special.gif",
+      "time": "2025-08-08T22:23:31.529600",
+      "quantity": 1
+    }
+  ],
+  "Horizon Customer Support": [
+    {
+      "id": 6,
+      "name": "Muhamadali zapalllar Toʻplami",
+      "cost": 99,
+      "type": "video",
+      "image": "/static/images/Ali.jpg",
+      "time": "2025-08-21T07:38:22.357407",
+      "quantity": 1
+    },
+    {
+      "id": 11,
+      "name": "Power Admin-Panel",
+      "cost": 1309,
+      "type": "powers",
+      "image": "/static/images/admin-Panel.jpg",
+      "time": "2025-08-21T18:48:37.360952"
+    },
+    {
+      "id": 19,
+      "name": "Power Admin-Panel",
+      "cost": 1309,
+      "type": "powers",
+      "image": "/static/images/admin-Panel.jpg",
+      "time": "2025-08-21T18:57:13.796223"
+    }
+  ],
+  "HR": [
+    {
+      "id": 3,
+      "name": "MLBB 20 diamonds",
+      "cost": 8799,
+      "type": "MLBB",
+      "image": "/static/images/MLBB.jpg",
+      "time": "2025-08-23T13:08:31.978380"
+    },
+    {
+      "id": 19,
+      "name": "Power Admin-Panel",
+      "cost": 1309,
+      "type": "powers",
+      "image": "/static/images/admin-Panel.jpg",
+      "time": "2025-08-23T19:35:42.381479"
+    }
+  ],
+  "Muhammadali": []
+}

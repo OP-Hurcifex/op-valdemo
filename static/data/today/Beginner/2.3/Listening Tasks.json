@@ -1,0 +1,66 @@
+[
+  {
+  "id": 1,
+    "type": "listening",
+    "audio": "/static/workbook-audio/Beginner-units1-5/2-07 Navigate A1 Workbook.mp3",
+  "text": "Listen and check your answers.",
+  "subquestions": [
+    {
+      "id": "1.1",
+      "type": "multiple_choice",
+      "text": "A: What time is it? B: It's at ____.",
+      "options": ["one twenty-five", "eleven fifty", "six fifteen"],
+      "correct": "one twenty-five"
+    },
+    {
+      "id": "1.2",
+      "type": "multiple_choice",
+      "text": "A: What time is your bus? B: It's at ____.",
+      "options": ["one twenty-five", "eleven fifty", "two thirty"],
+      "correct": "eleven fifty"
+    },
+    {
+      "id": "1.3",
+      "type": "multiple_choice",
+      "text": "A: What time's the meeting? B: It's from ____.",
+      "options": ["six o'clock to seven thirty", "eight fifteen to eleven forty-five", "twelve forty"],
+      "correct": "six o'clock to seven thirty"
+    },
+    {
+      "id": "1.4",
+      "type": "multiple_choice",
+      "text": "A: What time is the class? B: It's ____.",
+      "options": ["two thirty-five", "six fifteen", "eleven fifty"],
+      "correct": "two thirty-five"
+    },
+    {
+      "id": "1.5",
+      "type": "multiple_choice",
+      "text": "A: What time's your train? B: It's at ____.",
+      "options": ["twelve forty", "two thirty", "one twenty-five"],
+      "correct": "twelve forty"
+    },
+    {
+      "id": "1.6",
+      "type": "multiple_choice",
+      "text": "A: What time is the party? B: It's from ____.",
+      "options": ["eight fifteen to eleven forty-five", "six o'clock to seven thirty", "two thirty-five"],
+      "correct": "eight fifteen to eleven forty-five"
+    },
+    {
+      "id": "1.7",
+      "type": "multiple_choice",
+      "text": "A: What time’s the film? B: It's at ____.",
+      "options": ["six fifteen", "eleven fifty", "twelve forty"],
+      "correct": "six fifteen"
+    },
+    {
+      "id": "1.8",
+      "type": "multiple_choice",
+      "text": "A: What time is the next class? B: It's at ____.",
+      "options": ["two thirty", "one twenty-five", "six fifteen"],
+      "correct": "two thirty"
+    }
+  ]
+}
+]

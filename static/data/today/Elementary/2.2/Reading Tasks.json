@@ -1,0 +1,65 @@
+[
+{
+  "id": 3,
+  "type": "reading",
+  "text": "<h1>Dreams: What Happens When We Sleep?</h1>\n<p>Have you ever flown in your sleep? Or talked to a giant cat? Dreams are strange and fun! They happen when we sleep — mostly during deep sleep.</p>\n<p>Our brain is still busy when we sleep. It makes pictures, sounds, and stories. These are our dreams. Sometimes we remember them, sometimes we forget.</p>\n<p>Scientists don’t know exactly why we dream. Maybe dreams help us learn or feel better. Some people even write their dreams in a notebook when they wake up!</p>\n<p>To dream well, get good sleep. Turn off your phone, close your eyes, and relax. Who knows? Maybe tonight you’ll fly to the moon!</p>",
+  "subquestions": [
+    {
+      "id": "3.1",
+      "type": "multiple_choice",
+      "text": "When do most dreams happen?",
+      "options": [
+        "When we are eating",
+        "During deep sleep",
+        "While we are walking"
+      ],
+      "correct": "During deep sleep"
+    },
+    {
+      "id": "3.2",
+      "type": "multiple_choice",
+      "text": "What can you see in a dream?",
+      "options": [
+        "Pictures and stories",
+        "Just darkness",
+        "Only real things"
+      ],
+      "correct": "Pictures and stories"
+    },
+    {
+      "id": "3.3",
+      "type": "multiple_choice",
+      "text": "Why do some people keep a dream notebook?",
+      "options": [
+        "To draw cats",
+        "To remember their dreams",
+        "To count the hours they sleep"
+      ],
+      "correct": "To remember their dreams"
+    },
+    {
+      "id": "3.4",
+      "type": "multiple_choice",
+      "text": "What helps you dream better?",
+      "options": [
+        "Using your phone in bed",
+        "Going to sleep late",
+        "Turning off your phone and relaxing"
+      ],
+      "correct": "Turning off your phone and relaxing"
+    },
+    {
+      "id": "3.5",
+      "type": "multiple_choice",
+      "text": "What might happen in a dream?",
+      "options": [
+        "You eat breakfast",
+        "You fly to the moon",
+        "You sit in a classroom"
+      ],
+      "correct": "You fly to the moon"
+    }
+  ]
+}
+
+]

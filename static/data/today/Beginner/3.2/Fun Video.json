@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "text": "Fill the gaps.",
+    "type": "video",
+    "link-youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/mYB5Og15MOA?si=N8oDrc2_P5bb1ZMc\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "select-options",
+        "text": "Sarah usually ____ at around 6 in the morning (gets up**/goes home/brushes teeth)"
+      },
+      {
+        "id": "1.2",
+        "type": "select-options",
+        "text": "She ____ in bed for a few minutes (stretches**/runs/eats)"
+      },
+      {
+        "id": "1.3",
+        "type": "select-options",
+        "text": "She takes a ____ before getting dressed (shower**/nap/breakfast)"
+      },
+      {
+        "id": "1.4",
+        "type": "select-options",
+        "text": "Sarah goes to work by ____ (bus**/bike/train)"
+      },
+      {
+        "id": "1.5",
+        "type": "select-options",
+        "text": "She eats lunch with her ____ (colleagues**/students/family)"
+      }
+    ]
+  },
+  {
+	"id": 2,
+    "text": "Fill the gaps.",
+    "type": "video",
+    "subquestions": [
+      {
+        "id": "1.6",
+        "type": "write-in-blank",
+        "text": "She usually has a bowl of ____ with fruit.",
+        "correct": "oatmeal"
+      },
+      {
+        "id": "1.7",
+        "type": "write-in-blank",
+        "text": "She often reads the ____ on her phone during breakfast.",
+        "correct": "news"
+      },
+      {
+        "id": "1.8",
+        "type": "write-in-blank",
+        "text": "She gets ____ around 10 or 10:30 p.m.",
+        "correct": "ready for bed"
+      },
+      {
+        "id": "1.9",
+        "type": "select-options",
+        "text": "After dinner, she might ____ or watch TV. (read a book**/ride a bike/do laundry)"
+      },
+      {
+        "id": "1.10",
+        "type": "select-options",
+        "text": "Sometimes her friend ____ and they watch a movie. (comes over**/texts/calls)"
+      }
+	]
+	  
+  }
+]

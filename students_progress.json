@@ -1,0 +1,34 @@
+{
+    "HR": {
+        "level": "Elementary",
+        "progress": 0.0,
+        "start_date": "2025-08-15",
+        "study_days": "odd",
+        "midterm-exam": "2025.05.14"
+    },
+    "Abdulmalik": {
+        "level": "Elementary",
+        "progress": 0.0,
+        "start_date": "2025-08-15",
+        "study_days": "odd",
+        "midterm-exam": "2025.08.14"
+    },
+    "Muhammadali": {
+        "level": "Elementary",
+        "progress": 0.21,
+        "start_date": "2025-08-15",
+        "study_days": "odd"
+    },
+    "Elbek": {
+        "level": "Beginner",
+        "progress": 6.0,
+        "start_date": "2025.07.17",
+        "study_days": "odd"
+    },
+    "Legenda": {
+        "level": "IELTS L1",
+        "progress": 0.0,
+        "start_date": "2025-07-02",
+        "study_days": "odd"
+    }
+}

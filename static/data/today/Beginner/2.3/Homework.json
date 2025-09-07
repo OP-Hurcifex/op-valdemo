@@ -1,0 +1,153 @@
+[
+{
+  "id": 0,
+  "text": "Complete the conversations with the question words in the box. You can use the words more than once.",
+  "type": "box-choose",
+  "options": [
+    "How",
+    "What",
+    "Where",
+    "Who"
+  ],
+  "subquestions": [
+    {
+      "id": "0.1",
+      "type": "box-choose",
+      "text": "A: What's your name? B: Hannah.",
+      "correct": ""
+    },
+    {
+      "id": "0.2",
+      "type": "box-choose",
+      "text": "A: _________ are you from? B: From Turkey.",
+      "correct": "Where"
+    },
+    {
+      "id": "0.3",
+      "type": "box-choose",
+      "text": "A: _________ do you spell 'clock'? B: C-L-O-C-K.",
+      "correct": "How"
+    },
+    {
+      "id": "0.4",
+      "type": "box-choose",
+      "text": "A: _________ 'sthat? B: It's Charlie. He’s my friend.",
+      "correct": "Who"
+    },
+    {
+      "id": "0.5",
+      "type": "box-choose",
+      "text": "A: _________ 's this in English? B: It’s a notepad.",
+      "correct": "What"
+    }
+  ]
+},
+{
+  "id": 1,
+  "type": "grammar",
+  "text": "Time Expressions",
+  "subquestions": [
+    {
+      "id": "1.1",
+      "type": "multiple_choice",
+      "text": "A: What time is it? B: It's ______.",
+      "options": ["one twenty-five", "eleven fifty"],
+      "correct": "one twenty-five"
+    },
+    {
+      "id": "1.2",
+      "type": "multiple_choice",
+      "text": "A: What time is your bus? B: It's ______.",
+      "options": ["one twenty-five", "eleven fifty"],
+      "correct": "eleven fifty"
+    },
+    {
+      "id": "1.3",
+      "type": "multiple_choice",
+      "text": "A: What time's the meeting? B: It's ______.",
+      "options": ["six o'clock to seven thirty", "eight fifteen to eleven forty-five"],
+      "correct": "six o'clock to seven thirty"
+    },
+    {
+      "id": "1.4",
+      "type": "multiple_choice",
+      "text": "A: What time is the class? B: It's ______.",
+      "options": ["two thirty-five", "twelve forty"],
+      "correct": "two thirty-five"
+    },
+    {
+      "id": "1.5",
+      "type": "multiple_choice",
+      "text": "A: What time's your train? B: It's ______.",
+      "options": ["twelve forty", "two thirty"],
+      "correct": "twelve forty"
+    },
+    {
+      "id": "1.6",
+      "type": "multiple_choice",
+      "text": "A: What time is the party? B: It's ______.",
+      "options": ["eight fifteen to eleven forty-five", "six o'clock to seven thirty"],
+      "correct": "eight fifteen to eleven forty-five"
+    },
+    {
+      "id": "1.7",
+      "type": "multiple_choice",
+      "text": "A: What time’s the film? B: It's ______.",
+      "options": ["six fifteen", "two thirty"],
+      "correct": "six fifteen"
+    },
+    {
+      "id": "1.8",
+      "type": "multiple_choice",
+      "text": "A: What time is the next class? B: It's ______.",
+      "options": ["two thirty", "eleven fifty"],
+      "correct": "two thirty"
+    }
+  ]
+},
+{
+  "id": 4,
+  "text": "Write number in letters.",
+  "type": "grammar",
+  "subquestions": [
+    {
+      "id": "4.1",
+      "type": "write-in-blank",
+      "text": "12 ____",
+      "correct": "twelve"
+    },
+    {
+      "id": "4.2",
+      "type": "write-in-blank",
+      "text": "31 ____",
+      "correct": "thirty-one"
+    },
+    {
+      "id": "4.3",
+      "type": "write-in-blank",
+      "text": "12 ____",
+      "correct": "twelve"
+    },
+    {
+      "id": "4.4",
+      "type": "write-in-blank",
+      "text": "11 ____",
+      "correct": "eleven"
+    },
+    {
+      "id": "4.5",
+      "type": "write-in-blank",
+      "text": "189 ____",
+      "correct": "one hundred eighty-nine"
+    },
+    {
+      "id": "4.6",
+      "type": "write-in-blank",
+      "text": "50 ____",
+      "correct": "fifty"
+    }
+  ]
+}
+
+
+]

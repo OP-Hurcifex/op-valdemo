@@ -1,0 +1,89 @@
+[
+  {
+    "id": 4,
+    "type": "words",
+    "text": "Unscramble the words (So‘zlarni to‘g‘rilang — fe’llar va zamonlar bilan bog‘liq so‘zlar)",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "unscramble",
+        "text": "gniod",
+        "correct": "doing"
+      },
+      {
+        "id": "4.2",
+        "type": "unscramble",
+        "text": "gnitirw",
+        "correct": "writing"
+      },
+      {
+        "id": "4.3",
+        "type": "unscramble",
+        "text": "dgnica",
+        "correct": "dancing"
+      },
+      {
+        "id": "4.4",
+        "type": "unscramble",
+        "text": "snetil",
+        "correct": "listen"
+      },
+      {
+        "id": "4.5",
+        "type": "unscramble",
+        "text": "gnivartel",
+        "correct": "traveling"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Choose the correct word for each sentence (Bo‘sh joyga to‘g‘ri so‘zni qo‘ying — Present Simple / Continuous)",
+    "type": "box-choose",
+    "options": ["doesn’t like", "is cooking", "read", "is talking", "walks", "am studying", "are playing"],
+    "subquestions": [
+      {
+        "id": "5.1",
+        "type": "box-choose",
+        "text": "She ____ chocolate, so she never eats it.",
+        "correct": "doesn’t like"
+      },
+      {
+        "id": "5.2",
+        "type": "box-choose",
+        "text": "Look! My mother ____ dinner in the kitchen.",
+        "correct": "is cooking"
+      },
+      {
+        "id": "5.3",
+        "type": "box-choose",
+        "text": "We usually ____ books in the library after class.",
+        "correct": "read"
+      },
+      {
+        "id": "5.4",
+        "type": "box-choose",
+        "text": "Be quiet! The teacher ____ to the students now.",
+        "correct": "is talking"
+      },
+      {
+        "id": "5.5",
+        "type": "box-choose",
+        "text": "My uncle ____ to work every morning because he lives nearby.",
+        "correct": "walks"
+      },
+      {
+        "id": "5.6",
+        "type": "box-choose",
+        "text": "I ____ for my exam right now, so please don’t disturb me.",
+        "correct": "am studying"
+      },
+      {
+        "id": "5.7",
+        "type": "box-choose",
+        "text": "The children ____ football in the yard at the moment.",
+        "correct": "are playing"
+      }
+    ]
+  }
+]

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+    <title>Forest App by Horizon</title>
+    <link rel="stylesheet" href="/static/styles/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600&display=swap" rel="stylesheet">
+	<script defer src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+</head>
+<body>
+ <div id="toast-container"></div>
+<div class="lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+  
+  <!-- Само модальное окно -->
+ <div id="updateModal" class="update-modal">
+    <div class="update-modal-content">
+      <!-- Круг с кастомной SVG-иконкой в стиле Galaxy AI -->
+<div class="update-icon">
+  <video 
+    src="/static/icons/AI_icon.mp4" 
+    autoplay 
+    loop 
+    muted 
+    playsinline 
+    width="100%" 
+    loading="lazy"
+  ></video>
+</div>
+
+
+      <h2>Welcome to Our New Version</h2>
+      <p>
+        Dive into a world of innovation! Our latest update brings cutting-edge features, lightning-fast performance, and a stunning design crafted to enhance your experience.
+      </p>
+      <button class="update-button" onclick="reloadSite()">Discover Now</button>
+    </div>
+  </div>
+  
+<div id="block-screen" class="block-screen hidden">
+    <div class="block-modal">
+        <img src="/static/icons/timer.svg" alt="Timer Icon" id="timer-icon" />
+<h2>You're Temporarily Restricted</h2>
+<p>Due to unusual activity, your access has been paused. Please wait to resume.</p>
+<small>Repeated violations may result in longer restrictions or account suspension.</small>
+        <div class="timer-container">
+            <div class="timer-progress" id="timer-progress"></div>
+            <span class="timer-text" id="timer">--:--</span>
+        </div>
+    </div>
+</div>
+
+ 
+    <div class="chat-container">
+        <!-- Header with logout button -->
+        <header class="chat-header">
+            <div class="account-icon-container">
+                <img src="/static/icons/account.svg" alt="Account" id="account-icon" class="account-icon">
+            </div>
+		<div id="ping-container" class="ping-container">
+	<i class="fa-solid fa-wifi" id="ping-icon"></i>
+    <span id="ping-value" class="ping-value">- ms</span>
+</div>
+<div id="coinDisplay" class="coin-icon-container">
+    <img src="/static/icons/coin.svg" alt="Coin Icon" id="coinIcon" class="coin-icon" />
+    <img src="/static/icons/up.svg" alt="Going Up Icon" id="goingUpIcon" class="going-up-icon" style="display: none;" />
+    <div id="coinBalance" class="coin-balance">0</div> <!-- Используем div вместо span -->
+</div>
+        </header>
+
+<!-- Balance Modal -->
+<div id="balanceModal" class="balance-modal">
+  <div class="balance-modal-content">
+    <span id="closeBalanceModal" class="close-balance-modal">&times;</span>
+    
+    <!-- Header with balance -->
+    <div class="balance-header">
+      <div class="balance-label">Available Balance</div>
+      <div class="balance-amount" id="balanceAmount">$0.00</div>
+      <span class="card-last4">** 1938</span>
+    </div>
+    
+    <!-- Tabs: All, Received, Sent -->
+    <div class="transaction-tabs">
+      <button class="tab-button active" data-tab="allTab">
+        All <span id="allCount">0</span>
+      </button>
+      <button class="tab-button" data-tab="receivedTab">
+        Received <span id="receivedCount">0</span>
+      </button>
+      <button class="tab-button" data-tab="sentTab">
+        Sent <span id="sentCount">0</span>
+      </button>
+    </div>
+    
+    <!-- Tab contents -->
+    <div class="tab-content" id="allTab"></div>
+    <div class="tab-content" id="receivedTab" style="display: none;"></div>
+    <div class="tab-content" id="sentTab" style="display: none;"></div>
+  </div>
+</div>
+
+
+<div id="account-menu" class="glass-menu">
+  <ul class="menu-list">
+    <li id="personal-account-section" class="menu-group">
+      <div class="menu-item expandable">
+        <i class="fas fa-user-circle"></i>
+        <span>Personal Account</span>
+        <i class="fas fa-chevron-down chevron"></i>
+      </div>
+      <ul class="submenu">
+        <li id="change-avatar-option" class="submenu-item"><i class="fas fa-image"></i> Change Avatar</li>
+        <li id="change-password-option" class="submenu-item"><i class="fas fa-key"></i> Change Password</li>
+        <li id="my-progress-option" class="submenu-item"><i class="fas fa-chart-line"></i> My Progress</li>
+      </ul>
+    </li>
+    <li id="sessionsButton" class="menu-item"><i class="fas fa-calendar-alt"></i> Sessions</li>
+    <li id="my-ban-status-option" class="menu-item"><i class="fas fa-ban"></i> My Ban Status</li>
+    <li id="leaderboard-option" class="menu-item"><i class="fas fa-trophy"></i> Leaderboard</li>
+    <li id="examTaskOption" class="menu-item"><i class="fas fa-pencil-alt"></i> Exam</li>
+    <li id="myExamResultsOption" class="menu-item disabled"><i class="fas fa-clipboard-list"></i> My Exam Results</li>
+    <li id="vocabulary-option" class="menu-item"><i class="fas fa-book-open"></i> Vocabulary</li>
+    <li id="homework-option" class="menu-item"><i class="fas fa-book"></i> Homework</li>
+    <li id="speakingExamOption" class="menu-item"><i class="fas fa-comment-dots"></i> Speaking Exam</li>
+    <div class="menu-item disabled" id="menu-settings">
+      <i class="fas fa-cog"></i> Settings
+    </div>
+    <li id="logout-option" class="menu-item logout"><i class="fas fa-sign-out-alt"></i> Logout</li>
+  </ul>
+</div>
+
+
+
+
+
+
+<!-- 2) модальное окно Homework -->
+<fl-modal id="homework-modal" style="display: none;">
+  <fl-modal-content>
+    <span class="close-btn" id="homework-modal-close" title="Close">
+      <i class="fas fa-times"></i>
+    </span>
+
+
+    <!-- Секция списка юнитов -->
+    <div id="homework-units">
+      <h2>Homework</h2>
+      <div id="loader-homework" class="sceleton-loader" style="display: none;">
+        <p>Loading...</p>
+      </div>
+      <div id="homework-list" class="units-list"></div>
+    </div>
+
+    <!-- Секция превью выбранного юнита -->
+    <div id="homework-preview" style="display: none;">
+      <button id="back-to-homework-units" class="back-button" title="Back to Units">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <h2 id="homework-title">Unit X</h2>
+      <div id="homework-content" class="preview-content">
+        <!-- сюда подгружается то, что вернёт сервер -->
+      </div>
+      <button id="take-test-button" class="btn-test">Take a test</button>
+    </div>
+  </fl-modal-content>
+</fl-modal>
+
+<fl-modal id="vocabulary-modal" style="display: none;">
+  <fl-modal-content>
+    <!-- Иконка закрытия -->
+    <span class="close-btn" id="vocabulary-modal-close" title="Close">
+      <i class="fas fa-times"></i>
+    </span>
+
+    <!-- Раздел для списка юнитов -->
+    <div id="vocabulary-units">
+      <h2>Vocabulary Units</h2>
+
+      <!-- Скелетон загрузки -->
+      <div id="sceleton-loader-vocabulary" class="sceleton-loader" style="display: none;">
+        <p>Загрузка...</p>
+      </div>
+
+      <!-- Список юнитов -->
+      <div id="vocabulary-list" class="vocabulary-list"></div>
+    </div>
+
+    <!-- Раздел для показа слов выбранного юнита -->
+    <div id="vocabulary-words" style="display: none;">
+      <!-- Кнопка "Назад" с иконкой -->
+      <button id="back-to-units" class="back-button" title="Back to Units">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+
+      <h2 id="word-header"></h2>
+	  <input type="text" id="word-search" placeholder="Search words..." class="word-search" />
+
+      <!-- Контейнер для списка слов -->
+      <div id="words-container" class="words-container"></div>
+    </div>
+
+    <!-- 🧠 Quiz Section -->
+    <div id="vocabulary-quiz" style="display: none;">
+      <div class="quiz-card glass">
+        <h3 id="quiz-prompt">Translate this word:</h3>
+        <p id="quiz-word" class="word-en"></p>
+
+        <input type="text" id="quiz-answer" placeholder="Type translation…" class="glass-input" />
+
+        <button id="quiz-submit" class="icon-button" title="Submit Answer">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+
+        <p id="quiz-feedback" class="feedback"></p>
+
+        <button id="quiz-next" class="icon-button" title="Next Word" style="display: none;">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <p id="quiz-score" class="feedback" style="display: none;"></p>
+
+        <button id="quiz-restart" class="icon-button" style="display: none;" title="Back to Words">
+          <i class="fas fa-arrow-left"></i> Back to Words
+        </button>
+      </div>
+    </div>
+  </fl-modal-content>
+</fl-modal>
+
+
+
+<!-- Exam Results Modal (container) -->
+<div id="myExamResultsModal" class="my-exam-results-modal" style="display: none;">
+  <div class="my-exam-results-content">
+    <!-- Кнопка закрытия видна всегда -->
+    <span class="close-btn" id="closeMyExamResultsModal">&times;</span>
+    
+    <!-- Контейнер для динамического содержимого -->
+    <div id="modalBody">
+      <!-- Контент будет подставлен в зависимости от статуса экзамена -->
+      <div class="exam-header">
+        <h2 id="examTitle"></h2>
+        <p id="examDateInfo"></p>
+        <div class="exam-stats">
+          <div class="stat-item">
+            <span class="stat-label">Accuracy</span>
+            <span class="stat-value" id="examAccuracy"></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Points</span>
+            <span class="stat-value" id="examPoints"></span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Answered</span>
+            <span class="stat-value" id="examAnswered"></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Верхний ряд с цветными квадратами (для результатов экзамена) -->
+      <div class="exam-status-squares" id="examStatusSquares"></div>
+  
+      <!-- Дополнительный ряд со сводной информацией -->
+      <div class="exam-summary-row" id="examSummaryRow"></div>
+  
+      <!-- Список вопросов с результатами -->
+      <div class="exam-details" id="examDetails"></div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="examModal">
+
+ <div id="examTitles" class="examTitle">
+  <div class="exam-main-title">Exam</div>
+  <div class="exam-subtitle">Final Exam</div>
+</div>
+
+  <!-- Контейнер таймера -->
+  <div id="exam-timer">
+    <div class="timer-block">
+      <span class="timer-number" id="hours">00</span>
+      <span class="timer-label">Hours</span>
+    </div>
+    <div class="timer-divider"></div>
+    <div class="timer-block">
+      <span class="timer-number" id="minutes">00</span>
+      <span class="timer-label">Minutes</span>
+    </div>
+    <div class="timer-divider"></div>
+    <div class="timer-block">
+      <span class="timer-number" id="seconds">00</span>
+      <span class="timer-label">Seconds</span>
+    </div>
+  </div>
+
+  <span class="close-btn" id="closeExamModal">&times;</span>
+  <div id="loadingSpinner" class="lds-spinner">
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+    <div></div><div></div><div></div><div></div>
+  </div>
+
+<div id="progressExamLengthWrapper">
+  <div id="progressExamLengthContainer">
+    <div id="progressExamLength"></div>
+  </div>
+  <span id="progressExamLengthLabel">0%</span>
+</div>
+
+  <div id="examQuestions" class="examQuestions-container">
+    <!-- Вопросы будут здесь -->
+  </div>
+
+  <div id="loadingFinishExam" class="lds-facebook-container" style="display: none;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" width="255" height="255" style="shape-rendering: auto; display: block; background: transparent;" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path stroke="none" fill="#9a9394" d="M31 50A19 19 0 0 0 69 50A19 22.2 0 0 1 31 50">
+  <animateTransform values="0 50 51.6;360 50 51.6" keyTimes="0;1" repeatCount="indefinite" dur="1.4705882352941175s" type="rotate" attributeName="transform"></animateTransform>
+</path><g></g></g><!-- [ldio] generated by https://loading.io --></svg>
+  </div>
+  <div id="finishExam" role="button" tabindex="0">Finish Task</div>
+  <div id="examResults" class="examResults"></div>
+</div>
+
+
+<!-- Template for exam question (for optimized HTML insertion) -->
+<template id="questionTemplate">
+  <div class="exam-question">
+    <p class="question-text"></p>
+    <div class="question-instruction"></div>
+    <div class="question-options"></div>
+  </div>
+</template>
+
+<div id="rulesModal" class="rules-modal">
+  <div id="rulesModalContent" class="rules-modal-content">
+    <!-- Кнопка-крестик для закрытия -->
+    <span class="close-btn" id="closeRulesModal">&times;</span>
+
+    <!-- Точки прогресса (dots) -->
+    <div class="progress-dots" id="progressDots">
+      <!-- Количество точек = количеству слайдов -->
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- Слайдер с правилами -->
+<div class="rules-slider">
+  <!-- Первый слайд -->
+  <div class="rule-slide active">
+    <div class="lottie-animation" id="lottie1"></div>
+<div class="rule-text-box">
+  <p>
+    Agar siz ilovadan chiqishga urinsangiz, imtihon ekrani avtomatik ravishda 3 daqiqaga bloklanadi. Iltimos, diqqat bilan imtihon jarayonini kuzating.
+  </p>
+</div>
+
+  </div>
+
+  <!-- Второй слайд -->
+  <div class="rule-slide">
+    <div class="lottie-animation" id="lottie2"></div>
+	<div class="rule-text-box">
+    <h2>Akademik halollikka jiddiy yondoshamiz</h2>
+    <p>
+      Akademik halollikka jiddiy yondoshamiz Boshqa o'quvchilardan javoblarni ko'chirish, imtihon davomida boshqa o'quvchilar bilan muloqot qilish yoki savollar va javoblarni bo'lishish qat'iyan man etiladi.
+    </p>
+	</div>
+  </div>
+
+  <!-- Третий слайд -->
+  <div class="rule-slide">
+    <div class="lottie-animation" id="lottie3"></div>
+	<div class="rule-text-box">
+    <h2>Akademik halollikka jiddiy yondoshamiz</h2>
+    <p>
+      Iltimos, barcha o'quvchilar uchun adolatli va shaffof sinov muhitini ta'minlashda o'z hissangizni qo'shing. Sizning shaxsiy integritetingiz va mehnatingiz sinov jarayonida asosiy e'tiborga olinadi.
+    </p>
+	</div>
+  </div>
+
+  <!-- Четвёртый слайд -->
+  <div class="rule-slide">
+    <div class="lottie-animation" id="lottie4"></div>
+	<div class="rule-text-box">
+    <h2>Firibgarlik holatlariga qat'iy chora</h2>
+    <p>
+      Har qanday firibgarlik aniqlansa, siz darhol bloklanasiz va imtihonni topshirishdan mahrum qilinasiz. Qoidabuzarlik holatlarida natijalar qayta ko'rib chiqilib, zarur choralar qo'llaniladi.
+    </p>
+	</div>
+  </div>
+</div>
+
+    <!-- Кнопка для переключения слайдов (с анимированным кругом вокруг стрелки) -->
+    <button id="nextRuleBtn" class="next-rule-btn">
+      <div class="circular-progress">
+        <svg class="progress-ring" width="70" height="70">
+          <circle
+            class="progress-ring__background"
+            cx="35"
+            cy="35"
+            r="30"
+          />
+          <circle
+            class="progress-ring__progress"
+            cx="35"
+            cy="35"
+            r="30"
+          />
+        </svg>
+        <span class="arrow"><i class="fas fa-arrow-right"></i></span>
+      </div>
+    </button>
+  </div>
+</div>
+  
+<!-- Модальное окно результатов -->
+<div id="ExamResultsModal" class="exam-results-modal">
+
+  <!-- Основной контейнер с градиентным фоном -->
+  <div class="results-container">
+    
+    <!-- Верхняя белая (или полупрозрачная) панель с кнопкой Done -->
+    <div class="top-bar">
+      <span class="done-button" id="ResultDone">Done</span>
+    </div>
+
+  <div id="resultIconContainer" class="result-icon-container">
+    <i id="resultIcon" class="fa-solid fa-smile"></i>
+  </div>
+  
+  <div id="examPoints"></div>
+
+    <!-- Подзаголовок, где будет мотивационный текст -->
+    <p class="subtitle" id="examSubtitle">Your hard work and dedication are paying off.</p>
+
+<div class="progress-row">
+  <!-- Текст прогресса -->
+  <span class="progress-text-results" id="progressText">0%</span>
+  <div class="progress-bar-container-result">
+    <!-- Полоса прогресса (будет заливаться через width) -->
+    <div class="progress-bar-result" id="progressBar"></div>
+  </div>
+</div>
+
+    <!-- Список вопросов -->
+    <div class="questions-list" id="examResultsContainer">
+      <!-- JS вставит сюда список вопросов -->
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно "My Ban Status" -->
+<div id="ban-status-modal" class="modal-ban">
+    <div class="modal-ban-content">
+        <h2>My Ban Status</h2>
+        <p>Number of violations: <span id="violations-count">0</span></p>
+        <p>Remaining ban time: <span id="remaining-time">0</span> seconds</p>
+        <button id="pay-ban">Pay 100 coins to reduce violation count by 1</button>
+        <button id="close-ban-modal">Close</button>
+    </div>
+</div>
+
+<!-- Inform Modal -->
+<div id="informModal" class="inform-modal" style="display: none;">
+  <div class="inform-modal-content">
+    <!-- Иконка (можно вставить другую, если нужно) -->
+<img src="data:image/png;base64,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" alt="shield">  <h2 id="informModalTitle">Siz qoidalarni buzdingiz</h2>
+    <p id="informModalText">Iltimos, qoidalarni buzmaslikka harakat qiling.</p>
+    <button id="informModalOkBtn" class="inform-modal-btn">OK</button>
+  </div>
+</div>
+
+<!-- Модальное окно со списком сессий -->
+<div id="sessionsModal" class="sessions-modal">
+  <div class="sessions-modal-content">
+    <h2>Active sessions</h2>
+    <ul id="sessionsList"></ul>
+    <button
+      class="close-modal"
+      onclick="document.getElementById('sessionsModal').style.display='none'"
+    >
+      Close
+    </button>
+  </div>
+</div>
+
+<!-- Всплывающая панель управления аудио -->
+<div class="popup-bar" id="popupBar" style="display: none;">
+  <button class="popup-btn" id="stopBtn" title="Стоп">
+    <i class="fas fa-stop"></i>
+  </button>
+  <button class="popup-btn" id="playPauseBtn" title="Пауза / Плей">
+    <i class="fas fa-play"></i>
+  </button>
+</div>
+
+
+ <div id="passwordModal" class="passwordModal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Change Password</h2>
+                <form id="password-form">
+                    <div>
+                        <label for="current-password">Current Password:</label>
+                        <input type="password" id="current-password" placeholder="Enter current password" required>
+                    </div>
+                    <div>
+                        <label for="new-password">New Password:</label>
+                        <input type="password" id="new-password" placeholder="Enter new password" required>
+                    </div>
+                    <div id="status-container" style="margin-top: 10px;">
+                        <!-- Status loading animation will go here -->
+                    </div>
+                    <button type="submit" id="update-password-button">Update Password</button>
+                </form>
+            </div>
+        </div>
+		
+		<!-- Modal for audio -->
+<div id="audioModal" class="audio-modal">
+    <div class="audio-modal-content">
+        <span class="audio-modal-close" id="closeAudioModal">&times;</span>
+        <h2 class="audio-modal-title">Now Playing</h2>
+        <div class="audio-track-info">
+            <span id="audioTrackName"></span> <!-- Название трека -->
+        </div>
+        <audio id="audioPlayer" controls>
+            <source id="audioSource" src="" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>
+
+		
+<div class="messages" id="messages">
+    <div class="skeleton-loader" id="skeleton-loader">
+        <div class="skeleton-message">
+            <div class="skeleton-title"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+        </div>
+    </div>
+    <div id="typing-indicator"></div>
+</div>
+
+
+<!-- Message input form -->
+<form id="message-form" class="message-form">
+    <div class="input-container">
+        <div class="input-wrapper">
+            <!-- Upload File button inside input -->
+            <button type="button" id="file-upload-button" class="file-upload-button" aria-label="Upload File">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="icon">
+                    <circle cx="24" cy="24" r="22" fill="black"/>
+                    <path d="M24 16v16M16 24h16" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </button>
+            
+            <input type="file" id="file-input" style="display: none;">
+            <textarea class="message-input" id="message-input" rows="1" placeholder="Type your message..." autocomplete="off"></textarea>
+
+            <!-- Send button inside input -->
+            <button type="submit" id="send-button" aria-label="Send Message">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24" height="24" fill="none">
+                    <circle cx="24" cy="24" r="22" fill="black"/>
+                    <path d="M24 14L14 26h7v8h6v-8h7z" fill="#ffffff"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- Avatar Upload Modal -->
+<div id="avatar-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <button id="close-avatar-modal" class="close-btn">&times;</button> <!-- Кнопка закрытия -->
+        <h3>Change Avatar</h3>
+        <input type="file" id="avatar-upload-input" accept="image/*">
+        <button id="upload-avatar-button">Upload</button>
+    </div>
+</div>
+
+
+<div id="upload-status" class="upload-status hidden">
+    <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill">
+            <span id="progress-text" class="progress-text"></span>
+        </div>
+    </div>
+    <span id="progress-percent">0%</span>
+</div>
+
+<!-- Модальное окно -->
+<div id="historyModal" class="historyModal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeHistoryModal()">&times;</span>
+    <h2 id="historyTitle">History</h2>
+    <div id="historyContent" class="history-list">
+      <!-- Данные истории заполняются динамически через JS -->
+    </div>
+  </div>
+</div>
+
+
+<div id="progress_modal" class="progress-modal">
+  <div class="progress-modal-content">
+    <span id="progress_modal_close" class="close-btn">&times;</span>
+    <h2>My Progress</h2>
+
+    <div id="error-message" style="display:none; color:red; font-weight: bold;"></div>
+
+    <!-- Skeleton Loading -->
+    <div id="loading" class="skeleton-container">
+      <div class="skeleton skeleton-percentage"></div>
+      <div class="skeleton skeleton-exam"></div>
+      <div class="skeleton skeleton-unit"></div>
+      <div class="skeleton skeleton-week"></div>
+      <div class="skeleton skeleton-completion"></div>
+    </div>
+
+    <!-- Основное содержимое (изначально скрыто) -->
+    <div id="progress-container" style="display: none;">
+      
+      <div id="main_information">
+        <!-- Карточка прогресса -->
+<div class="progress-card">
+    <div class="progress-title">My Progress</div>
+    <div class="progress-score" id="progress-score">Total Score: 0%</div>
+
+    <!-- Контейнер прогресс-бара -->
+    <div class="progress-bar-container">
+        <div class="progress-bar-background">
+            <div class="progress-bar-fill" id="progress-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <!-- Метки-стрелки (absolute) -->
+        <!-- Fail <50% -->
+        <div class="progress-marker" style="left: 50%;">
+            <i class="fas fa-times-circle"></i> Fail &lt;50%<br>
+            <span class="arrow">&#9650;</span>
+        </div>
+
+        <!-- C (65% - 80%) -->
+        <div class="progress-marker" style="left: 72.5%;">
+            C<br>
+            <span class="arrow">&#9650;</span>
+        </div>
+
+        <!-- B (81% - 90%) -->
+        <div class="progress-marker" style="left: 85.5%;">
+            B<br>
+            <span class="arrow">&#9650;</span>
+        </div>
+
+        <!-- A (91% - 100%) -->
+        <div class="progress-marker" style="left: 95.5%;">
+            A<br>
+            <span class="arrow">&#9650;</span>
+        </div>
+    </div>
+</div>
+
+  <div class="progress-card">
+    <div class="progress-card-header">
+      <span id="exam-date">Final Exam : --/--</span>
+    </div>
+	
+<!-- Карточка Final Exam -->
+<div class="progress-exams" onclick="openHistoryModal('finalExam')">
+  <div class="exam-header">
+    <i class="fas fa-file-alt exam-icon"></i>
+    <span class="exam-title">Final Exam</span>
+  </div>
+  
+  <div class="progress-bar-exam">
+    <div class="progress_finalExam" id="progressFinalExamBar"></div>
+  </div>
+  <!-- Текст "out of 30" -->
+  <div class="progress-label" id="finalExamLabel">0 out of 30 (0%)</div>
+</div>
+
+<!-- Карточка Weekly Exams -->
+<div class="progress-exams" onclick="openHistoryModal('weeklyExams')">
+  <div class="exam-header">
+    <i class="fas fa-file-alt exam-icon"></i>
+    <span class="exam-title">Weekly Exams</span>
+  </div>
+  
+  <div class="progress-bar-exam">
+    <div class="progress_weeklyExams" id="progressWeeklyExamsBar"></div>
+  </div>
+  <!-- Текст "out of 70" -->
+  <div class="progress-label" id="weeklyExamsLabel">0 out of 70 (0%)</div>
+</div>
+
+      </div>
+
+      <!-- Блок с юнитом, неделей и завершением курса -->
+  <div class="progress-card">
+    <div class="progress-card-header">
+      <span id="current-unit">Current Unit: --</span>
+    </div>
+    <div class="progress-card-header">
+      <span id="current-week">Week: --</span>
+    </div>
+    <div class="progress-card-header">
+      <span id="course-completion">Course Completion: 0%</span>
+    </div>
+  </div>
+
+      <!-- Таблица лидеров (теперь внутри модального окна) -->
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Students</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-table-body">
+          <!-- Loading spinner или данные -->
+          <tr>
+            <td colspan="3" class="spinner-container">
+              <div class="lds-spinner">
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
+                <div></div><div></div><div></div><div></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Конец таблицы лидеров -->
+
+    </div> <!-- конец #progress-container -->
+  </div> <!-- конец .progress-modal-content -->
+</div> <!-- конец #progress_modal -->
+</div>
+
+<!-- Модальное окно (скрыто по умолчанию, для показа нужно менять display на flex) -->
+<div id="checkAnswerModal" class="custom-modal">
+  <div class="custom-modal-content">
+    
+    <!-- Синяя окружность с иконкой кошелька -->
+    <div class="icon-wrapper">
+      <i class="fas fa-wallet custom-modal-icon"></i>
+    </div>
+    
+    <!-- Заголовок (основной текст) -->
+    <p class="modal-main-text">
+     This action will cost 100 coins, are you sure?
+    </p>
+    
+    <!-- Подзаголовок: "Payment amount: Free" -->
+    <p class="modal-sub-text">
+      Payment amount:
+      <span class="payment-amount">
+        100
+      </span>
+    </p>
+    
+    <!-- Кнопки действия -->
+    <div class="custom-modal-actions">
+      <button id="cancelCheckAnswer" class="custom-modal-btn custom-cancel">Cancel</button>
+      <button id="approveCheckAnswer" class="custom-modal-btn custom-approve">Approve</button>
+    </div>
+    
+  </div>
+</div>
+
+    </div>
+	
+	<!-- куда-нибудь в конец <body> -->
+<div id="speaking-exam-details"></div>
+
+	
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+    <script src="/static/js/chat.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie.min.js"></script>
+</body>
+</html>

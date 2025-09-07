@@ -1,0 +1,174 @@
+{
+    "Muhammadiso": {
+        "correct": 2,
+        "incorrect": 0,
+        "skipped": 18,
+        "total_questions": 20,
+        "correct_percentage": 10.0,
+        "rewarded": false,
+        "coins": 0,
+        "time_finished": "2025-06-30 07:27:51",
+        "results": [
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.14",
+                "question": "Bus leaves at: (14) ____ a.m.",
+                "user_answer": "8.15",
+                "correct_answer": "8.15",
+                "is_correct": true
+            },
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.15",
+                "question": "Meet before trip at: hotel (15) ____",
+                "user_answer": "entrance",
+                "correct_answer": "entrance",
+                "is_correct": true
+            },
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.16",
+                "question": "First stop: ruin of a (16) ____",
+                "user_answer": null,
+                "correct_answer": "palace",
+                "is_correct": false
+            },
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.17",
+                "question": "Lunch at: The (17) ____ Restaurant",
+                "user_answer": null,
+                "correct_answer": "Wakizi",
+                "is_correct": false
+            },
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.18",
+                "question": "Afternoon activity: (18) ____ or beach volleyball",
+                "user_answer": null,
+                "correct_answer": "diving",
+                "is_correct": false
+            },
+            {
+                "question_type": "write-in-blank",
+                "question_id": "1.19",
+                "question": "Bring: (19) ____",
+                "user_answer": null,
+                "correct_answer": "sun cream",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.1",
+                "question": "Which adjective would better describe Whittier?",
+                "user_answer": null,
+                "correct_answer": "remote",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.2",
+                "question": "If you are going to Whittier through the tunnel...",
+                "user_answer": null,
+                "correct_answer": "you can't use the tunnel while other people are leaving.",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.3",
+                "question": "Most people in Whittier work in...",
+                "user_answer": null,
+                "correct_answer": "the shipping industry",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.4",
+                "question": "According to the text,...",
+                "user_answer": null,
+                "correct_answer": "the town's church is in the Begich Towers.",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.5",
+                "question": "The towers were built...",
+                "user_answer": null,
+                "correct_answer": "to accommodate an expanding population.",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "2.6",
+                "question": "Which of these can you NOT find in Begich Towers?",
+                "user_answer": null,
+                "correct_answer": "a hospital",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.1",
+                "question": "_____ kept on working after being badly hurt.",
+                "user_answer": null,
+                "correct_answer": "Roy Kinnear",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.2",
+                "question": "_____ had a father who was a well-known actor and sportsman.",
+                "user_answer": null,
+                "correct_answer": "Brandon Lee",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.3",
+                "question": "_____ was famous for his interest in animals and the environment.",
+                "user_answer": null,
+                "correct_answer": "Steve Irwin",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.4",
+                "question": "_____ died in a tragic accident that affected other actors.",
+                "user_answer": null,
+                "correct_answer": "Vic Morrow",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.5",
+                "question": "_____ officially died almost a week after his accident.",
+                "user_answer": null,
+                "correct_answer": "Jon-Erik Hexum",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.6",
+                "question": "_____ died as a result of his careless behavior with a dangerous object.",
+                "user_answer": null,
+                "correct_answer": "Jon-Erik Hexum",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.7",
+                "question": "_____ had an accident while he was filming in the sea.",
+                "user_answer": null,
+                "correct_answer": "Steve Irwin",
+                "is_correct": false
+            },
+            {
+                "question_type": "multiple_choice",
+                "question_id": "3.8",
+                "question": "_____ was killed in an accident that showed behaviors against the law.",
+                "user_answer": null,
+                "correct_answer": "Vic Morrow",
+                "is_correct": false
+            }
+        ]
+    }
+}

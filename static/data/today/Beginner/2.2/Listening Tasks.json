@@ -1,0 +1,45 @@
+[
+  {
+    "id": 4,
+    "text": "Listen and choose the correct answer (Tinglang va to‘g‘ri javobni tanlang)",
+    "type": "listening",
+    "audio": "/static/workbook-audio/Beginner-units1-5/progress tests 01_04 ex1.mp3",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "multiple_choice",
+        "text": "Who is the speaker talking to?",
+        "options": ["a) Man", "b) Woman"],
+        "correct": "b) Woman"
+      },
+      {
+        "id": "4.2",
+        "type": "multiple_choice",
+        "text": "What’s the name of the person in the conversation?",
+        "options": ["a) Malik", "b) Maziq"],
+        "correct": "b) Maziq"
+      },
+      {
+        "id": "4.3",
+        "type": "multiple_choice",
+        "text": "Where are they going to stay?",
+        "options": ["a) Hostel", "b) Hotel"],
+        "correct": "b) Hotel"
+      },
+      {
+        "id": "4.4",
+        "type": "multiple_choice",
+        "text": "What are they using to make the call?",
+        "options": ["a) Mobile phone", "b) Landline phone"],
+        "correct": "a) Mobile phone"
+      },
+      {
+        "id": "4.5",
+        "type": "multiple_choice",
+        "text": "What time is the meeting?",
+        "options": ["a) 8:00", "b) 9:30"],
+        "correct": "b) 9:30"
+      }
+    ]
+  }
+]

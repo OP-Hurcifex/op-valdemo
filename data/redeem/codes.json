@@ -1,0 +1,107 @@
+{
+  "Elbek": {
+    "amount": 100,
+    "creator": "HR",
+    "activated_by": [
+      "HR",
+      "Elbek",
+      "Muhammadali"
+    ],
+    "uses": 2,
+    "last_redeemed_at": "2025-08-27T17:15:56.121063"
+  },
+  "Content-Update": {
+    "amount": 200,
+    "activated_by": [
+      "HR"
+    ]
+  },
+  "Horizon_Special": {
+    "amount": 5000.0,
+    "creator": "HR",
+    "activated_by": [
+      "Abdulmalik"
+    ],
+    "uses": 1,
+    "max_uses": 1,
+    "created_at": "2025-08-24T15:31:56.295308",
+    "last_redeemed_at": "2025-08-25T20:14:22.329544"
+  },
+  "PRS": {
+    "amount": 100.0,
+    "creator": "HR",
+    "activated_by": [
+      "Muhammadali"
+    ],
+    "uses": 1,
+    "max_uses": 5,
+    "created_at": "2025-08-25T19:16:58.389185",
+    "last_redeemed_at": "2025-08-27T17:13:34.069360"
+  },
+  "Redeem_ALL": {
+    "amount": 150.0,
+    "creator": "HR",
+    "activated_by": [
+      "Abdulmalik",
+      "HR",
+      "Elbek",
+      "Muhammadali"
+    ],
+    "uses": 4,
+    "max_uses": 10,
+    "created_at": "2025-08-25T19:18:11.810438",
+    "last_redeemed_at": "2025-08-27T17:17:01.086682"
+  },
+  "OMG": {
+    "amount": 250.0,
+    "creator": "HR",
+    "activated_by": [
+      "Abdulmalik",
+      "Elbek",
+      "Muhammadali"
+    ],
+    "uses": 3,
+    "max_uses": 10,
+    "created_at": "2025-08-25T19:18:48.193076",
+    "last_redeemed_at": "2025-08-27T17:13:17.362634"
+  },
+  "Horizon_great": {
+    "amount": 100.0,
+    "creator": "Abdulmalik",
+    "activated_by": [
+      "Abdulmalik",
+      "Elbek"
+    ],
+    "uses": 2,
+    "max_uses": 2,
+    "created_at": "2025-08-25T20:15:35.554146",
+    "last_redeemed_at": "2025-08-26T14:02:53.937468"
+  },
+  "METANMAN": {
+    "amount": 1500.0,
+    "creator": "HR",
+    "activated_by": [
+      "Muhammadali"
+    ],
+    "uses": 1,
+    "max_uses": 1,
+    "created_at": "2025-08-27T17:23:52.927665",
+    "last_redeemed_at": "2025-08-27T17:24:55.716472"
+  },
+  "MANBOTMAN": {
+    "amount": 1.0,
+    "creator": "Muhammadali",
+    "activated_by": [],
+    "uses": 0,
+    "max_uses": null,
+    "created_at": "2025-08-27T17:27:40.069197"
+  },
+  "metanazavr_oilasi": {
+    "amount": 111.0,
+    "creator": "HR",
+    "activated_by": [],
+    "uses": 0,
+    "max_uses": 5,
+    "created_at": "2025-08-27T17:28:16.584869"
+  }
+}

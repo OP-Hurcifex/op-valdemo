@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "text": "Watch the video and choose the correct form: Present Simple or Present Continuous.",
+    "type": "video",
+    "link-youtube": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/UzADjT06JKs?si=UHLgn7dPlX0Res3e\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "select-options",
+        "text": "She usually ____ lunch at 1 p.m. (has**/is having/have)"
+      },
+      {
+        "id": "1.2",
+        "type": "select-options",
+        "text": "Right now, she ____ a sandwich. (is eating**/eats/eat)"
+      },
+      {
+        "id": "1.3",
+        "type": "select-options",
+        "text": "He ____ to school every day. (walks**/is walking/walk)"
+      },
+      {
+        "id": "1.4",
+        "type": "select-options",
+        "text": "Look! The children ____ in the playground. (are playing**/play/is playing)"
+      },
+      {
+        "id": "1.5",
+        "type": "select-options",
+        "text": "I ____ to music when I study. (don’t listen**/am not listening/listens)"
+      },
+      {
+        "id": "1.6",
+        "type": "select-options",
+        "text": "She ____ her homework right now. (is doing**/does/do)"
+      },
+      {
+        "id": "1.7",
+        "type": "select-options",
+        "text": "We ____ our grandparents every Sunday. (visit**/are visiting/visits)"
+      },
+      {
+        "id": "1.8",
+        "type": "select-options",
+        "text": "He ____ a shower at the moment. (is taking**/takes/take)"
+      },
+      {
+        "id": "1.9",
+        "type": "select-options",
+        "text": "My cat usually ____ under the sofa. (sleeps**/is sleeping/sleep)"
+      },
+      {
+        "id": "1.10",
+        "type": "select-options",
+        "text": "They ____ tennis right now. (are playing**/play/plays)"
+      }
+    ]
+  }
+]

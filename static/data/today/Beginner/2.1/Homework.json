@@ -1,0 +1,183 @@
+[
+{
+  "id": 0,
+  "text": "Match the words to the correct information (So‘zlarni to‘g‘ri ma’lumot bilan moslashtiring)",
+  "type": "box-choose",
+  "options": [
+    "Eva",
+    "Sanz",
+    "Spain",
+    "Avenida Lusitana, 13, Granada",
+    "0034 758 3902281",
+    "Eva Sanz"
+  ],
+  "subquestions": [
+    {
+      "id": "0.1",
+      "type": "box-choose",
+      "text": "First name ____",
+      "correct": "Eva"
+    },
+    {
+      "id": "0.2",
+      "type": "box-choose",
+      "text": "Last name ____",
+      "correct": "Sanz"
+    },
+    {
+      "id": "0.3",
+      "type": "box-choose",
+      "text": "Country ____",
+      "correct": "Spain"
+    },
+    {
+      "id": "0.4",
+      "type": "box-choose",
+      "text": "Home address ____",
+      "correct": "Avenida Lusitana, 13, Granada"
+    },
+    {
+      "id": "0.5",
+      "type": "box-choose",
+      "text": "Phone number ____",
+      "correct": "0034 758 3902281"
+    },
+    {
+      "id": "0.6",
+      "type": "box-choose",
+      "text": "Signature ____",
+      "correct": "Eva Sanz"
+    }
+  ]
+},
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "text": "Choose correct option",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "___'s your name?",
+        "options": ["What", "How", "Where"],
+        "correct": "What"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "____ do you spell that?",
+        "options": ["What", "How", "Where"],
+        "correct": "How"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "_____ are you from?",
+        "options": ["What", "How", "Where"],
+        "correct": "Where"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "___ in Russia?",
+        "options": ["What", "How", "Where"],
+        "correct": "Where"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "____'s your phone number?",
+        "options": ["What", "How", "Where","Is","Are","Am"],
+        "correct": "What"
+      }
+    ]
+  },
+
+{
+  "id": 2,
+  "text": "Complete the dialogue with subject pronouns",
+  "type": "listening",
+  "audio": "/static/workbook-audio/Beginner-units1-5/1-07 Navigate A1 Workbook.mp3",
+  "subquestions": [
+    {
+      "id": "2.1",
+      "type": "write-in-blank",
+      "text": "Hi, Chris. Louise here. How are ___?",
+      "correct": "you"
+    },
+    {
+      "id": "2.2",
+      "type": "write-in-blank",
+      "text": "___’m fine, thanks.",
+      "correct": "I"
+    },
+    {
+      "id": "2.3",
+      "type": "write-in-blank",
+      "text": "And ___?",
+      "correct": "you"
+    },
+    {
+      "id": "2.4",
+      "type": "write-in-blank",
+      "text": "Great, thanks. Are ___ at home?",
+      "correct": "you"
+    },
+    {
+      "id": "2.5",
+      "type": "write-in-blank",
+      "text": "No, ___’m on business in the USA with Jack.",
+      "correct": "I"
+    },
+    {
+      "id": "2.6",
+      "type": "write-in-blank",
+      "text": "___’re in New York.",
+      "correct": "We"
+    },
+    {
+      "id": "2.7",
+      "type": "write-in-blank",
+      "text": "No, ___ isn’t.",
+      "correct": "she"
+    },
+    {
+      "id": "2.8",
+      "type": "write-in-blank",
+      "text": "___’s on holiday with friends.",
+      "correct": "She"
+    },
+    {
+      "id": "2.9",
+      "type": "write-in-blank",
+      "text": "Really? Where are ___?",
+      "correct": "they"
+    },
+    {
+      "id": "2.10",
+      "type": "write-in-blank",
+      "text": "___’re in Izmir.",
+      "correct": "They"
+    },
+    {
+      "id": "2.11",
+      "type": "write-in-blank",
+      "text": "___’s in Turkey.",
+      "correct": "It"
+    },
+    {
+      "id": "2.12",
+      "type": "write-in-blank",
+      "text": "No, ___ isn’t.",
+      "correct": "he"
+    },
+    {
+      "id": "2.13",
+      "type": "write-in-blank",
+      "text": "___’s at home with my mother.",
+      "correct": "He"
+    }
+  ]
+}
+
+]

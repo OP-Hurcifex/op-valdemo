@@ -1,0 +1,172 @@
+[ 
+
+ {
+  "id": 1,
+  "text": "Section 1. Listen and complete the information about the day trip.",
+  "type": "listening",
+  "audio": "/static/exam-files/Preliminary1_test3_audio3.mp3",
+  "subquestions": [
+    {
+      "id": "1.14",
+      "type": "write-in-blank",
+      "text": "Bus leaves at: (14) ____ a.m.",
+      "correct": "8.15"
+    },
+    {
+      "id": "1.15",
+      "type": "write-in-blank",
+      "text": "Meet before trip at: hotel (15) ____",
+      "correct": "entrance"
+    },
+    {
+      "id": "1.16",
+      "type": "write-in-blank",
+      "text": "First stop: ruin of a (16) ____",
+      "correct": "palace"
+    },
+    {
+      "id": "1.17",
+      "type": "write-in-blank",
+      "text": "Lunch at: The (17) ____ Restaurant",
+      "correct": "Wakizi"
+    },
+    {
+      "id": "1.18",
+      "type": "write-in-blank",
+      "text": "Afternoon activity: (18) ____ or beach volleyball",
+      "correct": "diving"
+    },
+    {
+      "id": "1.19",
+      "type": "write-in-blank",
+      "text": "Bring: (19) ____",
+      "correct": "sun cream"
+    }
+  ]
+},
+    {
+  "id": 2,
+  "type": "reading",
+  "text": "<h1>A Town that Lives in One Building</h1>\n<p>Located in the beautiful state of Alaska, a little town called Whittier is tucked away in a picturesque area surrounded by mountains and the ocean. This hidden gem is hard to reach: the only ways to and from Whittier are either by ferry or through a one-lane tunnel that cuts through the mountains. This tunnel is unique because it is shared by both vehicles and trains, necessitating a precisely managed schedule to accommodate both modes of transportation and both directions of traffic.</p>\n\n<p>Whittier’s economy thrives on its port, the town’s main source of employment, where cargo ships drop off their containers for rail transportation across Alaska. The town also has a grocery store, a museum, two hotels, and various other job opportunities for all its citizens: police officers, municipal workers, educators at the local school, and marina staff. Tourism has grown over the last few years to become an alternative source of income, drawing visitors to attractions such as the Anton Anderson Memorial Tunnel, glacier jet ski tours, and scenic boat excursions that offer breathtaking views of marine wildlife and icebergs.</p>\n\n<p>But the most fascinating aspect of Whittier is perhaps the fact that nearly all of its 200-odd residents live under the same roof. The Begich Towers, a 14-story building, is more than just an apartment complex; it’s a self-contained town! The harsh winter weather helps to explain the convenience of this unusual way of living. Whittier’s winter months are known for their heavy snowfalls and fierce winds. By having all the necessary facilities and services in one building, the residents don’t have to brave the cold weather every time they need to run an errand or go to church. Not even the children need to step outside to attend school, which is in an adjacent building connected through a tunnel. It’s an ingenious solution that makes life in such an extreme climate much more manageable.</p>\n\n<p>However, the origins of Whittier’s unique living situation date back to the early last century when the area was chosen for a military base. Shielded by towering mountains and situated by a bay with unfreezing waters, this location offered an ideal strategic position. Initially, wooden camps housed the soldiers, but as the need for more permanent structures grew with the increasing population, two significant buildings were erected: the once largest building in Alaska, the Buckner Building, and the Begich Towers. The construction of the tunnel in the 1940s, intended to provide railway access, marked Whittier’s transformation into an essential cargo and passenger port. After the military left in the 1960s, the Buckner Building was abandoned, and the Begich Towers became the main residential and communal space for the town’s inhabitants.</p>\n\n<p>Nowadays, Whittier’s residents just need to hop on the elevator to go grocery shopping, visit the police station, or eat ‘out’—though in this case, ‘eat in’ might be more accurate. There’s even a health clinic, which is far from being a hospital but more than enough for minor ailments. In essence, everything the residents may need is a few steps away from their homes. Living in Begich Towers offers a sense of community and convenience that is hard to find elsewhere. The close proximity of homes and businesses fosters a strong bond among the residents. Whether they’re sharing a cup of coffee at the café on the ground floor or attending a community meeting, the people of Whittier have created a unique and supportive environment.</p>\n\n<p>Whittier might be small, but it’s a remarkable example of adaptability and community spirit. Its single-building town, surrounded by Alaska’s breathtaking landscape, is a testament to human ingenuity and resilience.</p>",
+  "subquestions": [
+    {
+      "id": "2.1",
+      "type": "multiple_choice",
+      "text": "Which adjective would better describe Whittier?",
+      "options": ["remote", "reachable", "mountainous"],
+      "correct": "remote"
+    },
+    {
+      "id": "2.2",
+      "type": "multiple_choice",
+      "text": "If you are going to Whittier through the tunnel...",
+      "options": [
+        "your only option is to take a train.",
+        "you can't use the tunnel while other people are leaving.",
+        "you can go by car at any time."
+      ],
+      "correct": "you can't use the tunnel while other people are leaving."
+    },
+    {
+      "id": "2.3",
+      "type": "multiple_choice",
+      "text": "Most people in Whittier work in...",
+      "options": ["the shipping industry", "tourism", "services"],
+      "correct": "the shipping industry"
+    },
+    {
+      "id": "2.4",
+      "type": "multiple_choice",
+      "text": "According to the text,...",
+      "options": [
+        "having a town in one building is not ideal.",
+        "the school is in the same building.",
+        "the town's church is in the Begich Towers."
+      ],
+      "correct": "the town's church is in the Begich Towers."
+    },
+    {
+      "id": "2.5",
+      "type": "multiple_choice",
+      "text": "The towers were built...",
+      "options": [
+        "to protect the soldiers from the weather.",
+        "to accommodate an expanding population.",
+        "to mark Whittier's transformation."
+      ],
+      "correct": "to accommodate an expanding population."
+    },
+    {
+      "id": "2.6",
+      "type": "multiple_choice",
+      "text": "Which of these can you NOT find in Begich Towers?",
+      "options": ["a restaurant", "a hospital", "a supermarket"],
+      "correct": "a hospital"
+    }
+  ]
+},
+{
+  "id": 3,
+  "type": "reading",
+  "text": "<h1>Actors who died on set</h1>\n\n<p><strong>Brandon Lee</strong><br>Brandon Lee, son of the famous martial artist and actor Bruce Lee, died in 1993, while filming “The Crow”. He was acting as the main character in a scene where his character gets shot, but no one knew that a small piece of a real bullet got stuck in the gun. When the gun was fired, the piece of the bullet came out and hit Brandon in the stomach. Even though doctors tried to help him, Lee passed away later that day. This accident made people think more about how to keep actors safe on movie sets.</p>\n\n<p><strong>Vic Morrow</strong><br>Vic Morrow’s death happened during the filming of “Twilight Zone: The Movie” in 1982. He portrayed a character in the Vietnam War. In this scene, Morrow was carrying two child actors across a river while being chased by a helicopter. During filming, explosives were used, causing the helicopter to crash in the river. As a result, Morrow and the two young actors lost their lives immediately and six passengers onboard were injured. During the investigation, the film director was found guilty of having children working near explosives illegally.</p>\n\n<p><strong>Jon-Erik Hexum</strong><br>The accidental death of Jon-Erik Hexum occurred on the TV show “Cover Up” in 1984. During a break from filming, the actor was playing with a gun used in one of the scenes pointing it at his head and pulled the trigger as a joke. Even though the gun did not have real bullets, the force was strong enough to hurt him badly. A piece of bone from his head went into his brain. He was taken to the hospital immediately, but despite emergency surgery, he was pronounced brain dead six days later.</p>\n\n<p><strong>Roy Kinnear</strong><br>Roy Kinnear’s tragic accident took place while he was filming “The Return of the Musketeers” in 1989. During a scene with horse riding, Kinnear fell from his horse and broke a bone near one of his hips. Despite the severity of his injury, Kinnear was determined to continue filming and completed his scenes. However, his health conditions got worse and ended up affecting his heart. Sadly, Kinnear passed away from a heart attack caused by these complications.</p>\n\n<p><strong>Steve Irwin</strong><br>Steve Irwin, known as “The Crocodile Hunter,” was working on a documentary called “Ocean’s Deadliest” in 2006 off the coast of Queensland, Australia when tragedy struck. While filming a segment about dangerous fish, Irwin approached a stingray – a type of flat fish with long, sharp tails – in shallow water. The stingray felt it was in danger and attacked the man. The fish had used its sharp tail to poke Steve Irwin in the chest, and the pointy part went into his heart. His crew and emergency services tried to save him, but Irwin didn’t survive. His sudden death shocked the world and left millions of fans upset for the loss of a man who was truly passionate about the natural world.</p>",
+  "subquestions": [
+    {
+      "id": "3.1",
+      "type": "multiple_choice",
+      "text": "_____ kept on working after being badly hurt.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Roy Kinnear"
+    },
+    {
+      "id": "3.2",
+      "type": "multiple_choice",
+      "text": "_____ had a father who was a well-known actor and sportsman.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Brandon Lee"
+    },
+    {
+      "id": "3.3",
+      "type": "multiple_choice",
+      "text": "_____ was famous for his interest in animals and the environment.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Steve Irwin"
+    },
+    {
+      "id": "3.4",
+      "type": "multiple_choice",
+      "text": "_____ died in a tragic accident that affected other actors.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Vic Morrow"
+    },
+    {
+      "id": "3.5",
+      "type": "multiple_choice",
+      "text": "_____ officially died almost a week after his accident.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Jon-Erik Hexum"
+    },
+    {
+      "id": "3.6",
+      "type": "multiple_choice",
+      "text": "_____ died as a result of his careless behavior with a dangerous object.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Jon-Erik Hexum"
+    },
+    {
+      "id": "3.7",
+      "type": "multiple_choice",
+      "text": "_____ had an accident while he was filming in the sea.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Steve Irwin"
+    },
+    {
+      "id": "3.8",
+      "type": "multiple_choice",
+      "text": "_____ was killed in an accident that showed behaviors against the law.",
+      "options": ["Brandon Lee", "Vic Morrow", "Jon-Erik Hexum", "Roy Kinnear", "Steve Irwin"],
+      "correct": "Vic Morrow"
+    }
+  ]
+}
+
+]

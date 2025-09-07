@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horizon CRM</title>
+  <link rel="stylesheet" href="/static/styles/CRM-platform.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/static/icons/logo-icon.svg">
+</head>
+<body>
+
+  <div id="toast-container"></div>
+  <div class="lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  </div>
+  
+  <!-- MODALS -->
+  
+  <!-- Modal for editing progress -->
+  <div class="modal-overlay" id="edit-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h2>Edit Progress</h2>
+          <p>Update the progress increment for the student</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-content">
+        <label for="progress-increment">Progress Increment (%)</label>
+        <input type="number" id="progress-increment" step="0.01" placeholder="Enter increment">
+      </div>
+      <div class="modal-footer">
+        <button class="save-button" onclick="saveProgress()">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- Attendance Modal -->
+<attendance-modal id="markAttendanceModal" class="hidden">
+  <div class="attendance-content">
+    <h2><i class="fas fa-calendar-check"></i> Mark Attendance</h2>
+    <div id="attendanceUserList" class="user-list"></div>
+    <button class="close-btn" onclick="closeMarkAttendance()">
+      <i class="fas fa-times"></i> Close
+    </button>
+  </div>
+</attendance-modal>
+
+
+  
+<!-- Modal for banning user with Unblock button -->
+<div class="ban-modal" id="ban-modal">
+  <div class="ban-modal-container">
+    <div class="ban-modal-header">
+      <div>
+        <h2>Ban User</h2>
+        <p>Specify the duration for the temporary ban</p>
+      </div>
+      <button class="ban-modal-close" onclick="closeBanModal()">✕</button>
+    </div>
+    <div class="ban-modal-content">
+      <label for="ban-duration">Ban Duration (seconds)</label>
+      <input type="number" id="ban-duration" step="1" placeholder="Enter duration in seconds">
+    </div>
+    <div class="ban-modal-footer">
+      <button class="ban-confirm-button" onclick="executeBanUser()">Confirm Ban</button>
+      <button class="ban-unblock-button" onclick="executeUnblockUser()">Unblock</button>
+    </div>
+  </div>
+</div>
+
+  <div class="container"> <!-- Parent container for sidebar and content -->
+<aside class="sidebar">
+    <div class="logo fancy-logo">Horizon</div>
+    <nav class="nav">
+        <a href="#" class="nav-item active" onclick="showSection(this, 'moderation')">
+            <i class="fa-solid fa-gavel icon"></i>
+            <span class="text">Moderation</span>
+        </a>
+
+        <!-- Новый пункт Console -->
+        <a href="#" class="nav-item" onclick="showSection(this, 'console')">
+            <i class="fa-solid fa-terminal icon"></i>
+            <span class="text">Console</span>
+        </a>
+
+        <a href="#" class="nav-item settings" onclick="showSection(this, 'settings')">
+            <i class="fa-solid fa-gear icon"></i>
+            <span class="text">Settings</span>
+        </a>
+    </nav>
+</aside>
+
+
+    <main class="content">
+  <section id="dashboard" class="section">
+  <button class="open-attendance-btn" onclick="openMarkAttendance()">
+  <i class="fas fa-user-check"></i>
+</button>
+  <div class="Top-Dashboard-blocks">
+
+    <div class="progress-card">
+      <table class="progress-table">
+        <thead>
+          <tr>
+            <th class="thProgress"><i class="fas fa-user"></i> Student</th>
+            <th class="thProgress">Progress</th>
+            <th class="thProgress">Start Date</th>
+            <th class="thProgress">Study Days</th>
+            <th class="thProgress">Action</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+          <!-- Skeleton Loading Placeholder -->
+          <tr>
+            <td class="tdProgress">
+              <div class="avatar-container">
+                <div class="sceletion-loading-avatar"></div>
+                <div class="sceletion-loading-text"></div>
+              </div>
+            </td>
+            <td class="tdProgress"><div class="sceletion-loading-circle"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-text"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-text"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-button"></div></td>
+          </tr>
+          <tr>
+            <td class="tdProgress">
+              <div class="avatar-container">
+                <div class="sceletion-loading-avatar"></div>
+                <div class="sceletion-loading-text"></div>
+              </div>
+            </td>
+            <td class="tdProgress"><div class="sceletion-loading-circle"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-text"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-text"></div></td>
+            <td class="tdProgress"><div class="sceletion-loading-button"></div></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination">
+        <div>Showing <span id="page-info">1 to 5</span> of <span id="total-entries">0</span> entries</div>
+        <div>
+          <button id="prev-page" disabled>Previous</button>
+          <button id="next-page">Next</button>
+        </div>
+      </div>
+    </div>
+	
+<div class="ban-users-card">
+      <table class="ban-users-table">
+        <thead>
+          <tr>
+            <th class="thBan"><i class="fas fa-user"></i> User</th>
+            <th class="thBan">Device</th>
+            <th class="thBan">OS</th>
+            <th class="thBan">Platform</th>
+            <th class="thBan">Action</th>
+          </tr>
+        </thead>
+        <tbody id="ban-users-body">
+          <!-- Skeleton Loading Placeholder -->
+          <tr>
+            <td class="tdBan">
+              <div class="avatar-container-ban">
+                <div class="sceletion-loading-avatar-ban"></div>
+                <div class="sceletion-loading-text-ban"></div>
+              </div>
+            </td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-button-ban"></div></td>
+          </tr>
+          <tr>
+            <td class="tdBan">
+              <div class="avatar-container-ban">
+                <div class="sceletion-loading-avatar-ban"></div>
+                <div class="sceletion-loading-text-ban"></div>
+              </div>
+            </td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-text-ban"></div></td>
+            <td class="tdBan"><div class="sceletion-loading-button-ban"></div></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="pagination-ban">
+        <div>Showing <span id="page-info">1 to 5</span> of <span id="total-entries">0</span> entries</div>
+        <div>
+          <button id="prev-page" disabled>Previous</button>
+          <button id="next-page">Next</button>
+        </div>
+      </div>
+    </div>
+	</div>
+  </section>
+      <section id="exam" class="section">
+        <div class="exam-top-wrapper">
+<div class="exam-timer-card">
+  <div class="timer-display" id="timer">
+    <span id="timer-minutes">00</span> : <span id="timer-seconds">00</span>
+  </div>
+  <button class="start-btn" onclick="startExam()">Start the exam</button>
+</div>
+
+
+          <div class="exam-audio-card">
+  <div class="exam-audio-header">
+    <span class="exam-audio-title">Exam files</span>
+    <button class="load-audio-btn" onclick="loadAudioExamQuestions()">Load files</button>
+  </div>
+            <div id="exam-audio-files" class="exam-audio-files"></div>
+          </div>
+        </div>
+
+        <div class="exam-results-card">
+          <h2 class="exam-results-title">Exam Results</h2>
+          <div id="results-table-container">
+            <!-- Таблица загружается динамически -->
+          </div>
+          <div class="results-footer">
+            <button onclick="loadExamResults()" class="load-results-btn">
+              Reload Results
+            </button>
+          </div>
+        </div>
+		<div class="exam-audio-card">
+		  <div class="exam-audio-header">
+    <span class="exam-audio-title">Speaking Exam</span>
+  </div>
+		<div id="speaking-cards-container" class="cards-wrapper">
+			<!-- Здесь динамически будут появляться .exam-speaking-card -->
+		</div>
+</div>
+<template id="exam-speaking-card-tpl">
+  <div class="exam-speaking-card" data-id="">
+    <div class="card-header">
+      <span class="card-name">Name</span>
+      <span class="card-date">01 Jan, 10:00 AM</span>
+    </div>
+    <div class="card-body">
+      <span class="card-status status-not-started">Not started</span>
+      <div class="card-actions">
+        <!-- кнопка «глазок» -->
+        <button class="btn-view-photo" title="View photo">
+          <i class="fas fa-eye"></i>
+        </button>
+        <!-- иконка старта экзамена вместо «удалить» -->
+        <button class="btn-start-exam" title="Start speaking exam">
+          <i class="fas fa-play"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</template>
+
+      </section>
+	  <section id="battle" class="section"> 
+	  	    <div class="random-card">
+        <h2>Battle</h2>
+        <div class="team-container">
+            <div class="team team-1" id="team1">
+                <h3>Team 1</h3>
+                <ul id="team1-list"></ul>
+            </div>
+            <div class="vs">VS</div>
+            <div class="team team-2" id="team2">
+                <h3>Team 2</h3>
+                <ul id="team2-list"></ul>
+            </div>
+        </div>
+        <random-teams-button onclick="generateTeams()">Generate Teams</random-teams-button>
+    </div>
+	  </section>
+	  
+	  <section id="console" class="section">
+  <div class="console-card">
+    <h2><i class="fa-solid fa-terminal"></i> Console</h2>
+
+    <!-- Окно вывода логов -->
+    <div id="console-output" class="console-output"></div>
+
+    <!-- Ввод username + команды -->
+    <div class="console-input-container">
+      <input type="text" id="console-username" placeholder="username" value="root">
+      <input type="text" id="console-input" placeholder="/" onkeydown="handleConsoleInput(event)">
+      <button onclick="sendConsoleCommand()">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+	  
+<section id="moderation" class="section active">
+  <div class="moderation-card">
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion()">
+        <span>Ban Users</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-body">
+        <label>Username</label>
+        <input type="text" id="accordion-ban-username" placeholder="Enter username" required />
+        <label>Days</label>
+        <input type="number" id="accordion-ban-duration" placeholder="Ban duration (days)" min="1" required />
+        <label>Reason (optional)</label>
+        <input type="text" id="accordion-ban-reason" placeholder="Reason for ban" />
+        <label>Offensive Item (optional)</label>
+        <input type="text" id="accordion-ban-offensive-item" placeholder="Offensive item" />
+        <button id="accordion-ban-confirm" class="btn btn-blue">Confirm</button>
+      </div>
+    </div>
+    <table class="moderation-table">
+      <thead>
+        <tr>
+          <th class="thModeration"><i class="fas fa-user"></i> User</th>
+          <th class="thModeration">Ban End Date</th>
+          <th class="thModeration">Reason</th>
+          <th class="thModeration">Offensive Item</th>
+          <th class="thModeration">Action</th>
+        </tr>
+      </thead>
+      <tbody id="moderation-body">
+        <!-- Skeleton Loading Placeholder -->
+        <tr>
+          <td class="tdModeration">
+            <div class="avatar-container-moderation">
+              <div class="skeleton-loading-avatar-moderation"></div>
+              <div class="skeleton-loading-text-moderation"></div>
+            </div>
+          </td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-button-moderation"></div></td>
+        </tr>
+        <tr>
+          <td class="tdModeration">
+            <div class="avatar-container-moderation">
+              <div class="skeleton-loading-avatar-moderation"></div>
+              <div class="skeleton-loading-text-moderation"></div>
+            </div>
+          </td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-text-moderation"></div></td>
+          <td class="tdModeration"><div class="skeleton-loading-button-moderation"></div></td>
+        </tr>
+      </tbody>
+	  <button class="release-update-btn">Release Update</button>
+    </table>
+    <div class="pagination-moderation">
+      <div>Showing <span id="moderation-page-info">1 to 5</span> of <span id="moderation-total-entries">0</span> entries</div>
+      <div>
+        <button id="moderation-prev-page" disabled>Previous</button>
+        <button id="moderation-next-page">Next</button>
+      </div>
+    </div>
+  </div>
+  
+<div class="notification-form">
+  <h2>Send Notification</h2>
+
+  <label for="notif-type">Type</label>
+  <select id="notif-type">
+    <option value="important">Important</option>
+    <option value="general">General</option>
+  </select>
+
+  <div id="notif-username-field">
+    <label for="notif-username">Username</label>
+    <input type="text" id="notif-username" placeholder="Enter username" />
+  </div>
+
+  <label for="notif-title">Title</label>
+  <input type="text" id="notif-title" placeholder="Enter title" />
+
+  <label for="notif-message">Message</label>
+  <textarea id="notif-message" rows="3" placeholder="Enter message"></textarea>
+
+  <button id="send-notification" class="btn btn-blue">Send Notification</button>
+</div>
+
+<div class="shop-card">
+  <h2 class="shop-title">Shop Control</h2>
+
+  <div class="shop-form">
+    <label for="shop-username">Username</label>
+    <select id="shop-username">
+      <option value="">Select user</option>
+    </select>
+    <button class="btn load-btn" id="btn-load">Load Inventory</button>
+  </div>
+
+  <div id="shop-inventory-list" class="inventory-list"></div>
+</div>
+
+</section>
+	  
+	  <section id="settings" class="section">
+	  <div class="settings-card">
+    <div class="settings-item">
+        <span class="settings-label">
+            <i class="fa-solid fa-moon icon"></i>
+            Dark Mode
+        </span>
+        <label class="toggle-switch">
+            <input type="checkbox" checked>
+            <span class="slider">
+                <span class="toggle-text on">On</span>
+                <span class="toggle-text off">Off</span>
+            </span>
+        </label>
+    </div>
+</div>
+	  </section>
+    </main>
+  </div>
+  
+<div id="customMenu">
+    <ul>
+        <li onclick="copyText()"><i class="fas fa-copy"></i> Copy</li>
+        <li onclick="pasteText()"><i class="fas fa-paste"></i> Paste</li>
+        <li onclick="searchText()"><i class="fas fa-search"></i> Search</li>
+    </ul>
+</div>
+
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="/static/js/CRM-platform.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</body>
+</html>

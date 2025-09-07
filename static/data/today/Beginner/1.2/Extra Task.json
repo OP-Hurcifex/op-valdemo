@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "type": "multiple_choice",
+    "text": "Choose the correct option.",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "She ____ to school every day.",
+        "options": ["go", "goes", "going"],
+        "correct": "goes"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "They ____ watching a movie now.",
+        "options": ["is", "are", "were"],
+        "correct": "are"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "We ____ dinner when you called.",
+        "options": ["had", "were having", "have"],
+        "correct": "were having"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "write-in-blank",
+    "text": "Fill in the blanks with the correct word.",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "write-in-blank",
+        "text": "I ____ coffee every morning.",
+        "correct": "drink"
+      },
+      {
+        "id": "2.2",
+        "type": "write-in-blank",
+        "text": "He ____ to music in the evening.",
+        "correct": "listens"
+      },
+      {
+        "id": "2.3",
+        "type": "write-in-blank",
+        "text": "They ____ English at school.",
+        "correct": "study"
+      }
+    ]
+  }
+]

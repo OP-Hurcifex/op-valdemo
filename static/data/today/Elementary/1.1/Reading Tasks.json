@@ -1,0 +1,39 @@
+[
+  {
+    "id": 3,
+    "type": "reading",
+    "text": "<h1>Lisa’s Weekend Trip</h1>\n<p>Lisa usually stays at home on weekends, but last Saturday she decided to do something different. She woke up early and took a train to the city with her friend Anna.</p>\n<p>First, they visited a big museum. Lisa enjoyed the paintings, but Anna liked the old statues more. After the museum, they were hungry, so they ate lunch in a small café. Lisa had pasta, and Anna chose pizza.</p>\n<p>In the afternoon, they went shopping. Lisa bought a new jacket because it was on sale, and Anna bought a pair of shoes. They also took many photos together.</p>\n<p>In the evening, they returned home tired but happy. Lisa thought, “This was the best Saturday in a long time!”</p>",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "select-options",
+        "text": "Lisa usually ____ (travels / stays at home** / works) on weekends."
+      },
+      {
+        "id": "3.2",
+        "type": "select-options",
+        "text": "She went to the city with ____ (her brother / Anna** / her teacher)."
+      },
+      {
+        "id": "3.3",
+        "type": "select-options",
+        "text": "At the museum, Anna liked the ____ (paintings / statues** / photos)."
+      },
+      {
+        "id": "3.4",
+        "type": "select-options",
+        "text": "For lunch, Lisa had ____ (pizza / pasta** / salad)."
+      },
+      {
+        "id": "3.5",
+        "type": "select-options",
+        "text": "Lisa bought a new ____ (jacket** / bag / phone) because it was on sale."
+      },
+      {
+        "id": "3.6",
+        "type": "select-options",
+        "text": "In the evening they felt ____ (angry / tired but happy** / bored)."
+      }
+    ]
+  }
+]

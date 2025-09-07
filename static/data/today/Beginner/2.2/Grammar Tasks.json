@@ -1,0 +1,106 @@
+[
+  {
+    "id": 5,
+    "type": "grammar",
+    "text": "Complete the sentences with the correct form of be. Use contractions where possible.",
+    "subquestions": [
+      { "id": "5.1", "type": "write-in-blank", "text": "It’s a pen.", "correct": "It’s" },
+      { "id": "5.2", "type": "write-in-blank", "text": "____ you from Germany?", "correct": "Are" },
+      { "id": "5.3", "type": "write-in-blank", "text": "He ____ an engineer. He’s a teacher.", "correct": "isn’t" },
+      { "id": "5.4", "type": "write-in-blank", "text": "Hi, I ____ Sophie.", "correct": "’m" },
+      { "id": "5.5", "type": "write-in-blank", "text": "____ she a student?", "correct": "Is" },
+      { "id": "5.6", "type": "write-in-blank", "text": "We ____ on holiday. We’re on business.", "correct": "aren’t" }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "vocabulary",
+    "text": "Complete the conversations with the question words in the box (How / What / Where / Who)",
+    "subquestions": [
+      { "id": "6.1", "type": "write-in-blank", "text": "____'s your name?", "correct": "What" },
+      { "id": "6.2", "type": "write-in-blank", "text": "____ are you from?", "correct": "Where" },
+      { "id": "6.3", "type": "write-in-blank", "text": "____ do you spell 'clock'?", "correct": "How" },
+      { "id": "6.4", "type": "write-in-blank", "text": "____’s that?", "correct": "Who" },
+      { "id": "6.5", "type": "write-in-blank", "text": "____'s this in English?", "correct": "What" }
+    ]
+  },
+  {
+    "id": 7,
+    "type": "multiple_choice",
+    "text": "Circle the correct options.",
+    "subquestions": [
+      {
+        "id": "7.1",
+		"type": "multiple_choice",
+        "text": "A What are this / these?\nB They're apples.",
+        "options": ["this", "these"],
+        "correct": "these"
+      },
+      {
+        "id": "7.2",
+		"type": "multiple_choice",
+        "text": "A Who’s that / those?\nB It’s Sam.",
+        "options": ["that", "those"],
+        "correct": "that"
+      },
+      {
+        "id": "7.3",
+		"type": "multiple_choice",
+        "text": "A What are those buildings?\nB It's / They’re the Parliament Buildings.",
+        "options": ["It’s", "They’re"],
+        "correct": "They’re"
+      },
+      {
+        "id": "7.4",
+		"type": "multiple_choice",
+        "text": "A What’s this / these?\nB It's a tablet.",
+        "options": ["this", "these"],
+        "correct": "this"
+      },
+      {
+        "id": "7.5",
+		"type": "multiple_choice",
+        "text": "A Who are that / those people?\nB They're students.",
+        "options": ["that", "those"],
+        "correct": "those"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "type": "rewrite",
+    "text": "Rewrite the sentences with the correct subject pronoun.",
+    "subquestions": [
+      {
+        "id": "8.1",
+		"type": "write-in-blank",
+        "text": "John’s a waiter. ____",
+        "correct": "He’s a waiter."
+      },
+      {
+        "id": "8.2",
+		"type": "write-in-blank",
+        "text": "George and Millie are friends. ____",
+        "correct": "They’re friends."
+      },
+      {
+        "id": "8.3",
+		"type": "write-in-blank",
+        "text": "Jakarta's in Indonesia. ____",
+        "correct": "It’s in Indonesia."
+      },
+      {
+        "id": "8.4",
+		"type": "write-in-blank",
+        "text": "Laura's from Australia. ____",
+        "correct": "She’s from Australia."
+      },
+      {
+        "id": "8.5",
+		"type": "write-in-blank",
+        "text": "You and Robbie are late. ____",
+        "correct": "You’re late."
+      }
+    ]
+  }
+]

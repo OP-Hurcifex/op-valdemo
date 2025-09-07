@@ -1,0 +1,39 @@
+[
+  {
+    "id": 3,
+    "type": "reading",
+    "text": "<h1>My Favorite Game: MLBB</h1>\n<p>My name is Ali, and I love playing Mobile Legends: Bang Bang. It is a mobile game where you play in teams of five. Each team tries to destroy the enemy’s base. The game is fast and exciting!</p>\n<p>There are many heroes in MLBB. My favorite hero is Layla. She uses a big cannon and attacks from far away. Some heroes are fighters, some are tanks, and some are supports. You must choose the best hero for your team.</p>\n<p>I usually play in the evening after school. I play with my friends online. We talk and plan our strategy. It’s more fun when we win together!</p>\n<p>MLBB is not just a game. It helps me think fast, work in a team, and have fun with my friends.</p>",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "write-in-blank",
+        "text": "Ali’s favorite game is ____. ",
+        "correct": "MLBB"
+      },
+      {
+        "id": "3.2",
+        "type": "write-in-blank",
+        "text": "Ali’s favorite hero is ____. ",
+        "correct": "Layla"
+      },
+      {
+        "id": "3.3",
+        "type": "write-in-blank",
+        "text": "MLBB teams have ____ players. ",
+        "correct": "five"
+      },
+      {
+        "id": "3.4",
+        "type": "write-in-blank",
+        "text": "Layla uses a big ____. ",
+        "correct": "cannon"
+      },
+      {
+        "id": "3.5",
+        "type": "write-in-blank",
+        "text": "Ali plays MLBB in the ____. ",
+        "correct": "evening"
+      }
+    ]
+  }
+]

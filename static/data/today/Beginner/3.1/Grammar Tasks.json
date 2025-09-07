@@ -1,0 +1,110 @@
+[
+{
+  "id": 5,
+  "type": "grammar",
+  "text": "Complete the sentences using have got or has got. Do not use contractions.",
+  "subquestions": [
+    { "id": "5.1", "type": "write-in-blank", "text": "I ____ a new watch.", "correct": "have got" },
+    { "id": "5.2", "type": "write-in-blank", "text": "She ____ a big clock in her room.", "correct": "has got" },
+    { "id": "5.3", "type": "write-in-blank", "text": "They ____ a calendar on the wall.", "correct": "have got" },
+    { "id": "5.4", "type": "write-in-blank", "text": "My brother ____ a digital watch.", "correct": "has got" },
+    { "id": "5.5", "type": "write-in-blank", "text": "We ____ a meeting at noon.", "correct": "have got" },
+    { "id": "5.6", "type": "write-in-blank", "text": "The train ____ a delay.", "correct": "has got" }
+  ]
+}
+,
+{
+  "id": 6,
+  "type": "vocabulary",
+  "text": "Complete the questions using the correct form of have got or has got. Do not use contractions.",
+  "subquestions": [
+    { "id": "6.1", "type": "write-in-blank", "text": "____ the time?", "correct": "Have you got" },
+    { "id": "6.2", "type": "write-in-blank", "text": "____ a new clock?", "correct": "Has she got" },
+    { "id": "6.3", "type": "write-in-blank", "text": "____ a schedule?", "correct": "Has he got" },
+    { "id": "6.4", "type": "write-in-blank", "text": "____ alarms?", "correct": "Have they got" },
+    { "id": "6.5", "type": "write-in-blank", "text": "____ watches?", "correct": "Have you got" }
+  ]
+}
+,
+{
+  "id": 7,
+  "type": "multiple_choice",
+  "text": "Choose the correct form of have got / has got.",
+  "subquestions": [
+    {
+      "id": "7.1",
+      "type": "multiple_choice",
+      "text": "He ____ a new alarm clock.",
+      "options": ["have got", "has got"],
+      "correct": "has got"
+    },
+    {
+      "id": "7.2",
+      "type": "multiple_choice",
+      "text": "I ____ a schedule on my desk.",
+      "options": ["have got", "has got"],
+      "correct": "have got"
+    },
+    {
+      "id": "7.3",
+      "type": "multiple_choice",
+      "text": "They ____ two clocks in their room.",
+      "options": ["have got", "has got"],
+      "correct": "have got"
+    },
+    {
+      "id": "7.4",
+      "type": "multiple_choice",
+      "text": "My teacher ____ a timetable.",
+      "options": ["have got", "has got"],
+      "correct": "has got"
+    },
+    {
+      "id": "7.5",
+      "type": "multiple_choice",
+      "text": "We ____ the correct time.",
+      "options": ["have got", "has got"],
+      "correct": "have got"
+    }
+  ]
+}
+,
+{
+  "id": 8,
+  "type": "rewrite",
+  "text": "Rewrite the sentences using the correct form of have got or has got. Do not use contractions.",
+  "subquestions": [
+    {
+      "id": "8.1",
+      "type": "write-in-blank",
+      "text": "My brother owns a clock. ____",
+      "correct": "He has got a clock."
+    },
+    {
+      "id": "8.2",
+      "type": "write-in-blank",
+      "text": "You own a smart watch. ____",
+      "correct": "You have got a smart watch."
+    },
+    {
+      "id": "8.3",
+      "type": "write-in-blank",
+      "text": "Anna and I have digital alarms. ____",
+      "correct": "We have got digital alarms."
+    },
+    {
+      "id": "8.4",
+      "type": "write-in-blank",
+      "text": "The students have calendars. ____",
+      "correct": "They have got calendars."
+    },
+    {
+      "id": "8.5",
+      "type": "write-in-blank",
+      "text": "My mother owns a diary. ____",
+      "correct": "She has got a diary."
+    }
+  ]
+}
+
+]

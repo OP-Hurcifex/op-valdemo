@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "type": "reading",
+    "text": "<h1>Famous people’s first jobs</h1>\n\n<p>\n    Not all famous people were born into famous families. A lot of them had normal lives before becoming famous. They also had jobs like the rest of us. Here are just a few:\n</p>\n\n<p>\n    Former President Obama worked at an ice-cream parlour selling ice-cream cones. He was in high school in Honolulu, Hawaii and said it was quite hard. He also said that the job taught him about responsibility, hard work and how to spend time with work, friends and family.\n</p>\n\n<p>\n    Brad Pitt had a weird job when he was younger. He worked as a chicken! That’s right. He worked at a restaurant called El Pollo Loco in Hollywood, and his job was to dress up like a chicken and wave at the cars on the road.\n</p>\n\n<p>\n    Maybe the strangest path in life was that of Pope Francis. When he was young in Argentina, he worked several jobs before joining the Jesuits and dedicating his life to religion. He worked as a cleaner sweeping floors, a chemical tester at a laboratory and as a bouncer at a bar!\n</p>",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "Who helped protect people?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "Pope Francis"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "Who pretended to be an animal?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "Brad Pitt"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "Who learned a lot from their first job?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "President Obama"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "Who worked in advertising?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "None"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "Who thought the job was difficult?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "President Obama"
+      },
+      {
+        "id": "1.6",
+        "type": "multiple_choice",
+        "text": "Who had a couple of different jobs?",
+        "options": ["President Obama", "Brad Pitt", "Pope Francis"],
+        "correct": "Pope Francis"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "reading",
+    "text": "<h1>What do you do with your free time?</h1>\n\n<p>I’m almost 19 years old, and I finished my first year of university. I’m currently on holiday, and I have a lot of free time. Having free time is nice, but the problem is that when you are a student, you never have money. And when you have a lot of free time, but you don’t have much money, it can get boring.</p>\n\n<p>Every morning I go to the gym, and I read in the afternoons. But I still have a lot of free time. Going to the gym takes me about two hours, including the road time and the post-gym shower. And I usually read for one hour. Another activity that I do is watch documentaries. I study history, and I love historical documentaries. I learn a lot from them. I watch documentaries for one and a half hours four or five times a week.</p>\n\n<p>But those activities are a small part of my day. When I’m not at the gym or reading, I get bored, and I often play video games for hours. I enjoy playing video games, but I don’t think it’s a productive activity. When I play for a long time, I feel bad. I’d like to find more productive activities to do, but it isn’t easy. I live in a small town, and there aren’t many things to do.</p>\n\n<p>Do you have any suggestions? What do you do with your free time?</p>",
+    "subquestions": [
+        { "id": "2.1", "type": "write-in-blank", "text": "I finished my first year of ____.", "correct": "university" },
+        { "id": "2.2", "type": "write-in-blank", "text": "Having free time is nice, but when you are a ____, you never have money.", "correct": "student" },
+        { "id": "2.3", "type": "write-in-blank", "text": "Every morning I go to the ____.", "correct": "gym" },
+        { "id": "2.4", "type": "write-in-blank", "text": "Going to the gym takes me about ____ hours.", "correct": "two" },
+        { "id": "2.5", "type": "write-in-blank", "text": "I usually read for ____ hour.", "correct": "one" },
+        { "id": "2.6", "type": "write-in-blank", "text": "I study ____, and I love historical documentaries.", "correct": "history" },
+        { "id": "2.7", "type": "write-in-blank", "text": "I watch documentaries for one and a half hours four or five times a ____.", "correct": "week" },
+        { "id": "2.8", "type": "write-in-blank", "text": "When I’m bored, I often play ____ games.", "correct": "video" },
+        { "id": "2.9", "type": "write-in-blank", "text": "I live in a small ____, and there aren’t many things to do.", "correct": "town" },
+        { "id": "2.10", "type": "write-in-blank", "text": "I’d like to find more ____ activities to do.", "correct": "productive" }
+    ]
+},
+{
+    "id": 3,
+    "type": "reading",
+    "text": "<h1>My Trip to the Mountains</h1>\n\n<p>Last summer, I went on a trip to the mountains with my best friend. We decided to spend a whole week hiking, camping, and exploring nature. It was one of the best experiences of my life. We packed our backpacks with clothes, food, a tent, and sleeping bags.</p>\n\n<p>Every morning we woke up early to watch the sunrise. The air was fresh, and the sound of birds singing made me feel relaxed. We usually started hiking around 8 a.m. and walked for several hours before stopping for lunch. The views from the mountain trails were amazing — green valleys, tall trees, and sometimes even small waterfalls.</p>\n\n<p>One day, we met a group of travelers from another country. They told us about a hidden lake deep in the forest. The next day, we followed their directions and found it. The water was so clear that we could see the fish swimming. We spent the afternoon there, swimming and taking photos.</p>\n\n<p>At night, we made a fire, cooked dinner, and looked at the stars. There were so many stars that it felt like the whole sky was shining. On the last day, we were tired but very happy. I will never forget this trip, and I hope to go back next summer.</p>",
+    "subquestions": [
+        { "id": "3.1", "type": "write-in-blank", "text": "Last summer, I went on a trip to the ____.", "correct": "mountains" },
+        { "id": "3.2", "type": "write-in-blank", "text": "We decided to spend a whole week hiking, camping, and exploring ____.", "correct": "nature" },
+        { "id": "3.3", "type": "write-in-blank", "text": "We packed our backpacks with clothes, food, a tent, and ____ bags.", "correct": "sleeping" },
+        { "id": "3.4", "type": "write-in-blank", "text": "Every morning we woke up early to watch the ____.", "correct": "sunrise" },
+        { "id": "3.5", "type": "write-in-blank", "text": "We usually started hiking around ____ a.m.", "correct": "8" },
+        { "id": "3.6", "type": "write-in-blank", "text": "The views from the mountain trails were amazing — green valleys, tall trees, and small ____.", "correct": "waterfalls" },
+        { "id": "3.7", "type": "write-in-blank", "text": "We found a hidden lake deep in the ____.", "correct": "forest" },
+        { "id": "3.8", "type": "write-in-blank", "text": "The water in the lake was so clear we could see the ____ swimming.", "correct": "fish" },
+        { "id": "3.9", "type": "write-in-blank", "text": "At night, we made a fire, cooked dinner, and looked at the ____.", "correct": "stars" },
+        { "id": "3.10", "type": "write-in-blank", "text": "I hope to go back to the mountains next ____.", "correct": "summer" }
+    ]
+}
+
+
+]

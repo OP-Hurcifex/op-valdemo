@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horizon App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/static/styles/app.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="screamerOverlay" style="display: none;"></div>
+
+<div id="block-screen" class="block-screen hidden">
+    <div class="block-modal">
+        <img src="/static/icons/timer.svg" alt="Timer Icon" id="timer-icon" />
+<h2>You're Temporarily Restricted</h2>
+<p>Due to unusual activity, your access has been paused. Please wait to resume.</p>
+<small>Repeated violations may result in longer restrictions or account suspension.</small>
+        <div class="timer-container">
+            <div class="timer-progress" id="timer-progress"></div>
+            <span class="timer-text" id="timer">--:--</span>
+        </div>
+    </div>
+</div>
+
+<div id="toast-container"></div>
+
+<div id="updateModal" class="update-modal">
+  <div class="update-modal-content">
+    <div class="update-icon">
+      <video 
+        src="/static/icons/AI_icon.mp4" 
+        autoplay 
+        loop 
+        muted 
+        playsinline 
+        width="100%" 
+        loading="lazy"
+      ></video>
+    </div>
+
+    <h2>Analyzing Your Answers</h2>
+
+    <!-- animated text container -->
+    <div class="status-text-container">
+      <p id="statusText">Preparing your results...</p>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="lines">
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+  <div class="line"></div>
+</div>
+
+<div id="customMenu">
+    <ul>
+        <li onclick="copyText()"><i class="fas fa-copy"></i> Copy</li>
+        <li onclick="pasteText()"><i class="fas fa-paste"></i> Paste</li>
+        <li onclick="searchText()"><i class="fas fa-search"></i> Search</li>
+    </ul>
+</div>
+
+  <!-- Main Section -->
+  <div id="main" class="page active">
+
+<div class="story-modal" id="storyModal">
+  <div class="story-content" id="storyContent"></div>
+</div>
+
+
+    <div class="main-header">
+	      <a href="/login" class="login-btn" id="login-btn" style="display: none;">Login</a>
+      <div class="user-info">
+        <img id="avatar" src="" alt="Avatar" onerror="this.style.display='none'" aria-label="User Avatar">
+        <span id="username">Guest</span>
+<button id="notifications-btn" aria-label="Notifications">
+  <i class="fas fa-bell"></i>
+  <span id="notif-indicator" class="notif-indicator" style="display: none;"></span>
+</button>
+
+	  
+      </div>
+	  
+
+    </div>
+	
+		    <div class="exclusive-stories-container">
+  <div id="storiesList" class="stories-list"></div>
+</div>
+	  
+<!-- Progress Skeleton -->
+<div id="progress-card-skeleton" class="progress-card">
+  <div class="skeleton-level"></div>
+  <div class="progress-metrics">
+    <div class="skeleton-block"></div>
+    <div class="skeleton-block"></div>
+    <div class="skeleton-block"></div>
+  </div>
+</div>
+
+
+<!-- Actual Progress Content (initially hidden) -->
+  <div id="progress-card" style="display:none;" class="progress-card">
+    <div class="progress-view level">
+      <div class="value" id="current-level-value">Level</div>
+      <div class="label" id="next-level-label">Next Level: </div>
+    </div>
+    <div class="progress-metrics">
+      <div class="progress-view">
+        <div class="value" id="current-unit-value">Unit</div>
+      </div>
+      <div class="progress-view">
+        <div class="value" id="current-week-value">Week</div>
+      </div>
+      <div class="progress-view">
+        <div class="value" id="completion-value">% Completed</div>
+      </div>
+    </div>
+  </div>
+	
+	  <div class="tools-card">
+    <div class="progress-item coins">
+      <div class="icon"><i class="fas fa-coins"></i></div>
+      <div class="value" id="coins-value">--</div>
+    </div>
+    <div class="progress-item points">
+      <div class="icon"><i class="fas fa-star"></i></div>
+      <div class="value" id="points-value">--</div>
+    </div>
+<div class="progress-item leaderboard-trigger">
+  <div class="icon"><i class="fas fa-trophy"></i></div>
+  <div class="value" id="leaderboard-value">My rating</div>
+</div>
+
+    <div class="progress-item strike">
+      <div class="icon"><i class="fas fa-fire"></i></div>
+      <div class="value" id="strike-value">-- day</div>
+    </div>
+  </div>
+  
+
+<div class="services-wrapper">
+  <div class="services-container">
+    <div class="service-card" onclick="showPage('exams')">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Final Exams</span>
+    </div>
+	<div class="service-card" onclick="showPage('tasks')">
+  <i class="fas fa-tasks"></i>
+  <span>Tasks</span>
+</div>
+<div class="service-card" onclick="showPage('personal-analyzing')">
+  <i class="fas fa-user-check"></i>
+  <span>Personal Analyzing</span>
+</div>
+  </div>
+</div>
+  
+  <div class="informations-blocks">
+    <div class="carousel">
+      <div class="carousel-item active">
+        <div class="coin-shop-card" onclick="showPage('shop')">
+          <div class="coin-shop-text">
+            <div class="shop-title-main">Shop with Coins</div>
+            <div class="shop-subtext">To buy items, first earn points<br>and exchange to coins</div>
+          </div>
+          <div class="coin-shop-image">
+            <img src="/static/icons/chest-image.png" alt="Chest Image">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+<div class="lucky-spin-card" onclick="showPage('points-page')">
+  <div class="lucky-spin-text">
+    <div class="lucky-spin-title">Lucky Spin</div>
+    <div class="lucky-spin-subtext">Win up to <strong>30,000 points</strong> instantly!</div>
+  </div>
+  <div class="lucky-spin-image">
+    <img src="/static/icons/gift.png" alt="Lucky Wheel">
+  </div>
+
+      </div>
+	  </div>
+      <div class="carousel-item">
+<div class="double-points-card" onclick="showPage('shop')">
+  <div class="double-points-text">
+    <div class="double-points-title">Double Points</div>
+    <div class="double-points-subtext">Earn <strong>2× more points</strong><br>on every action today!</div>
+  </div>
+  <div class="double-points-image">
+    <img src="/static/icons/star.png" alt="Double Points Icon">
+  </div>
+</div>
+
+      </div>
+	  <div class="carousel-item">
+  <div class="squid-game-event" onclick="showPage('squid-game')">
+    <img class="squid-event-image" src="/static/icons/squid-game-preview.png" alt="Squid Game Event">
+    <div class="squid-event-overlay">
+      <div class="squid-event-title">Squid Game Event</div>
+      <div class="squid-event-subtext">
+        Double Points Active — <strong>Earn 2× more</strong><br>on every action today!
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+	
+  </div>
+
+<div id="liveLesson" class="page"> 
+  <div id="liveLessonBlock"></div>
+</div>
+
+
+<div id="leaderboard" class="page">
+
+  <div id="leaderboard-container"></div>
+</div>
+
+<div id="personal-analyzing" class="page">
+  <h2>Personal Analyzing</h2>
+
+  <div id="personal-summary">
+    <!-- краткий анализ (grammar_change, vocabulary_change и т.д.) -->
+  </div>
+
+  <button id="detailed-suggestions-btn">Get Detailed Suggestions</button>
+
+  <div id="detailed-analysis" style="margin-top: 1rem;">
+    <!-- подробный анализ от Gemini -->
+  </div>
+</div>
+
+
+<div id="tasks" class="page">
+ <div id="tasks-container"></div>
+</div>
+
+  <div id="squid-game" class="page">
+    <div class="fancy-logo"><h2>Horizon Events / Squid Game</h2> </div>
+  
+  <div id="video-player-squid"></div>
+  
+<div class="description-block">
+  <img src="static/icons/squid-game.webp" alt="Squid Game" class="series-icon">
+  <div class="details">2025 31 August • Several games • 18+ • Thriller</div>
+  <div class="summary">Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits—with deadly high stakes.</div>
+  <div class="starring">Players: <span>Muhammadali</span><span>Abdulmalik</span><span>Elbek</span><span>Behruz</span><span>Zakariyo</span><span>Dilafruz</span><span>Muzdalifa</span><span>Frontman</span></div>
+  <div class="creators">Creators: <span>Horizon</span></div>
+  
+  <div class="countdown" id="countdown-timer"></div>
+</div>
+  </div>
+  
+<div id="exams" class="page">
+
+<div id="exams-container"></div>
+
+</div>
+
+<div id="strikes-page" class="page hidden">
+  <div class="strike-summary">
+    <div class="strike-info">
+      <div id="strike-total" class="strike-count">0</div>
+      <div class="strike-label">Strikes in total</div>
+    </div>
+    <div class="strike-fire">
+      <img src="/static/icons/fire.png" alt="Fire Icon" />
+    </div>
+  </div>
+
+  <div class="history-strikes-container">
+    <h3 class="history-title">Strike History by Unit</h3>
+    <div id="unit-strike-list" class="unit-strike-grid"></div>
+  </div>
+</div>
+
+
+
+
+<div id="points-page" class="page">
+
+<div class="transfer-glass-card">
+  <h2 class="transfer-title"><i class="fas fa-paper-plane"></i> Transfer Points</h2>
+
+  <div class="input-group">
+    <label for="receiver"><i class="fas fa-user"></i> Receiver</label>
+    <input type="text" id="receiver" placeholder="Enter username" />
+  </div>
+
+  <div class="input-group">
+    <label for="amount"><i class="fas fa-coins"></i> Amount</label>
+    <input type="number" id="amount" placeholder="Enter amount" />
+  </div>
+
+  <button class="transfer-btn" onclick="submitTransfer()">
+    <i class="fas fa-arrow-right"></i> Send Points
+  </button>
+</div>
+
+ <div class="risk-ladder glass-card">
+    <h2><i class="fas fa-rocket"></i> Cosmic Risk Ladder</h2>
+    <p class="cost-text"><i class="fas fa-coins"></i> Entry cost: <strong>2000 pts</strong></p>
+
+    <div id="ladder-status">
+      <p>Star Level: <span id="ladderLevel">1</span> / 7</p>
+      <p>Galactic Reward: <span id="ladderReward">?</span></p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="ladder-controls">
+      <button id="startLadderBtn" class="glass-btn">🌌 Launch Journey</button>
+      <button id="nextLadderBtn" class="glass-btn danger" style="display:none;">🚀 Venture Deeper</button>
+      <button id="takeRewardBtn" class="glass-btn success" style="display:none;">💫 Claim Treasure</button>
+    </div>
+
+    <div id="ladderMessage" class="message"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+  
+<div class="horror-event glass-card">
+  <h2><i class="fas fa-skull-crossbones"></i> Horror Games</h2>
+  <p class="cost-text"><i class="fas fa-coins"></i> Entry cost: <strong>571 pts</strong></p>
+
+  <div id="horror-status">
+    <p>Level: <span id="horrorLevel">0</span> / 5</p>
+    <p>Potential Reward: <span id="horrorReward">?</span></p>
+    <div class="progress-bar-horror">
+      <div class="progress-fill-horror" id="horrorProgressFill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="ladder-controls">
+    <button id="horrorStartBtn" class="glass-btn">🩸 Enter the Mansion</button>
+    <button id="horrorNextBtn" class="glass-btn danger" style="display:none;">☠️ Next Room</button>
+    <button id="horrorClaimBtn" class="glass-btn success" style="display:none;">🎁 Escape with Reward</button>
+  </div>
+
+  <div id="horrorMessage" class="message"></div>
+  <div class="particles" id="horrorParticles"></div>
+</div>
+
+
+
+
+</div>
+
+<div id="settings" class="page">
+
+
+<div id="confirmTerminateModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Confirm Termination</h3>
+    <p>To terminate this session, enter your account password:</p>
+    <input type="password" id="terminatePasswordInput" placeholder="Your password" />
+    <button id="confirmTerminateBtn">Confirm</button>
+    <button id="cancelTerminateBtn">Cancel</button>
+  </div>
+</div>
+
+
+  <!-- Password Modal -->
+  <div id="change-passwords-modal" class="password-modal">
+    <div class="password-modal-content animate__animated animate__zoomIn">
+      <span class="close-modal" onclick="closePasswordModal()">×</span>
+      <h3><i class="fas fa-lock"></i> Change Password</h3>
+      <form id="change-password-form">
+        <div class="form-group">
+          <span class="input-label">Current Password</span>
+          <div class="input-wrapper">
+            <input type="password" id="currentPassword" required placeholder="Enter your current password" />
+            <i class="fas fa-eye toggle-password" onclick="togglePassword('currentPassword')"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <span class="input-label">New Password</span>
+          <div class="input-wrapper">
+            <input type="password" id="newPassword" required placeholder="Enter your new password" oninput="checkPasswordStrength()" />
+            <i class="fas fa-eye toggle-password" onclick="togglePassword('newPassword')"></i>
+          </div>
+          <div class="password-strength">
+            <span id="strength-bar" class="strength-bar"></span>
+            <span id="strength-text" class="strength-text"></span>
+          </div>
+          <ul class="password-requirements">
+            <li id="lowercase"><i class="fas fa-times text-red"></i> Lowercase</li>
+            <li id="uppercase"><i class="fas fa-times text-red"></i> Uppercase</li>
+            <li id="number"><i class="fas fa-times text-red"></i> Number</li>
+            <li id="special"><i class="fas fa-times text-red"></i> Special character</li>
+            <li id="length"><i class="fas fa-times text-red"></i> 8+ characters</li>
+          </ul>
+        </div>
+        <div class="form-group">
+          <span class="input-label">Confirm New Password</span>
+          <div class="input-wrapper">
+            <input type="password" id="confirmPassword" required placeholder="Confirm your new password" />
+            <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword')"></i>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-check-circle"></i> Update Password
+        </button>
+        <div id="password-message" class="message"></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Settings Container -->
+  <div class="settings-container animate__animated animate__fadeIn">
+    <h1 class="settings-title"><i class="fas fa-cog"></i> Settings</h1>
+    <div class="settings-menu">
+      <ul class="menu-list">
+<li class="menu-item active" data-section="appearance">
+  <i class="fas fa-laptop-code"></i> Active Sessions
+
+</li>
+
+        <li class="menu-item" data-section="system">
+          <i class="fas fa-tools"></i> System
+        </li>
+
+      </ul>
+      <div class="settings-content">
+        <div id="appearance" class="content-section active">
+          <h2>Active Sessions</h2>
+          <div class="active-sessions">
+  <div id="sessions-list" class="sessions-list">
+    <!-- Сессии будут загружены через JS -->
+    <p>Loading active sessions...</p>
+  </div>
+</div>
+
+        </div>
+        <div id="system" class="content-section">
+          <h2><i class="fas fa-tools"></i> System Settings</h2>
+          <p>Manage system preferences, notifications, and updates.</p>
+          <div class="settings-actions">
+            <button class="logout-btn" onclick="logout()">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+            <button class="open-password-modal-btn" onclick="openPasswordModal()">
+              <i class="fas fa-key"></i> Change Password
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+	  <div class="app-version">Version so.5</div>
+  </div>
+</div>
+
+<div id="shop" class="page">
+  <header class="shop-header">
+    <div class="inventory-icon" onclick="showPage('inventory')" title="Inventory">
+      <i class="fas fa-box-open"></i>
+    </div>
+    <h1>Shop</h1>
+  </header>
+
+  <section class="products-section">
+    <h2>Products</h2>
+    <div id="products-grid" class="products-grid"></div>
+  </section>
+</div>
+
+<!-- Notifications Page -->
+<div id="notifications" class="page" style="display: none;">
+  <h1>Notifications</h1>
+  <div class="settings-content">
+    <!-- Toggle General / Important -->
+    <div class="notif-toggle">
+      <button data-type="general" class="active">General</button>
+      <button data-type="important">Important</button>
+    </div>
+    <!-- Список уведомлений -->
+    <ul id="notifications-list">
+      <!-- JS подставит сюда <li>…</li> -->
+    </ul>
+  </div>
+</div>
+
+
+  <div id="inventory" class="page">
+    <header class="inventory-header">
+      <h1>Inventory</h1>
+    </header>
+    <section id="items-section" class="items-section"></section>
+  </div>
+  
+<!-- Today -->
+<div id="today" class="page">
+  <div class="calendar">
+    <span class="today-label" onclick="toggleCalendar()">
+  <i class="fas fa-calendar-alt"></i> Today <i class="fas fa-chevron-down"></i>
+</span>
+
+	<div id="unit-calendar" class="unit-calendar hidden"></div>
+    <div id="days" class="days"></div>
+	
+  </div>
+
+  <div class="tasks-section">
+    <h2 id="task-count">Today's Tasks</h2>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion(this)">
+        <span>Exam</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content" id="final-exam-item">
+        <!-- Контент будет загружен через updateExamDisplay() -->
+      </div>
+    </div>
+
+  </div>
+  <!-- ВНЕ всех секций и контейнеров -->
+  
+<div id="unit-picker" class="unit-picker"></div>
+
+</div>
+
+<!-- Today Tasks Page -->
+<div id="todaytasks" class="page" style="display: none;">
+  <header id="todaytasks-header" class="page-header">
+    <div>
+      <h1 id="header-today">Today’s Tasks</h1>
+      <p id="todaytasks-unit">Unit</p>
+    </div>
+    <button id="finish-tasks-btn" class="btn btn-primary">
+      Finish Tasks
+    </button>
+	<button id="done-tasks-btn" class="btn btn-success" style="display: none;">Done</button>
+  </header>
+
+  <main id="todaytasks-content" class="page-content" style="padding: 1rem;">
+    <!-- Здесь будут динамически подгружаться интерактивные вопросы -->
+  </main>
+</div>
+
+
+
+<div id="coins-page" class="page">
+  <div class="balance-cards">
+    <div class="balance-card coin-card">
+      <div class="icon"><i class="fas fa-wallet"></i></div>
+      <div class="info">
+        <div class="value" id="coins-value-in-page">--</div>
+        <div class="label">Coins</div>
+      </div>
+    </div>
+
+    <div class="balance-card point-card">
+      <div class="icon"><i class="fas fa-star"></i></div>
+      <div class="info">
+        <div class="value" id="points-balance">--</div>
+        <div class="label">Active points</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exchange-box">
+    <p class="exchange-rate">
+      <i class="fas fa-sync-alt"></i>
+      Exchange rate: <strong>1000 points = 1 coin</strong>
+	  <p1> High Service Fee </p1>
+    </p>
+    <input type="number" id="exchange-input" placeholder="Enter points to exchange (min 10)">
+    <button id="exchange-btn">
+      <i class="fas fa-exchange-alt"></i> Exchange
+    </button>
+    <div id="exchange-status">
+      <i class="fas fa-info-circle"></i>
+      <span id="exchange-message"></span>
+    </div>
+  </div>
+ 
+<div class="debt-section">
+  <h2 class="section-title">
+    <i class="fas fa-hand-holding-usd" style="color:#00ffbf"></i>
+    Debt Proposals
+  </h2>
+  <div class="debt-actions">
+    <button id="new-debt-btn">Propose Debt</button>
+  </div>
+  <div class="debt-lists">
+    <div class="debt-list" id="incoming-debts">
+      <h3>Incoming</h3>
+      <div class="loading">Loading...</div>
+    </div>
+    <div class="debt-list" id="outgoing-debts">
+      <h3>Outgoing</h3>
+      <div class="loading">Loading...</div>
+    </div>
+  </div>
+</div> 
+  
+<div class="transactions-section">
+  <h2 class="section-title">
+    <i class="fas fa-history" style="color: #ffcc00;"></i>
+    Points History
+  </h2>
+
+  <div id="points-history" class="transactions-list">
+    <div class="loading">Loading...</div>
+  </div>
+  
+</div>
+
+<div id="debt-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Propose New Debt</h3>
+    <input id="debt-user" placeholder="Username" />
+    <input id="debt-amount" type="number" placeholder="Amount" />
+    <input id="debt-interest" type="number" placeholder="Interest %" />
+    <input id="debt-due" type="datetime-local" />
+    <button id="debt-submit">Send</button>
+    <button id="debt-cancel">Cancel</button>
+  </div>
+</div>
+
+</div>
+
+<!-- Progress -->
+<!-- Progress -->
+<div id="progress" class="page">
+  <div id="loading" style="display: none; justify-content: center; align-items: center; height: 200px;">
+    <span class="loader-progress"></span>
+  </div>
+
+  <div id="error-message"></div>
+  <div id="loading" style="display: none; justify-content: center; align-items: center; height: 100px;">
+    <div class="lds-dual-ring"></div>
+  </div>
+
+  <div id="progress-container">
+    <div class="progress-title big">My Progress</div>
+    <div class="progress-section"></div>
+
+    <!-- Карточка Total Score -->
+    <div class="total-score-card" id="totalScoreCard" data-score="36">
+      <div class="ts-header">
+        <div>
+          <div id="progress-score" class="progress-value">--%</div>
+        </div>
+        <div aria-hidden="true">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" style="opacity:.85">
+            <circle cx="12" cy="12" r="11" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" fill="rgba(255,255,255,0.02)"/>
+            <path d="M11.5 10.2h1v5h-1zM12 7.5a.75.75 0 110 1.5.75.75 0 010-1.5z" fill="rgba(255,255,255,0.95)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="ts-bar-wrap">
+        <div class="progress-bar-container ts" id="tsBar">
+          <div id="progress-bar-fill" class="progress-bar-fill" style="width:36%"></div>
+        </div>
+
+        <!-- Маркеры -->
+        <div class="bar-mark mark-fail" style="left:45%;" title="Fail <45%">
+          <i class="fa-solid fa-caret-up"></i>
+          <div class="mark-label">Fail &lt;45%</div>
+        </div>
+        <div class="bar-mark" style="left:65%;" title="C (65%)">
+          <i class="fa-solid fa-caret-up"></i>
+          <div class="mark-label">C</div>
+        </div>
+        <div class="bar-mark" style="left:81%;" title="B (81%)">
+          <i class="fa-solid fa-caret-up"></i>
+          <div class="mark-label">B</div>
+        </div>
+        <div class="bar-mark" style="left:91%;" title="A (91%)">
+          <i class="fa-solid fa-caret-up"></i>
+          <div class="mark-label">A</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final Exam -->
+    <div class="progress-sections">
+      <div class="progress-title">Final Exam</div>
+      <div class="progress-bar-container">
+        <div id="progressFinalExamBar" class="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+      <div id="finalExamLabel" class="progress-label">0 / 30 (0%)</div>
+    </div>
+
+    <!-- Today -->
+    <div class="progress-sections">
+      <div class="progress-title">Today</div>
+      <div class="progress-bar-container">
+        <div id="progressTodayBar" class="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+      <div id="todayLabel" class="progress-label">0 / 60 (0%)</div>
+    </div>
+
+<!-- Attendance -->
+<div class="progress-sections" onclick="showPage('attendance-history')">
+  <div class="progress-title">Attendance</div>
+  <div class="progress-bar-container">
+    <div id="progressAttendanceBar" class="progress-bar-fill" style="width: 0%;"></div>
+  </div>
+  <div id="attendanceLabel" class="progress-label">0 / 10 (0%)</div>
+</div>
+
+
+    <!-- Toggle -->
+    <div class="progress-toggle">
+      <button id="toggle-progress" class="toggle-button active">Progress</button>
+      <button id="toggle-today" class="toggle-button">Today</button>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="leaderboard-wrapper">
+      <table id="leaderboard-fixed-table">
+        <thead id="leaderboard-fixed-table-head"></thead>
+        <tbody id="leaderboard-fixed-table-body"></tbody>
+      </table>
+      <div class="scrollable-units">
+        <table id="leaderboard-units-table">
+          <thead id="leaderboard-units-table-head"></thead>
+          <tbody id="leaderboard-units-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="attendance-history" class="page">
+
+</div>
+
+<!-- Chat List -->
+<div id="chat-list" class="page">
+<div class="logo fancy-logo">Horizon Chats</div>
+
+  <div class="chat-list">
+<!-- Групповой чат -->
+<div class="chat-item" data-chat="group-General">
+  <div class="chat-icon"><i class="fas fa-users"></i></div>
+  <div>
+    <strong>My Group - General</strong>
+    <p>No message</p>
+  </div>
+</div>
+
+<!-- Private Chats -->
+<div class="chat-private-item" onclick="showPage('private-chatlist')">
+  <div class="chat-icon"><i class="fas fa-comments"></i></div>
+  <div class="chat-text">
+    <strong>Private Chats <span class="beta-badge">BETA</span></strong>
+    <p>View available users</p>
+  </div>
+</div>
+
+
+
+  </div>
+</div>
+
+  
+  <!-- Private Chat List -->
+<div id="private-chatlist" class="page">
+  <h1>Private Chats</h1>
+  <div class="chat-list" id="private-chat-list">
+    <p>Loading users...</p>
+  </div>
+</div>
+
+<!-- HTML -->
+<div id="redeem-code" class="page">
+  <h1 class="redeem-title"><i class="fas fa-gift"></i> Redeem Your Code</h1>
+  <p class="redeem-subtitle">Enter your promo or gift code below to unlock exclusive rewards.</p>
+
+  <div class="redeem-card">
+    <div class="redeem-container">
+      <div class="input-wrapper">
+        <input
+          type="text"
+          id="redeem-input"
+          placeholder="Enter your code here..."
+          class="redeem-input"
+          autocomplete="off"
+        />
+      </div>
+
+      <button
+        type="button"
+        id="redeemBtn"
+        class="redeem-btn"
+        onclick="redeemCode(document.getElementById('redeem-input').value.trim(), currentUser)"
+      >
+        <span id="redeemBtnLabel">Redeem</span>
+        <i class="fas fa-arrow-right" style="margin-left:6px"></i>
+      </button>
+    </div>
+
+    <p class="redeem-hint"><i class="fas fa-lightbulb"></i> Please enter the code exactly as shown — codes are case-sensitive.</p>
+  </div>
+
+  <!-- Create & My Codes UI -->
+  <section id="redeem-create" class="redeem-create-section">
+    <div class="container-create">
+      <div class="create-card" id="createCard">
+        <div class="create-left" id="toggleCreate" role="button" tabindex="0">
+          <div class="plus"><i class="fas fa-plus"></i></div>
+          <div>
+            <div class="create-title">Create a Code</div>
+            <div class="create-sub">Generate a unique code to share with your friends.</div>
+          </div>
+        </div>
+
+        <div class="create-action">
+          <button class="btn-create" id="openCreateBtn">Create</button>
+        </div>
+      </div>
+
+      <div class="create-form" id="createForm" aria-hidden="true">
+        <div class="row">
+<div class="field">
+  <div class="input-title">Code <span class="optional">(unique)</span></div>
+  <input type="text" id="newCode" placeholder="Horizon" autocomplete="off">
+</div>
+
+<div class="field" style="max-width:160px">
+  <div class="input-title">Amount</div>
+  <input type="number" id="newAmount" placeholder="50" min="0" step="0.01">
+</div>
+
+<div class="field" style="max-width:140px">
+  <div class="input-title">Max Uses <span class="optional">(optional)</span></div>
+  <input type="number" id="newMaxUses" placeholder="e.g. 10" min="1">
+</div>
+
+        </div>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+          <button class="btn-create" id="createSubmit">Create Code</button>
+          <button class="btn-mini" id="createCancel">Cancel</button>
+        </div>
+      </div>
+
+      <div id="codesContainer">
+        <h3 style="margin-top:18px">Your Created Codes</h3>
+        <div id="codesList" class="codes-list" aria-live="polite">
+          <!-- cards injected here -->
+        </div>
+        <div id="emptyState" class="empty" style="display:none">You haven’t created any codes yet. Start by creating one above!</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+  <!-- Chat UI -->
+  <div id="chat-ui" class="page chat-ui">
+    <div class="header">
+      <i class="fas fa-arrow-left back" aria-label="Back to chat list"></i>
+      <span class="title">Group General</span>
+    </div>
+    <div class="messages" id="messages"></div>
+    <div class="input-area" id="message-form">
+      <label for="file-input" class="attach-label">
+  <i class="fas fa-paperclip" aria-label="Attach file"></i>
+</label>
+<input id="file-input" type="file" style="display: none;" />
+
+      <input type="file" id="file-input" accept="image/jpeg,image/jpg,image/gif,image/png,video/mp4,video/webm,video/ogg,audio/mpeg,audio/mp3" aria-label="File upload">
+      <input type="text" id="message-input" placeholder="Type here" aria-label="Type a message">
+      <button type="submit" id="send-button" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+<!-- Chat UI - Private -->
+<div id="chat-ui-private" class="page">
+<div class="private-chat-header">
+  <button class="private-chat-header-back" onclick="showPage('private-chatlist')" aria-label="Back to chat list">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+  
+  <div class="private-chat-header-texts">
+    <span class="private-chat-header-username" id="private-chat-username">Private Chat</span>
+    <span class="private-chat-header-status" id="private-chat-status">Last seen recently</span>
+  </div>
+</div>
+
+
+
+  <div class="messages-private" id="private-messages"></div>
+
+<!-- Уже есть -->
+<div class="private-ui-wrapper">
+  <div class="input-area private-ui-input-pill">
+    <!-- левая кнопка микрофона -->
+    <button id="voice-message-button" class="private-ui-voice-btn" title="Record voice" aria-pressed="false">
+      <i class="fas fa-microphone"></i>
+      <span class="private-ui-voice-timer" aria-hidden="true"></span>
+    </button>
+	
+    <button id="attach-file-btn" class="private-ui-action-btn">
+      <i class="fas fa-paperclip" aria-label="Attach file"></i>
+    </button>
+	<input id="private-file-input" type="file" accept="image/*,video/*,audio/*" style="display:none;" />
+
+    <!-- поле ввода -->
+    <input type="text"
+           id="private-message-input"
+           class="private-ui-comment-input"
+           placeholder="Add a comment..."
+           aria-label="Type a message">
+
+    <!-- скрытый input для файлов -->
+    <input id="private-file-input" type="file" accept="image/*,video/*,audio/*" style="display:none;" />
+
+    <!-- правые иконки -->
+    <div class="private-ui-actions">
+      <button type="submit" id="private-send-button" class="private-ui-action-btn private-ui-send">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+</div> 
+
+<div id="admin-panel" class="page">
+<!-- Контейнер для iframe -->
+<div id="admin-panel-container" 
+     style="display:none; position:relative; width:100%; height:100vh; z-index:999;">
+  <iframe id="admin-panel-frame" 
+          src="about:blank" 
+          style="width:100%; height:100%; border:none; border-radius:12px; background:#fff;">
+  </iframe>
+</div>
+<div id="admin-access-message" style="display:none; text-align:center; margin-top:20px; color:red; font-weight:bold;"></div>
+</div>
+
+  <!-- Profile -->
+  <div id="profile" class="page">
+    <h1>Profile</h1>
+    <div class="profile-content">
+	<div class="settings-icon" onclick="showPage('settings')" title="Settings">
+  <i class="fas fa-cog"></i>
+</div>
+
+      <div class="avatar-section">
+        <img id="profile-avatar" src="" alt="Avatar" onerror="this.style.display='none'" aria-label="User Avatar">
+        <button id="change-avatar" class="change-avatar-btn">Change Avatar</button>
+        <input type="file" id="avatar-input" style="display: none;" accept="image/jpeg,image/jpg,image/png,image/gif">
+      </div>
+      <div class="user-info">
+        <span id="username-display">Guest</span>
+      </div>
+      <div class="balance-section">
+        <span id="balance-amount">0 UZS</span>
+        <span id="balance-status">Paid</span>
+      </div>
+
+    </div>
+	<!-- Upload Files Section -->
+<div class="upload-section" onclick="showPage('upload');" title="Upload Files">
+  <div class="upload-info">
+    <div class="shop-title-main">
+      Upload Files <i class="fas fa-chevron-right"></i>
+    </div>
+    <div class="shop-subtext">
+      To buy items, earn points<br>send bugs and earn points.
+    </div>
+  </div>
+</div>
+<div class="profile-items" onclick="showPage('writing-top-list');">
+  <div class="profile-items-left">
+    <div class="profile-items-icon">
+      <i class="fas fa-crown"></i>
+    </div>
+    <span class="profile-items-text">Writing Top List</span>
+  </div>
+  <i class="fas fa-chevron-right profile-items-arrow"></i>
+</div>
+
+<div class="profile-items" onclick="showPage('my-certificates');">
+  <div class="profile-items-left">
+    <div class="profile-items-icon">
+        <i class="fa-brands fa-cuttlefish"></i>
+    </div>
+    <span class="profile-items-text">My Certificates</span>
+  </div>
+  <i class="fas fa-chevron-right profile-items-arrow"></i>
+</div>
+
+<div class="profile-items" onclick="showPage('redeem-code');">
+  <div class="profile-items-left">
+    <div class="profile-items-icon">
+        <i class="fas fa-gift"></i>
+    </div>
+    <span class="profile-items-text">Redeem Code</span>
+  </div>
+  <i class="fas fa-chevron-right profile-items-arrow"></i>
+</div>
+
+
+<!-- SVG filter defs (для фона, но без blur для иконки) -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="40" edgeMode="none" />
+    </filter>
+  </defs>
+</svg>
+
+<!-- ===== Admin Panel Card ===== -->
+<div class="admin-panel-card admin-panel-card--dark" onclick="showPage('admin-panel');">
+  
+  <!-- Decorative blurred orbs -->
+  <svg class="card-bg" viewBox="0 0 600 300" preserveAspectRatio="none">
+    <g filter="url(#softBlur)">
+      <circle cx="100" cy="220" r="120" fill="#22d3ee" opacity="0.25"></circle>
+      <circle cx="520" cy="60"  r="140" fill="#a78bfa" opacity="0.22"></circle>
+      <circle cx="320" cy="180" r="110" fill="#34d399" opacity="0.20"></circle>
+    </g>
+  </svg>
+
+  <!-- Header -->
+  <div class="admin-panel-header">
+    <h3 class="admin-panel-title">Admin Panel</h3>
+    <div class="admin-panel-icon">
+      <i class="fas fa-users"></i>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="admin-panel-content">
+    Moderate users: ban, unblock, troll friends and more!
+  </div>
+
+  <!-- Footer / Actions -->
+  <div class="admin-panel-footer">
+    <button class="admin-panel-btn primary loading"><i class="fas fa-ban"></i> Ban</button>
+    <button class="admin-panel-btn secondary loading"><i class="fas fa-unlock"></i> Unblock</button>
+    <button class="admin-panel-btn ghost loading"><i class="fas fa-face-grin-tongue"></i> Troll</button>
+  </div>
+</div>
+
+  </div>
+
+<!-- Upload Page -->
+<div id="upload" class="page">
+  <div class="suggestions-header">Suggestions</div>
+
+  <div id="idea-list"></div>
+
+  <button id="toggle-idea-form" class="new-idea-button">Send New Idea</button>
+
+<div id="idea-overlay" class="idea-overlay hidden"></div>
+
+<form id="idea-form" enctype="multipart/form-data" class="idea-form hidden">
+  <textarea name="text" placeholder="Describe your idea or bug..." required></textarea>
+  <input type="file" name="media" accept="image/*,video/*" />
+  <button type="submit">Submit</button>
+</form>
+
+</div>
+
+<!-- My Certificates Page -->
+<div id="my-certificates" class="page" style="display:none; padding: 20px;">
+  <div class="header" style="display: flex; justify-content: space-between; margin-bottom: 14px;">
+    <button class="back-button" onclick="showPage('profile');"><i class="fas fa-chevron-left"></i></button>
+    <h2 class="fancy-logo" style="font-size: 2.2rem; margin: 0;">My Certificates</h2>
+    <button class="help-button" id="help-btn">
+  <i class="fas fa-question-circle"></i>
+</button>
+<div id="help-info" class="help-info"></div>
+
+  </div>
+  <div id="certificates-container" class="certificates-grid"></div>
+</div>
+
+
+<!-- Writing Top List Page -->
+<div id="writing-top-list" class="page" style="display:none; padding:20px;">
+  <div class="wtl-header">
+    <h2><i class="fas fa-pen-nib"></i> Writing Top List</h2>
+    <div id="wtl-position" class="wtl-position">#—</div>
+  </div>
+
+  <div class="wtl-controls">
+    <div class="wtl-meta">
+      <i class="fas fa-book-open"></i> Unit: <span id="wtl-unit">-</span>  
+      <i class="fas fa-layer-group"></i> Level: <span id="wtl-level">-</span>
+    </div>
+    <button id="wtl-refresh" class="wtl-btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+  </div>
+
+  <div class="wtl-chart-wrap">
+    <canvas id="writing-chart" width="800" height="280"></canvas>
+  </div>
+
+  <div id="wtl-list" class="wtl-list"></div>
+
+  <!-- Легенда -->
+  <div class="wtl-legend">
+    <i class="fas fa-star text-gold"></i> Your Score
+    <i class="fas fa-trophy text-green"></i> Leader Score
+    <i class="fas fa-chart-line text-blue"></i> Average Score
+  </div>
+
+  <!-- Расширенная статистика -->
+  <div class="wtl-extra-stats">
+    <div><i class="fas fa-medal"></i> Best Score: <span id="wtl-best">-</span></div>
+    <div><i class="fas fa-balance-scale"></i> Avg Score: <span id="wtl-avg">-</span></div>
+    <div><i class="fas fa-arrow-up"></i> Difference to Leader: <span id="wtl-diff">-</span></div>
+  </div>
+</div>
+
+
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#" data-page="main" class="active" aria-label="Main page"><i class="fas fa-home"></i>Main</a>
+    <a href="#" data-page="progress" aria-label="Progress page"><i class="fas fa-chart-line"></i>Progress</a>
+    <a href="#" data-page="today" aria-label="Today page"><i class="fas fa-calendar"></i>Today</a>
+    <a href="#" data-page="chat-list" aria-label="Chat list page"><i class="fas fa-comments"></i>Chat</a>
+    <a href="#" data-page="profile" aria-label="Profile page"><i class="fas fa-user"></i>Profile</a>
+  </nav>
+
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script src="/static/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- Подключи Chart.js (вставить в <head> или перед твоим main.js) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+
+</body>
+</html>

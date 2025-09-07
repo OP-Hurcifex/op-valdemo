@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crystal Media Vault</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #001f2f, #00334d);
+      color: #e0f7ff;
+      user-select: none;
+    }
+	
+	/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #555;
+  text-transform: lowercase;
+  transition: color 0.3s ease;
+}
+@font-face {
+  font-family: 'OriginEthnic';
+  src: url('/static/fonts/OriginEthnic.otf') format('opentype');
+}
+
+.fancy-logo {
+    font-family: 'OriginEthnic', serif;
+    font-size: 70px;
+    color: #ffffff;
+    letter-spacing: 2.5px;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+    transition: color 0.3s ease;
+}
+
+
+    .viewer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: #00eaff;
+      text-shadow: 0 0 12px #00ffe0;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .accordion {
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 16px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.05);
+    }
+
+    .accordion-header {
+      padding: 18px 24px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.03);
+      transition: background 0.3s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(0, 255, 255, 0.05);
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .accordion-content.open {
+      padding: 20px;
+      max-height: 5000px;
+    }
+
+    .accordion-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-content.open ~ .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .media-item {
+      position: relative;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .media-item:hover {
+      transform: scale(1.02);
+    }
+
+    video, canvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px 16px 0 0;
+      cursor: pointer;
+    }
+
+    .fa-lock {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      color: #ff5555;
+      font-size: 16px;
+    }
+
+    .custom-video-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .custom-video-controls button {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .custom-video-controls button:hover {
+      transform: scale(1.15);
+      color: #00ffee;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      margin: 0 12px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #00f0ff, #00ffaa);
+      transition: width 0.3s ease;
+    }
+
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .fullscreen-overlay img,
+    .fullscreen-overlay video {
+      max-width: 95%;
+      max-height: 95%;
+      border-radius: 12px;
+    }
+
+    .fullscreen-overlay .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: #ffffff;
+      cursor: pointer;
+    }
+
+    .error-message {
+      padding: 20px;
+      background: rgba(255, 0, 0, 0.15);
+      border: 1px solid #ff4d4d;
+      border-radius: 10px;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #warning-modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    #warning-box {
+      background: #002a3a;
+      border-radius: 16px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      text-align: center;
+      max-width: 480px;
+      border: 2px solid rgba(0, 255, 255, 0.2);
+    }
+
+    #warning-box h2 {
+      font-size: 24px;
+      color: #ff4444;
+      margin-bottom: 15px;
+    }
+
+    #warning-box p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    #warning-box button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #00cccc;
+      border: none;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    #warning-box button:hover {
+      background: #00ffaa;
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+  <div class="viewer-container">
+    <div class="logo fancy-logo">Horizon Viewer</div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('images')">
+        <i class="fas fa-image"></i> Images
+        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div id="accordion-images" class="accordion-content media-grid"></div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('videos')">
+        <i class="fas fa-video"></i> Videos
+        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div id="accordion-videos" class="accordion-content media-grid"></div>
+    </div>
+
+    <div class="accordion">
+      <div class="accordion-header" onclick="toggleAccordion('others')">
+        <i class="fas fa-folder"></i> Others
+        <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+      </div>
+      <div id="accordion-others" class="accordion-content media-grid"></div>
+    </div>
+  </div>
+
+  <!-- Fullscreen overlay -->
+  <div id="fullscreen-overlay" class="fullscreen-overlay">
+    <span class="close-btn"><i class="fas fa-times-circle"></i></span>
+  </div>
+
+<!-- Warning Modal -->
+<div id="warning-modal">
+  <div id="warning-box">
+    <h2><i class="fas fa-exclamation-triangle"></i> Important Notice / Muhim Ogohlantirish</h2>
+    <p>
+      <strong>EN:</strong> This content is strictly protected.<br>
+      Any attempt to take screenshots or download files will result in a <strong>permanent ban</strong>.<br><br>
+      <strong>UZ:</strong> Bu kontent qat'iy himoyalangan.<br>
+      Har qanday skrinshot olish yoki fayllarni yuklab olishga urinish <strong>abadiy bloklanishga</strong> olib keladi.
+    </p>
+    <button onclick="document.getElementById('warning-modal').style.display='none'">
+      <i class="fas fa-check-circle"></i> I Understand / Tushundim
+    </button>
+  </div>
+</div>
+
+<audio id="background-music" src="/static/music/Curious Light.mp3" autoplay loop></audio>
+  <script>
+  
+    window.addEventListener('DOMContentLoaded', () => {
+    const bgMusic = document.getElementById('background-music');
+    bgMusic.volume = 1.0; // 100% громкость
+    bgMusic.play().catch(() => {
+      // В случае автоплей-блока (некоторые браузеры требуют user interaction)
+      document.addEventListener('click', () => bgMusic.play(), { once: true });
+    });
+  });
+    const overlay = document.getElementById('fullscreen-overlay');
+
+    function openFullscreen(element) {
+      overlay.innerHTML = '<span class="close-btn"><i class="fas fa-times-circle"></i></span>';
+      overlay.appendChild(element);
+      overlay.style.display = 'flex';
+    }
+
+    function closeFullscreen() {
+      overlay.style.display = 'none';
+      overlay.innerHTML = '<span class="close-btn"><i class="fas fa-times-circle"></i></span>';
+    }
+
+    document.addEventListener('click', e => {
+      if (e.target.closest('.close-btn')) closeFullscreen();
+    });
+
+    function openImageFull(src) {
+      const img = document.createElement('img');
+      img.src = src;
+      openFullscreen(img);
+    }
+
+    function openVideoFull(src) {
+      const video = document.createElement('video');
+      video.src = src;
+      video.controls = true;
+      video.autoplay = true;
+      openFullscreen(video);
+    }
+
+    function toggleAccordion(type) {
+      const content = document.getElementById('accordion-' + type);
+      content.classList.toggle('open');
+    }
+
+    const urlParts = window.location.pathname.split('/');
+    const itemID = urlParts[urlParts.length - 1] || '1';
+
+    fetch(`/api/view/${itemID}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          document.getElementById('accordion-images').innerHTML =
+          document.getElementById('accordion-videos').innerHTML =
+          document.getElementById('accordion-others').innerHTML =
+            `<div class="error-message"><i class="fas fa-bug"></i> ${data.error}</div>`;
+          return;
+        }
+
+        data.files.forEach(file => {
+          const ext = file.split('.').pop().toLowerCase();
+          const safeID = file.replace(/[^a-z0-9]/gi, '');
+          const filePath = `/static/cdn/${itemID}/${file}`;
+          const div = document.createElement('div');
+          div.className = 'media-item';
+
+          if (["jpg", "jpeg", "png", "gif", "webp"].includes(ext)) {
+            const canvasID = `canvas-${safeID}`;
+            div.innerHTML = `<canvas id="${canvasID}" onclick="openImageFull('${filePath}')"></canvas><i class="fas fa-lock"></i>`;
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.getElementById(canvasID);
+              canvas.width = img.width;
+              canvas.height = img.height;
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0);
+            };
+            img.src = filePath;
+            document.getElementById('accordion-images').appendChild(div);
+          }
+          else if (["mp4", "webm", "ogg"].includes(ext)) {
+            const videoID = `video-${safeID}`;
+            const progressID = `progress-${safeID}`;
+            div.innerHTML = `
+              <video id="${videoID}" src="${filePath}" preload="metadata"></video>
+              <div class="custom-video-controls">
+                <button onclick="document.getElementById('${videoID}').play()"><i class="fas fa-play"></i></button>
+                <div class="progress-bar"><div id="${progressID}" class="progress-fill"></div></div>
+                <button onclick="document.getElementById('${videoID}').pause()"><i class="fas fa-pause"></i></button>
+              </div>
+              <i class="fas fa-lock"></i>`;
+            document.getElementById('accordion-videos').appendChild(div);
+            setTimeout(() => {
+              const video = document.getElementById(videoID);
+              const progress = document.getElementById(progressID);
+              video.addEventListener('timeupdate', () => {
+                const percent = (video.currentTime / video.duration) * 100;
+                progress.style.width = percent + '%';
+              });
+            }, 0);
+          }
+		  else if (["mp3", "wav", "ogg"].includes(ext)) {
+  const audioID = `audio-${safeID}`;
+  const audioProgressID = `audio-progress-${safeID}`;
+  div.innerHTML = `
+    <div style="padding: 20px;">
+      <strong>🎵 ${file}</strong>
+      <audio id="${audioID}" src="${filePath}" preload="metadata"></audio>
+      <div class="custom-video-controls" style="margin-top: 10px;">
+        <button onclick="document.getElementById('${audioID}').play()"><i class="fas fa-play"></i></button>
+        <div class="progress-bar"><div id="${audioProgressID}" class="progress-fill"></div></div>
+        <button onclick="document.getElementById('${audioID}').pause()"><i class="fas fa-pause"></i></button>
+      </div>
+    </div>
+    <i class="fas fa-lock"></i>
+  `;
+  document.getElementById('accordion-others').appendChild(div);
+
+  setTimeout(() => {
+    const audio = document.getElementById(audioID);
+    const progress = document.getElementById(audioProgressID);
+    audio.addEventListener('timeupdate', () => {
+      const percent = (audio.currentTime / audio.duration) * 100;
+      progress.style.width = percent + '%';
+    });
+  }, 0);
+}
+
+          else {
+            div.innerHTML = `<div style="padding:20px;">📄 ${file}</div><i class="fas fa-lock"></i>`;
+            document.getElementById('accordion-others').appendChild(div);
+          }
+        });
+      });
+  </script>
+</body>
+</html>

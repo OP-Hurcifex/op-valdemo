@@ -1,0 +1,306 @@
+[
+  {
+    "id": 1,
+    "type": "grammar",
+    "text": "Subject Pronouns",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "This is Mark. ______’s a taxi driver.",
+        "options": ["He", "She"],
+        "correct": "He"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "Maksym and Agata are from Poland. ______’re doctors.",
+        "options": ["She", "They"],
+        "correct": "They"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "Where’s my wallet? ______ isn’t in my bag.",
+        "options": ["He", "It"],
+        "correct": "It"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "I’m an engineer. ______’m from Brazil.",
+        "options": ["I", "You"],
+        "correct": "I"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "Thorsten and I are from Germany. ______’re waiters.",
+        "options": ["We", "They"],
+        "correct": "We"
+      },
+      {
+        "id": "1.6",
+        "type": "multiple_choice",
+        "text": "Nice to meet you, Julio. Are ______ from Spain?",
+        "options": ["he", "you"],
+        "correct": "you"
+      },
+      {
+        "id": "1.7",
+        "type": "multiple_choice",
+        "text": "Isabelle is from Australia. ______’s a teacher.",
+        "options": ["He", "She"],
+        "correct": "She"
+      },
+      {
+        "id": "1.8",
+        "type": "multiple_choice",
+        "text": "Those are nice apples. ______’re from France.",
+        "options": ["It", "They"],
+        "correct": "They"
+      }
+    ]
+  },
+  {
+  "id": 2,
+  "text": "Complete the dialogue with subject pronouns",
+  "type": "listening",
+  "audio": "/static/workbook-audio/Beginner-units1-5/2-05 Navigate A1 Workbook.mp3",
+  "subquestions": [
+    {
+      "id": "2.1",
+      "type": "write-in-blank",
+      "text": "Hi, Chris. Louise here. How are ______?",
+      "correct": "you"
+    },
+    {
+      "id": "2.2",
+      "type": "write-in-blank",
+      "text": "______’m fine, thanks.",
+      "correct": "I"
+    },
+    {
+      "id": "2.3",
+      "type": "write-in-blank",
+      "text": "And ______?",
+      "correct": "you"
+    },
+    {
+      "id": "2.4",
+      "type": "write-in-blank",
+      "text": "Great, thanks. Are ______ at home?",
+      "correct": "you"
+    },
+    {
+      "id": "2.5",
+      "type": "write-in-blank",
+      "text": "No, ______’m on business in the USA with Jack.",
+      "correct": "I"
+    },
+    {
+      "id": "2.6",
+      "type": "write-in-blank",
+      "text": "______’re in New York.",
+      "correct": "We"
+    },
+    {
+      "id": "2.7",
+      "type": "write-in-blank",
+      "text": "No, ______ isn’t.",
+      "correct": "she"
+    },
+    {
+      "id": "2.8",
+      "type": "write-in-blank",
+      "text": "______’s on holiday with friends.",
+      "correct": "She"
+    },
+    {
+      "id": "2.9",
+      "type": "write-in-blank",
+      "text": "Really? Where are ______?",
+      "correct": "they"
+    },
+    {
+      "id": "2.10",
+      "type": "write-in-blank",
+      "text": "______’re in Izmir.",
+      "correct": "They"
+    },
+    {
+      "id": "2.11",
+      "type": "write-in-blank",
+      "text": "______’s in Turkey.",
+      "correct": "It"
+    },
+    {
+      "id": "2.12",
+      "type": "write-in-blank",
+      "text": "No, ______ isn’t.",
+      "correct": "he"
+    },
+    {
+      "id": "2.13",
+      "type": "write-in-blank",
+      "text": "______’s at home with my mother.",
+      "correct": "He"
+    }
+  ]
+},
+{
+  "id": 3,
+  "text": "Complete the sentences with He’s, She’s, It’s or They’re",
+  "type": "listening",
+  "audio": "/static/workbook-audio/Beginner-units1-5/2-04 Navigate A1 Workbook.mp3",
+  "subquestions": [
+    {
+      "id": "3.1",
+      "type": "write-in-blank",
+      "text": "_____ from Japan.",
+      "correct": "It’s"
+    },
+    {
+      "id": "3.2",
+      "type": "write-in-blank",
+      "text": "_____ a doctor.",
+      "correct": "She’s"
+    },
+    {
+      "id": "3.3",
+      "type": "write-in-blank",
+      "text": "_____ on holiday.",
+      "correct": "They’re"
+    },
+    {
+      "id": "3.4",
+      "type": "write-in-blank",
+      "text": "_____ from France.",
+      "correct": "It’s"
+    },
+    {
+      "id": "3.5",
+      "type": "write-in-blank",
+      "text": "_____ students.",
+      "correct": "They’re"
+    },
+    {
+      "id": "3.6",
+      "type": "write-in-blank",
+      "text": "_____ a taxi driver.",
+      "correct": "She’s"
+    },
+    {
+      "id": "3.7",
+      "type": "write-in-blank",
+      "text": "_____ from Spain.",
+      "correct": "She’s"
+    },
+    {
+      "id": "3.8",
+      "type": "write-in-blank",
+      "text": "_____ a shop assistant.",
+      "correct": "He’s"
+    }
+  ]
+},
+{
+  "id": 4,
+  "text": "Complete the conversation with the correct form of be. Use contractions where possible.",
+  "type": "grammar",
+  "subquestions": [
+    {
+      "id": "4.1",
+      "type": "write-in-blank",
+      "text": "Hi. I____ Rob.",
+      "correct": "’m"
+    },
+    {
+      "id": "4.2",
+      "type": "write-in-blank",
+      "text": "What____ your name?",
+      "correct": "’s"
+    },
+    {
+      "id": "4.3",
+      "type": "write-in-blank",
+      "text": "I____ Philippa.",
+      "correct": "’m"
+    },
+    {
+      "id": "4.4",
+      "type": "write-in-blank",
+      "text": "____ you a doctor, Philippa?",
+      "correct": "Are"
+    },
+    {
+      "id": "4.5",
+      "type": "write-in-blank",
+      "text": "Yes, I____ .",
+      "correct": "am"
+    },
+    {
+      "id": "4.6",
+      "type": "write-in-blank",
+      "text": "Who____ that?",
+      "correct": "’s"
+    },
+    {
+      "id": "4.7",
+      "type": "write-in-blank",
+      "text": "That____ my friend.",
+      "correct": "’s"
+    },
+    {
+      "id": "4.8",
+      "type": "write-in-blank",
+      "text": "Her name____ Tina.",
+      "correct": "’s"
+    },
+    {
+      "id": "4.9",
+      "type": "write-in-blank",
+      "text": "____ she a doctor, too?",
+      "correct": "Is"
+    },
+    {
+      "id": "4.10",
+      "type": "write-in-blank",
+      "text": "Yes, she____ .",
+      "correct": "is"
+    },
+    {
+      "id": "4.11",
+      "type": "write-in-blank",
+      "text": "Who____ those people with Tina?",
+      "correct": "are"
+    },
+    {
+      "id": "4.12",
+      "type": "write-in-blank",
+      "text": "They____ Dan and Eddie.",
+      "correct": "’re"
+    },
+    {
+      "id": "4.13",
+      "type": "write-in-blank",
+      "text": "____ they doctors, too?",
+      "correct": "Are"
+    },
+    {
+      "id": "4.14",
+      "type": "write-in-blank",
+      "text": "No, they____ .",
+      "correct": "aren’t"
+    },
+    {
+      "id": "4.15",
+      "type": "write-in-blank",
+      "text": "They____ nurses.",
+      "correct": "’re"
+    }
+  ]
+}
+
+
+]

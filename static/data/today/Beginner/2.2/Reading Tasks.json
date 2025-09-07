@@ -1,0 +1,64 @@
+[
+  {
+    "id": 3,
+    "type": "reading",
+    "text": "<h1>Why Do People Sleep?</h1>\n<p>Everyone needs sleep. It is important for the body and the brain. When we sleep, our body rests and gets energy. Sleep helps us stay healthy, think better, and feel good.</p>\n<p>Most people sleep at night. Adults need about 7 to 9 hours of sleep. Children and babies need more. If we don’t sleep enough, we feel tired, sad, or sick.</p>\n<p>Good sleep means going to bed at the same time every night. It also helps to turn off lights and phones. Drinking warm milk or reading a book can help you relax before bed.</p>\n<p>So remember — sleep is not just rest. It’s part of staying strong and happy!</p>",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "multiple_choice",
+        "text": "Why do people need sleep?",
+        "options": [
+          "To eat more food",
+          "To help the body and brain rest",
+          "To run faster"
+        ],
+        "correct": "To help the body and brain rest"
+      },
+      {
+        "id": "3.2",
+        "type": "multiple_choice",
+        "text": "When do most people sleep?",
+        "options": [
+          "In the afternoon",
+          "At night",
+          "In the morning"
+        ],
+        "correct": "At night"
+      },
+      {
+        "id": "3.3",
+        "type": "multiple_choice",
+        "text": "How many hours of sleep do adults need?",
+        "options": [
+          "5 to 6 hours",
+          "3 to 4 hours",
+          "7 to 9 hours"
+        ],
+        "correct": "7 to 9 hours"
+      },
+      {
+        "id": "3.4",
+        "type": "multiple_choice",
+        "text": "What can help you relax before bed?",
+        "options": [
+          "Using your phone",
+          "Reading a book",
+          "Watching TV"
+        ],
+        "correct": "Reading a book"
+      },
+      {
+        "id": "3.5",
+        "type": "multiple_choice",
+        "text": "What can happen if you don’t sleep enough?",
+        "options": [
+          "You feel happy",
+          "You feel tired or sick",
+          "You become taller"
+        ],
+        "correct": "You feel tired or sick"
+      }
+    ]
+  }
+]

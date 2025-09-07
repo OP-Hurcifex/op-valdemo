@@ -1,0 +1,82 @@
+[ 
+
+
+{
+  "id": 5,
+  "type": "grammar",
+  "text": "Grammar A1 Level",
+  "subquestions": [
+    {
+      "id": "5.1",
+      "type": "multiple_choice",
+      "text": "She ___ a doctor.",
+      "options": ["am", "is", "are"],
+      "correct": "is"
+    },
+    {
+      "id": "5.2",
+      "type": "multiple_choice",
+      "text": "They ___ from Spain.",
+      "options": ["is", "are", "am"],
+      "correct": "are"
+    },
+    {
+      "id": "5.3",
+      "type": "multiple_choice",
+      "text": "I ___ coffee in the morning.",
+      "options": ["drink", "drinks", "drinking"],
+      "correct": "drink"
+    },
+    {
+      "id": "5.4",
+      "type": "multiple_choice",
+      "text": "He ___ to school by bus.",
+      "options": ["go", "goes", "going"],
+      "correct": "goes"
+    },
+    {
+      "id": "5.5",
+      "type": "multiple_choice",
+      "text": "We have ___ orange cat.",
+      "options": ["a", "an", "the"],
+      "correct": "an"
+    },
+    {
+      "id": "5.6",
+      "type": "multiple_choice",
+      "text": "This is my friend ___ name is Sarah.",
+      "options": ["her", "she", "whose"],
+      "correct": "her"
+    },
+    {
+      "id": "5.7",
+      "type": "multiple_choice",
+      "text": "There ___ a book on the table.",
+      "options": ["is", "are", "be"],
+      "correct": "is"
+    },
+    {
+      "id": "5.8",
+      "type": "multiple_choice",
+      "text": "The shoes are ___ the bed.",
+      "options": ["under", "next", "in"],
+      "correct": "under"
+    },
+    {
+      "id": "5.9",
+      "type": "multiple_choice",
+      "text": "This is John’s bike. It’s ___ bike.",
+      "options": ["his", "he", "him"],
+      "correct": "his"
+    },
+    {
+      "id": "5.10",
+      "type": "multiple_choice",
+      "text": "___ you like pizza?",
+      "options": ["Do", "Does", "Are"],
+      "correct": "Do"
+    }
+  ]
+}
+
+]

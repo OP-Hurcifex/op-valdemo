@@ -1,0 +1,39 @@
+[
+  {
+    "id": 2,
+    "type": "reading",
+    "text": "<h1>Flat review</h1>\n<h2>Calle de Serrano, Madrid ***</h2>\n<p>We really like visiting Madrid, and we often stay in this flat. There are two bedrooms, a bathroom, a living room, and a very small kitchen with a microwave and a fridge. The flat is small, but it's cheap. It’s in an exciting area, near lots of restaurants and shops.</p>\n<p>The flat is in a beautiful old building, and there’s a balcony in each room. You can walk to the city centre in ten minutes. The flat is near Retiro Park and the Prado Art Museum. We always visit them because we love walking and paintings!</p>\n<p>It’s a good flat for two people, but it’s too small for a family. It’s on the second floor and there isn’t a lift. Another problem is that the flat is very hot. It hasn’t got air conditioning.</p>",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "write-in-blank",
+        "text": "The person isn’t from ____.",
+        "correct": "Madrid"
+      },
+      {
+        "id": "2.2",
+        "type": "write-in-blank",
+        "text": "The flat is not in a modern ____.",
+        "correct": "building"
+      },
+      {
+        "id": "2.3",
+        "type": "write-in-blank",
+        "text": "All the rooms have got a ____.",
+        "correct": "balcony"
+      },
+      {
+        "id": "2.4",
+        "type": "write-in-blank",
+        "text": "The person loves ____ and parks.",
+        "correct": "art"
+      },
+      {
+        "id": "2.5",
+        "type": "write-in-blank",
+        "text": "The flat hasn’t got a ____.",
+        "correct": "lift"
+      }
+    ]
+  }
+]

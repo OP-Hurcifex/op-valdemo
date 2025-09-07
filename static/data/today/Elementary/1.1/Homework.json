@@ -1,0 +1,278 @@
+[
+  {
+    "id": 0,
+    "text": "Choose the correct word for each sentence (Bo‘sh joyga to‘g‘ri so‘zni qo‘ying)",
+    "type": "box-choose",
+    "options": ["am reading", "plays", "is cooking", "do", "does", "are playing", "goes", "watch"],
+    "subquestions": [
+      {
+        "id": "0.1",
+        "type": "box-choose",
+        "text": "He ____ football every Sunday.",
+        "correct": "plays"
+      },
+      {
+        "id": "0.2",
+        "type": "box-choose",
+        "text": "I ____ a book now.",
+        "correct": "am reading"
+      },
+      {
+        "id": "0.3",
+        "type": "box-choose",
+        "text": "They ____ tennis at the moment.",
+        "correct": "are playing"
+      },
+      {
+        "id": "0.4",
+        "type": "box-choose",
+        "text": "My mother ____ dinner right now.",
+        "correct": "is cooking"
+      },
+      {
+        "id": "0.5",
+        "type": "box-choose",
+        "text": "She usually ____ to school by bus.",
+        "correct": "goes"
+      },
+      {
+        "id": "0.6",
+        "type": "box-choose",
+        "text": "We often ____ TV in the evenings.",
+        "correct": "watch"
+      },
+      {
+        "id": "0.7",
+        "type": "box-choose",
+        "text": "What time ____ you usually wake up?",
+        "correct": "do"
+      },
+      {
+        "id": "0.8",
+        "type": "box-choose",
+        "text": "What ____ she usually eat for breakfast?",
+        "correct": "does"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "type": "present_simple",
+    "text": "Present Simple (Oddiy hozirgi zamon)",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "She ____ English very well.",
+        "options": ["speak", "speaks", "speaking"],
+        "correct": "speaks"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "We ____ in Tashkent.",
+        "options": ["live", "lives", "living"],
+        "correct": "live"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "They ____ to school every day.",
+        "options": ["go", "goes", "going"],
+        "correct": "go"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "My brother ____ football on Sundays.",
+        "options": ["play", "plays", "playing"],
+        "correct": "plays"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "Do you ____ tea?",
+        "options": ["like", "likes", "liking"],
+        "correct": "like"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "present_continuous",
+    "text": "Present Continuous (Hozirgi davomiy zamon)",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "multiple_choice",
+        "text": "Look! The children ____ football.",
+        "options": ["play", "are playing", "plays"],
+        "correct": "are playing"
+      },
+      {
+        "id": "2.2",
+        "type": "multiple_choice",
+        "text": "She ____ her homework right now.",
+        "options": ["is doing", "do", "does"],
+        "correct": "is doing"
+      },
+      {
+        "id": "2.3",
+        "type": "multiple_choice",
+        "text": "We ____ to music at the moment.",
+        "options": ["listen", "are listening", "listens"],
+        "correct": "are listening"
+      },
+      {
+        "id": "2.4",
+        "type": "multiple_choice",
+        "text": "I ____ TV now.",
+        "options": ["am watching", "watch", "watches"],
+        "correct": "am watching"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "mixed_tenses",
+    "text": "Present Simple or Present Continuous? (Qaysi zamon to‘g‘ri?)",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "multiple_choice",
+        "text": "She usually ____ coffee in the morning.",
+        "options": ["is drinking", "drink", "drinks"],
+        "correct": "drinks"
+      },
+      {
+        "id": "3.2",
+        "type": "multiple_choice",
+        "text": "Listen! The baby ____ now.",
+        "options": ["is crying", "cry", "cries"],
+        "correct": "is crying"
+      },
+      {
+        "id": "3.3",
+        "type": "multiple_choice",
+        "text": "They ____ to the park every Saturday.",
+        "options": ["go", "are going", "goes"],
+        "correct": "go"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "questions",
+    "text": "Make questions (Savollar tuzing)",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "multiple_choice",
+        "text": "____ you like pizza?",
+        "options": ["Do", "Does", "Are"],
+        "correct": "Do"
+      },
+      {
+        "id": "4.2",
+        "type": "multiple_choice",
+        "text": "What ____ she doing now?",
+        "options": ["is", "does", "do"],
+        "correct": "is"
+      },
+      {
+        "id": "4.3",
+        "type": "multiple_choice",
+        "text": "Where ____ they live?",
+        "options": ["do", "are", "does"],
+        "correct": "do"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "negatives",
+    "text": "Negative sentences (Inkor gaplar)",
+    "subquestions": [
+      {
+        "id": "5.1",
+        "type": "multiple_choice",
+        "text": "I ____ like coffee.",
+        "options": ["don’t", "am not", "doesn’t"],
+        "correct": "don’t"
+      },
+      {
+        "id": "5.2",
+        "type": "multiple_choice",
+        "text": "She ____ watching TV now.",
+        "options": ["is not", "don’t", "doesn’t"],
+        "correct": "is not"
+      },
+      {
+        "id": "5.3",
+        "type": "multiple_choice",
+        "text": "They ____ play tennis on Mondays.",
+        "options": ["don’t", "is not", "doesn’t"],
+        "correct": "don’t"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "classroom_language",
+    "text": "Correct the mistakes (Xatoni topib tuzating)",
+    "subquestions": [
+      {
+        "id": "6.1",
+        "type": "multiple_choice",
+        "text": "She are reading a book now.",
+        "options": ["Correct", "Wrong"],
+        "correct": "Wrong"
+      },
+      {
+        "id": "6.2",
+        "type": "multiple_choice",
+        "text": "He goes to school every day.",
+        "options": ["Correct", "Wrong"],
+        "correct": "Correct"
+      },
+      {
+        "id": "6.3",
+        "type": "multiple_choice",
+        "text": "They is play football.",
+        "options": ["Correct", "Wrong"],
+        "correct": "Wrong"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "text": "Complete the conversation (Muloqotni to‘ldiring)",
+    "type": "write-in-blank",
+    "subquestions": [
+      {
+        "id": "7.1",
+        "type": "write-in-blank",
+        "text": "A: What ____ you usually do on Sundays?",
+        "correct": "do"
+      },
+      {
+        "id": "7.2",
+        "type": "write-in-blank",
+        "text": "B: I usually ____ football with my friends.",
+        "correct": "play"
+      },
+      {
+        "id": "7.3",
+        "type": "write-in-blank",
+        "text": "A: And what ____ you doing now?",
+        "correct": "are"
+      },
+      {
+        "id": "7.4",
+        "type": "write-in-blank",
+        "text": "B: I ____ my homework at the moment.",
+        "correct": "am doing"
+      }
+    ]
+  }
+]

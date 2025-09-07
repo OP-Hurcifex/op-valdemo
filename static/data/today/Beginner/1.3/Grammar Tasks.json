@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "type": "grammar",
+    "text": "Present Simple and Present Continuous (A1 Level)",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "He ___ to school every day.",
+        "options": ["go", "goes", "going"],
+        "correct": "goes"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "She ___ a book now.",
+        "options": ["reads", "is reading", "read"],
+        "correct": "is reading"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "We ___ breakfast at 8 a.m.",
+        "options": ["are eating", "eat", "eats"],
+        "correct": "eat"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "I ___ TV at the moment.",
+        "options": ["watch", "am watching", "watches"],
+        "correct": "am watching"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "She ___ coffee every morning.",
+        "options": ["drinks", "is drinking", "drink"],
+        "correct": "drinks"
+      },
+      {
+        "id": "1.6",
+        "type": "multiple_choice",
+        "text": "They ___ football now.",
+        "options": ["are playing", "play", "plays"],
+        "correct": "are playing"
+      },
+      {
+        "id": "1.7",
+        "type": "multiple_choice",
+        "text": "My dad ___ to work by car.",
+        "options": ["goes", "is going", "go"],
+        "correct": "goes"
+      },
+      {
+        "id": "1.8",
+        "type": "multiple_choice",
+        "text": "Listen! The birds ___.",
+        "options": ["sing", "are singing", "sings"],
+        "correct": "are singing"
+      },
+      {
+        "id": "1.9",
+        "type": "multiple_choice",
+        "text": "You ___ English very well.",
+        "options": ["speak", "are speaking", "speaks"],
+        "correct": "speak"
+      },
+      {
+        "id": "1.10",
+        "type": "multiple_choice",
+        "text": "Look! It ___ now.",
+        "options": ["snows", "snowing", "is snowing"],
+        "correct": "is snowing"
+      }
+    ]
+  }
+]

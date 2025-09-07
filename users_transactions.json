@@ -1,0 +1,1368 @@
+{
+    "HR": [
+        {
+            "amount": -150.0,
+            "description": "Code Redeem_ALL redeemed by Abdulmalik",
+            "time": "2025-08-25T20:04:30.777137",
+            "balance_before": 150400.0
+        },
+        {
+            "amount": -250.0,
+            "description": "Code OMG redeemed by Abdulmalik",
+            "time": "2025-08-25T20:04:55.833463",
+            "balance_before": 150250.0
+        },
+        {
+            "amount": -5000.0,
+            "description": "Code Horizon_Special redeemed by Abdulmalik",
+            "time": "2025-08-25T20:14:22.329544",
+            "balance_before": 150000.0
+        },
+        {
+            "amount": -150.0,
+            "description": "Code Redeem_ALL redeemed by HR",
+            "time": "2025-08-26T12:23:17.185435",
+            "balance_before": 145000.0
+        },
+        {
+            "amount": 150.0,
+            "description": "Redeemed code: Redeem_ALL (from HR)",
+            "time": "2025-08-26T12:23:17.185435",
+            "balance_before": 144850.0
+        },
+        {
+            "amount": -150.0,
+            "description": "Code Redeem_ALL redeemed by Elbek",
+            "time": "2025-08-26T14:02:04.925964",
+            "balance_before": 145000.0
+        },
+        {
+            "amount": -250.0,
+            "description": "Code OMG redeemed by Elbek",
+            "time": "2025-08-26T14:02:13.358872",
+            "balance_before": 144850.0
+        },
+        {
+            "amount": -100.0,
+            "description": "Code Elbek redeemed by Elbek",
+            "time": "2025-08-26T14:04:52.206138",
+            "balance_before": 144600.0
+        },
+        {
+            "id": "7e9ad7cd-f0b7-40e3-af3a-0d6343bf33a8",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:17:53.376985",
+            "balance_before": 144500.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8257d2c5-97ac-4d21-ac62-375964f0c832",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:17:59.109514",
+            "balance_before": 143929.0,
+            "can_cancel": false
+        },
+        {
+            "id": "21520f85-6b6a-4858-941c-fc8c62e8e478",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:09.799078",
+            "balance_before": 143358.0,
+            "can_cancel": false
+        },
+        {
+            "id": "be2dc385-8a46-4132-9672-a3cbf4fccc13",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:11.005866",
+            "balance_before": 142787.0,
+            "can_cancel": false
+        },
+        {
+            "id": "9ee34db3-dde2-454c-a3ee-d72d955724b5",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:11.616742",
+            "balance_before": 143987.0,
+            "can_cancel": false
+        },
+        {
+            "id": "6e7acbf4-adf6-4fbd-96c6-986a6b943606",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:12.749714",
+            "balance_before": 143416.0,
+            "can_cancel": false
+        },
+        {
+            "id": "7ab284ac-8914-4f58-afa4-ec9bc3e7286f",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:13.240915",
+            "balance_before": 144616.0,
+            "can_cancel": false
+        },
+        {
+            "id": "a1d9b9b8-3fc8-4a6f-adc4-ff2d2aadb854",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:13.889121",
+            "balance_before": 144045.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8f2eb8e6-597b-4016-91db-25c800df338f",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:14.288701",
+            "balance_before": 145245.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8033f14c-d248-4398-9abf-3c4cbdefaf58",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:14.810473",
+            "balance_before": 144674.0,
+            "can_cancel": false
+        },
+        {
+            "id": "9b00963a-0b58-4f43-99dd-883874623920",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:15.606471",
+            "balance_before": 145874.0,
+            "can_cancel": false
+        },
+        {
+            "id": "d4626053-4021-4b69-a8c6-58daa4e0a8a3",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:20.236759",
+            "balance_before": 145303.0,
+            "can_cancel": false
+        },
+        {
+            "id": "441dfb55-28b2-489c-a7ed-3ff72741fa44",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:24.412590",
+            "balance_before": 144732.0,
+            "can_cancel": false
+        },
+        {
+            "id": "15d73646-bb9c-4368-bcac-ff0fea53a3e1",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:25.263571",
+            "balance_before": 144161.0,
+            "can_cancel": false
+        },
+        {
+            "id": "49b884e6-d0d3-4d59-9783-4459357ecef5",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:26.031949",
+            "balance_before": 145361.0,
+            "can_cancel": false
+        },
+        {
+            "id": "51df6309-e8e1-4d85-ba13-2d3d78b80d28",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:26.771107",
+            "balance_before": 144790.0,
+            "can_cancel": false
+        },
+        {
+            "id": "c5cf079b-ae5c-4af6-a3ba-9241ac3478c4",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:27.226889",
+            "balance_before": 145990.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f39330cd-843a-4fca-87b2-59e63f178837",
+            "amount": 1250,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:22:28.228229",
+            "balance_before": 145419.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e67965b7-2d68-4b3c-8027-31b773584e7a",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:28.702957",
+            "balance_before": 146669.0,
+            "can_cancel": false
+        },
+        {
+            "id": "3c0ef5c6-28d7-4319-9b4d-da844f60d06d",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:33.151808",
+            "balance_before": 146098.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f2ed429c-bded-40f4-9f82-2d79ff1fd633",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:37.424060",
+            "balance_before": 145527.0,
+            "can_cancel": false
+        },
+        {
+            "id": "ab7c38fb-3f30-4db1-8083-352219b26b3f",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:22:52.027624",
+            "balance_before": 144956.0,
+            "can_cancel": false
+        },
+        {
+            "id": "94d1d1f9-29eb-4409-b843-ec7a14c6dab0",
+            "amount": 3500,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:23:00.038428",
+            "balance_before": 144385.0,
+            "can_cancel": false
+        },
+        {
+            "id": "c1ca292c-2e7b-4232-8ad8-82986edb747b",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:00.896991",
+            "balance_before": 147885.0,
+            "can_cancel": false
+        },
+        {
+            "id": "0b6c33aa-1011-459b-9fef-710134fffda1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:04.927772",
+            "balance_before": 147314.0,
+            "can_cancel": false
+        },
+        {
+            "id": "78a9d4d8-e5e5-4bd8-869f-31c5db382de1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:08.683727",
+            "balance_before": 146743.0,
+            "can_cancel": false
+        },
+        {
+            "id": "cab2e0b2-29a3-4d3e-bf99-7529cb7bb422",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:08.912593",
+            "balance_before": 146172.0,
+            "can_cancel": false
+        },
+        {
+            "id": "246f5dab-b3dd-4c60-8e3d-0cb9fe26c318",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:12.465114",
+            "balance_before": 145601.0,
+            "can_cancel": false
+        },
+        {
+            "id": "0613c94f-dd4a-4ddb-a58b-ce7e22e7f4d1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:17.193213",
+            "balance_before": 145030.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f3331619-4e9a-44ed-a4c8-7ad098549aaa",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:23:18.080747",
+            "balance_before": 144459.0,
+            "can_cancel": false
+        },
+        {
+            "id": "a84405f8-8014-4f57-ac50-f5405d61da5d",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:23:18.506229",
+            "balance_before": 145659.0,
+            "can_cancel": false
+        },
+        {
+            "amount": -800,
+            "description": "Transferred to Elbek",
+            "time": "2025-08-26T14:24:17.760613",
+            "balance_before": 145088.0
+        },
+        {
+            "id": "2c0e29e5-25f6-4270-b18c-d3729a9ff3ee",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-26T20:53:26.144195",
+            "balance_before": 144288.0,
+            "can_cancel": false
+        },
+        {
+            "id": "afa659a6-3ad5-4419-818c-d960377f210e",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-26T20:53:26.144195",
+            "balance_before": 143717.0,
+            "can_cancel": false
+        },
+        {
+            "id": "1f1ea742-f879-4cb6-a2b6-0d1f115fa37b",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-26T20:53:27.057535",
+            "balance_before": 144317.0,
+            "can_cancel": false
+        },
+        {
+            "id": "b1549033-23da-446e-be09-dbb0da1b5d43",
+            "amount": 1200,
+            "description": "Horror Games: reward for surviving level 2",
+            "time": "2025-08-26T20:53:27.057535",
+            "balance_before": 143746.0,
+            "can_cancel": false
+        },
+        {
+            "id": "0eb97405-8fda-46c0-809f-e9df40691404",
+            "amount": -571,
+            "description": "Horror Games: fee for level 3",
+            "time": "2025-08-26T20:53:30.506701",
+            "balance_before": 144946.0,
+            "can_cancel": false
+        },
+        {
+            "amount": -2000,
+            "description": "Debt proposed #32",
+            "time": "2025-08-27T10:57:14.776725",
+            "balance_before": 144375.0
+        },
+        {
+            "amount": -15500,
+            "description": "Debt proposed #33",
+            "time": "2025-08-27T10:58:53.525693",
+            "balance_before": 142375.0
+        },
+        {
+            "amount": -2000,
+            "description": "Debt proposed #1",
+            "time": "2025-08-27T11:39:39.461541",
+            "balance_before": 126875.0
+        },
+        {
+            "amount": -2000,
+            "description": "Transferred to Legenda",
+            "time": "2025-08-27T12:03:16.937547",
+            "balance_before": 124875.0
+        },
+        {
+            "id": "f44f3bfd-41ec-4d00-9884-609ed4c97687",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-27T12:03:22.051471",
+            "balance_before": 122875.0,
+            "can_cancel": false
+        },
+        {
+            "id": "312f6c5c-a3b7-4a1b-bfda-b4c5720fa6f7",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-27T12:03:22.051471",
+            "balance_before": 122304.0,
+            "can_cancel": false
+        },
+        {
+            "id": "c92ad581-bb00-4421-acae-97ea06bc4b94",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-27T12:03:22.549206",
+            "balance_before": 122904.0,
+            "can_cancel": false
+        },
+        {
+            "amount": -250.0,
+            "description": "Code OMG redeemed by Muhammadali",
+            "time": "2025-08-27T17:13:17.354125",
+            "balance_before": 122333.0
+        },
+        {
+            "amount": -100.0,
+            "description": "Code PRS redeemed by Muhammadali",
+            "time": "2025-08-27T17:13:34.061651",
+            "balance_before": 122083.0
+        },
+        {
+            "amount": -100.0,
+            "description": "Code Elbek redeemed by Muhammadali",
+            "time": "2025-08-27T17:15:56.121063",
+            "balance_before": 121983.0
+        },
+        {
+            "amount": -150.0,
+            "description": "Code Redeem_ALL redeemed by Muhammadali",
+            "time": "2025-08-27T17:17:01.069699",
+            "balance_before": 121883.0
+        },
+        {
+            "amount": -1500.0,
+            "description": "Code METANMAN redeemed by Muhammadali",
+            "time": "2025-08-27T17:24:55.716472",
+            "balance_before": 121733.0
+        },
+        {
+            "id": "d5037ed5-2087-48b6-8378-6e267efaacdf",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T15:10:38.475687",
+            "balance_before": 120233.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5e418124-a865-4255-a31e-0e3ada03679e",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-31T15:10:38.475687",
+            "balance_before": 119662.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5cb06437-89ab-424d-b8a1-5538774d44b5",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-31T15:10:38.797147",
+            "balance_before": 120262.0,
+            "can_cancel": false
+        },
+        {
+            "id": "19bf38ba-9146-4a66-a0dc-6fa4f68eb5bf",
+            "amount": 1200,
+            "description": "Horror Games: reward for surviving level 2",
+            "time": "2025-08-31T15:10:38.797147",
+            "balance_before": 119691.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f2a11ca5-e35a-415e-b2ae-b24e257a77cb",
+            "amount": -571,
+            "description": "Horror Games: fee for level 3",
+            "time": "2025-08-31T15:10:39.027488",
+            "balance_before": 120891.0,
+            "can_cancel": false
+        },
+        {
+            "id": "516ee0a5-b7c2-41c9-8263-a25e10240367",
+            "amount": -3500,
+            "description": "?? Cosmic Ladder Entry",
+            "time": "2025-08-31T18:50:50.669587",
+            "balance_before": 120320.0,
+            "can_cancel": false
+        },
+        {
+            "id": "4a3cfea0-9322-42b8-9d4b-870d7c7fb0d7",
+            "amount": 2000,
+            "description": "?? Cosmic Treasure Claimed",
+            "time": "2025-08-31T18:50:53.040163",
+            "balance_before": 116820.0,
+            "can_cancel": false
+        },
+        {
+            "id": "b5566cdc-bb1f-4185-9f83-c0659cbc78f0",
+            "amount": -3500,
+            "description": "?? Cosmic Ladder Entry",
+            "time": "2025-08-31T18:50:53.702570",
+            "balance_before": 118820.0,
+            "can_cancel": false
+        },
+        {
+            "id": "ed1312f3-6734-4787-a216-367323812d54",
+            "amount": 800,
+            "description": "?? Cosmic Treasure Claimed",
+            "time": "2025-08-31T18:50:54.714260",
+            "balance_before": 115320.0,
+            "can_cancel": false
+        },
+        {
+            "id": "d05821ad-b832-47a5-9515-2c19a9a29141",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:50:57.250710",
+            "balance_before": 116120.0,
+            "can_cancel": false
+        },
+        {
+            "id": "469511dc-9c5f-46c9-80e3-9c5643a51846",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-31T18:50:57.250710",
+            "balance_before": 115549.0,
+            "can_cancel": false
+        },
+        {
+            "id": "6db92302-8297-4349-9f9b-bb361c7aa49d",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-31T18:50:58.876516",
+            "balance_before": 116149.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e927eba0-e18d-4a6b-b700-f05adead7387",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:51:02.828149",
+            "balance_before": 115578.0,
+            "can_cancel": false
+        },
+        {
+            "id": "1a3530a1-85f0-4f6c-89dc-2cedd30af6d7",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:51:03.028758",
+            "balance_before": 115007.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f110902a-1cfb-4bee-93d8-9f6cf5c6efa5",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:51:03.878914",
+            "balance_before": 114436.0,
+            "can_cancel": false
+        },
+        {
+            "id": "7c9bbdfb-1a55-4da1-a239-c4d05972bd19",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:51:04.362159",
+            "balance_before": 113865.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f4f49830-3668-4c9c-878b-832da70ada0d",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-31T18:51:04.764522",
+            "balance_before": 113294.0,
+            "can_cancel": false
+        },
+        {
+            "id": "56cc5cfe-d06b-46b2-ba22-d911c4090a57",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-31T18:51:04.764522",
+            "balance_before": 112723.0,
+            "can_cancel": false
+        },
+        {
+            "id": "c19b4ded-b16c-4ce1-a4bf-8d31a394b328",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-31T18:51:05.180276",
+            "balance_before": 113323.0,
+            "can_cancel": false
+        }
+    ],
+    "Abdulmalik": [
+        {
+            "amount": 150.0,
+            "description": "Redeemed code: Redeem_ALL (from HR)",
+            "time": "2025-08-25T20:04:30.777137",
+            "balance_before": 0.0
+        },
+        {
+            "amount": 250.0,
+            "description": "Redeemed code: OMG (from HR)",
+            "time": "2025-08-25T20:04:55.833463",
+            "balance_before": 150.0
+        },
+        {
+            "amount": 5000.0,
+            "description": "Redeemed code: Horizon_Special (from HR)",
+            "time": "2025-08-25T20:14:22.329544",
+            "balance_before": 400.0
+        },
+        {
+            "amount": 0,
+            "description": "Purchased from shop with coins : Power Admin-Panel",
+            "time": "2025-08-25T20:18:12.579929",
+            "balance_before": 5400.0
+        },
+        {
+            "amount": -100.0,
+            "description": "Code Horizon_great redeemed by Abdulmalik",
+            "time": "2025-08-25T20:38:22.051706",
+            "balance_before": 5400.0
+        },
+        {
+            "amount": 100.0,
+            "description": "Redeemed code: Horizon_great (from Abdulmalik)",
+            "time": "2025-08-25T20:38:22.051706",
+            "balance_before": 5300.0
+        },
+        {
+            "amount": -100.0,
+            "description": "Code Horizon_great redeemed by Elbek",
+            "time": "2025-08-26T14:02:53.935447",
+            "balance_before": 5400.0
+        }
+    ],
+    "Elbek": [
+        {
+            "amount": 150.0,
+            "description": "Redeemed code: Redeem_ALL (from HR)",
+            "time": "2025-08-26T14:02:04.925964",
+            "balance_before": 0.0
+        },
+        {
+            "amount": 250.0,
+            "description": "Redeemed code: OMG (from HR)",
+            "time": "2025-08-26T14:02:13.358872",
+            "balance_before": 150.0
+        },
+        {
+            "amount": 100.0,
+            "description": "Redeemed code: Horizon_great (from Abdulmalik)",
+            "time": "2025-08-26T14:02:53.937468",
+            "balance_before": 400.0
+        },
+        {
+            "amount": 100.0,
+            "description": "Redeemed code: Elbek (from HR)",
+            "time": "2025-08-26T14:04:52.206138",
+            "balance_before": 500.0
+        },
+        {
+            "id": "a21d1913-6ec1-4e21-a8cc-23e8e971d3f1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:16.801789",
+            "balance_before": 600.0,
+            "can_cancel": false
+        },
+        {
+            "id": "025f3ff3-2ad3-412c-8eba-f2f635995bd8",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:19.751320",
+            "balance_before": 29.0,
+            "can_cancel": false
+        },
+        {
+            "id": "9deafb39-9831-464b-b1b7-7e32a874abec",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:36.559939",
+            "balance_before": 629.0,
+            "can_cancel": false
+        },
+        {
+            "id": "fd9a6468-3c76-410e-8806-7d4095105ce6",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:37.676857",
+            "balance_before": 58.0,
+            "can_cancel": false
+        },
+        {
+            "id": "b995b36a-1c33-4e23-9579-eb9f7282991b",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:38.438768",
+            "balance_before": 658.0,
+            "can_cancel": false
+        },
+        {
+            "id": "97c3f575-0f30-4834-b56c-56942f83d13a",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:39.244518",
+            "balance_before": 87.0,
+            "can_cancel": false
+        },
+        {
+            "id": "79ded540-fae7-4262-b610-0a9d0aae099b",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:39.645331",
+            "balance_before": 687.0,
+            "can_cancel": false
+        },
+        {
+            "id": "ecf3dbdc-7651-45d8-b6f5-59ef38ff4bf5",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:40.092287",
+            "balance_before": 116.0,
+            "can_cancel": false
+        },
+        {
+            "id": "cca30b2f-dbc6-4e05-a5bc-fa996877fb4f",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:40.447730",
+            "balance_before": 716.0,
+            "can_cancel": false
+        },
+        {
+            "id": "974b6970-0327-4b38-81d7-340744bbcbd4",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:40.778333",
+            "balance_before": 145.0,
+            "can_cancel": false
+        },
+        {
+            "id": "497649ac-bfca-4beb-989f-bdfa6a9bd872",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:41.147065",
+            "balance_before": 745.0,
+            "can_cancel": false
+        },
+        {
+            "id": "14da4599-ae67-4221-8d49-d4fa256d5613",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:41.475450",
+            "balance_before": 174.0,
+            "can_cancel": false
+        },
+        {
+            "id": "011e4082-35d9-43da-a562-51c94e419f29",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:41.846459",
+            "balance_before": 774.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5639f941-c57e-40be-aefd-75bc738b6627",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:42.225375",
+            "balance_before": 203.0,
+            "can_cancel": false
+        },
+        {
+            "id": "00a4a2fc-f686-4c52-9670-e9c2f59cc8f9",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:42.546855",
+            "balance_before": 803.0,
+            "can_cancel": false
+        },
+        {
+            "id": "48bb610b-4dc7-48cf-ba18-245608346dd4",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:42.879140",
+            "balance_before": 232.0,
+            "can_cancel": false
+        },
+        {
+            "id": "a8689f76-1006-434b-88d4-4a47817230e1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:43.346754",
+            "balance_before": 832.0,
+            "can_cancel": false
+        },
+        {
+            "id": "1a4c0398-0538-4ee0-85fb-eb6b5d47ee86",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:43.725213",
+            "balance_before": 261.0,
+            "can_cancel": false
+        },
+        {
+            "id": "349e865d-aeb4-4503-b27b-9f5a2c9db244",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:44.063177",
+            "balance_before": 861.0,
+            "can_cancel": false
+        },
+        {
+            "id": "efdac66a-4595-49f3-9d1d-3e05e963d064",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:44.395665",
+            "balance_before": 290.0,
+            "can_cancel": false
+        },
+        {
+            "id": "2a76a2d5-ff48-4668-aeb0-217e3596535a",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:44.731268",
+            "balance_before": 890.0,
+            "can_cancel": false
+        },
+        {
+            "id": "2008a28d-81a0-4e7e-ac51-0facb80b6fbc",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:45.080700",
+            "balance_before": 319.0,
+            "can_cancel": false
+        },
+        {
+            "id": "b17a4d8b-af84-41fb-ac30-ce60c5d405a4",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:08:45.396856",
+            "balance_before": 919.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f5fac83b-3f31-48b7-bbd0-9602646e0bbb",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:08:46.044600",
+            "balance_before": 348.0,
+            "can_cancel": false
+        },
+        {
+            "amount": 0,
+            "description": "Purchased from shop with coins : Power Admin-Panel",
+            "time": "2025-08-26T14:09:36.700760",
+            "balance_before": 948.0
+        },
+        {
+            "id": "812075ef-8104-4e6a-befe-30f9e01e09c9",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:34.972844",
+            "balance_before": 948.0,
+            "can_cancel": false
+        },
+        {
+            "id": "414b592c-d5b6-406c-b1ec-8b8fb8490aa0",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:11:36.664666",
+            "balance_before": 377.0,
+            "can_cancel": false
+        },
+        {
+            "id": "076e232b-9f29-4565-8f0d-0e2d5beb0e68",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:37.568822",
+            "balance_before": 1577.0,
+            "can_cancel": false
+        },
+        {
+            "id": "fc05f0a7-1f23-4cca-933f-2f2e4aecc282",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:41.882788",
+            "balance_before": 1006.0,
+            "can_cancel": false
+        },
+        {
+            "id": "9eb8d49f-8b63-4105-bcf1-4e2b9aceda4f",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:11:43.055762",
+            "balance_before": 435.0,
+            "can_cancel": false
+        },
+        {
+            "id": "4500aa91-ee6d-43fd-87a1-0127f3ea4a62",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:44.239596",
+            "balance_before": 1035.0,
+            "can_cancel": false
+        },
+        {
+            "id": "54a288ae-e4a1-4a8c-83d9-70ed1c9fa015",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:11:45.880832",
+            "balance_before": 464.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e24e5d14-4416-4101-bee9-d4102f6f4f82",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:46.910868",
+            "balance_before": 1064.0,
+            "can_cancel": false
+        },
+        {
+            "id": "515df2ad-fdcd-4070-98ea-6ddcfabb91f8",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:11:53.178165",
+            "balance_before": 493.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5f3c08ee-26ac-4178-b554-aec5e9ffcd43",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:11:54.886230",
+            "balance_before": 1693.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f79787db-d030-43c2-b0a7-d28e58e0a4e6",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:11:59.345293",
+            "balance_before": 1122.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5c677fc6-ae19-47ec-8bb0-69c6435254e4",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:12:00.289653",
+            "balance_before": 2322.0,
+            "can_cancel": false
+        },
+        {
+            "id": "576c81d8-328d-43b7-95fd-9242ce28cd95",
+            "amount": 1250,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:12:09.126117",
+            "balance_before": 1751.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e33c65e4-88fc-4dad-97bc-740c346d3816",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:12:11.075263",
+            "balance_before": 3001.0,
+            "can_cancel": false
+        },
+        {
+            "id": "1fdd370f-e7db-41c9-8144-53bb51252ccb",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:12:13.657004",
+            "balance_before": 2430.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f2bb974e-8171-4b4d-bb60-1040caaacafe",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:12:14.790865",
+            "balance_before": 3630.0,
+            "can_cancel": false
+        },
+        {
+            "id": "76b7e1aa-29b0-4852-a6ef-388d4bd591ec",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:12:20.290774",
+            "balance_before": 3059.0,
+            "can_cancel": false
+        },
+        {
+            "id": "35334535-62b9-4541-bbae-2fc235440185",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:12:23.041077",
+            "balance_before": 2488.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e6cfa2b6-4911-4de6-9236-275f54af3d8f",
+            "amount": -3500,
+            "description": "?? Cosmic Ladder Entry",
+            "time": "2025-08-26T14:13:24.426980",
+            "balance_before": 3688.0,
+            "can_cancel": false
+        },
+        {
+            "id": "bec62af1-2e02-4d5f-84e8-d48605b3d24b",
+            "amount": 800,
+            "description": "?? Cosmic Treasure Claimed",
+            "time": "2025-08-26T14:13:43.338889",
+            "balance_before": 188.0,
+            "can_cancel": false
+        },
+        {
+            "id": "b78f7f71-eeb3-4974-9635-6d30a03ce5e6",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:13:45.939607",
+            "balance_before": 988.0,
+            "can_cancel": false
+        },
+        {
+            "id": "af048150-bce0-4b2d-9c44-bab07cd669fb",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:13:47.884556",
+            "balance_before": 417.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8b5178ee-c27d-4c0d-a012-c36cb05f06b6",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:14:52.181128",
+            "balance_before": 1617.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e77307a0-8464-41c9-8cda-63a7090bf6bf",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:15:04.780957",
+            "balance_before": 1046.0,
+            "can_cancel": false
+        },
+        {
+            "amount": 800,
+            "description": "Received from HR",
+            "time": "2025-08-26T14:24:17.760613",
+            "balance_before": 475.0
+        },
+        {
+            "id": "7065b881-98bd-4004-80b7-1b4cd9e8d96b",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:26:15.900142",
+            "balance_before": 1275.0,
+            "can_cancel": false
+        },
+        {
+            "id": "51bbd38a-b044-41ac-a2bd-f722963fbbf7",
+            "amount": 600,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:26:17.669788",
+            "balance_before": 704.0,
+            "can_cancel": false
+        },
+        {
+            "id": "00f6fed4-d6b4-492c-8df7-e5c3bca02da5",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:26:18.279612",
+            "balance_before": 1304.0,
+            "can_cancel": false
+        },
+        {
+            "id": "21cfd319-9e0a-4f97-9392-4229a91200f7",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:26:30.409986",
+            "balance_before": 733.0,
+            "can_cancel": false
+        },
+        {
+            "id": "a0e77062-3852-4306-9f8b-768988bc735e",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:26:31.824198",
+            "balance_before": 1933.0,
+            "can_cancel": false
+        },
+        {
+            "id": "42089d5a-a422-4ac2-a0de-78cf71cc9006",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:29:50.000058",
+            "balance_before": 1362.0,
+            "can_cancel": false
+        },
+        {
+            "id": "411a6cad-efe8-49f2-87f4-010ec9f44e9d",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:29:53.611955",
+            "balance_before": 791.0,
+            "can_cancel": false
+        },
+        {
+            "id": "bbf37154-698a-4d4e-84c6-1ba9ee2a611b",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:30:19.066770",
+            "balance_before": 1991.0,
+            "can_cancel": false
+        },
+        {
+            "id": "cc801d7e-fb87-4427-a229-9c10bba90304",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:30:24.443757",
+            "balance_before": 1420.0,
+            "can_cancel": false
+        },
+        {
+            "id": "001495e3-8292-4954-a3e3-8b52d5cf3817",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:30:25.961881",
+            "balance_before": 2620.0,
+            "can_cancel": false
+        },
+        {
+            "id": "24300a68-0eee-45ad-877e-49f9c88136ed",
+            "amount": 1250,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:30:31.278005",
+            "balance_before": 2049.0,
+            "can_cancel": false
+        },
+        {
+            "id": "4c4c96d0-f204-4a3e-b64e-3d3e7cce5e22",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:30:33.204431",
+            "balance_before": 3299.0,
+            "can_cancel": false
+        },
+        {
+            "id": "3f8c65a9-b567-4711-b429-6f150e470b42",
+            "amount": 1250,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:30:43.849333",
+            "balance_before": 2728.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8149518e-b3f4-44b4-aa97-73a46f0573ab",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:09.611733",
+            "balance_before": 3978.0,
+            "can_cancel": false
+        },
+        {
+            "id": "bf38f4e7-0a12-4b05-812b-8dffab7f6639",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:37.606730",
+            "balance_before": 3407.0,
+            "can_cancel": false
+        },
+        {
+            "id": "eb6e601b-f648-48dc-b34d-2bf37adc0c5e",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:41.797389",
+            "balance_before": 2836.0,
+            "can_cancel": false
+        },
+        {
+            "id": "9c0a3346-ad31-40e6-a10a-58957077fa5d",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:42.008003",
+            "balance_before": 2265.0,
+            "can_cancel": false
+        },
+        {
+            "id": "619e9062-58a7-4d24-8528-1e9439fcfbd1",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:42.182828",
+            "balance_before": 1694.0,
+            "can_cancel": false
+        },
+        {
+            "id": "a0709153-265c-4af1-9bdd-7869c6ac804e",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:31:45.544794",
+            "balance_before": 1123.0,
+            "can_cancel": false
+        },
+        {
+            "id": "84258334-1718-4f24-a009-a07e3399ea4c",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:47.391836",
+            "balance_before": 2323.0,
+            "can_cancel": false
+        },
+        {
+            "id": "f320e233-9df3-4127-9148-5d01ae11f8ed",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:31:49.516191",
+            "balance_before": 1752.0,
+            "can_cancel": false
+        },
+        {
+            "id": "d609a2a9-57d0-41ad-9d10-b4d78bb7a6d4",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:31:58.947629",
+            "balance_before": 2952.0,
+            "can_cancel": false
+        },
+        {
+            "id": "4b63fb2e-9970-40ca-8a76-d06da09a71d3",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:32:00.167349",
+            "balance_before": 2381.0,
+            "can_cancel": false
+        },
+        {
+            "id": "86039906-e030-4323-80d3-0afcb6cecf0c",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:32:01.034390",
+            "balance_before": 3581.0,
+            "can_cancel": false
+        },
+        {
+            "id": "e7932c75-fcd1-4856-b6eb-fe6cd3c18e94",
+            "amount": 2000,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-26T14:32:05.472706",
+            "balance_before": 3010.0,
+            "can_cancel": false
+        },
+        {
+            "id": "274ffc89-5a33-4132-a25d-f826efe27e8f",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:32:06.985185",
+            "balance_before": 5010.0,
+            "can_cancel": false
+        },
+        {
+            "id": "8ebeb644-c47c-4a7a-b212-fbcace38c8ff",
+            "amount": -571,
+            "description": "?? Entered Horror Games",
+            "time": "2025-08-26T14:32:11.030086",
+            "balance_before": 4439.0,
+            "can_cancel": false
+        }
+    ],
+    "Legenda": [
+        {
+            "amount": 2000,
+            "description": "Received from HR",
+            "time": "2025-08-27T12:03:16.937547",
+            "balance_before": 0.0
+        },
+        {
+            "id": "78d55547-e84d-48bb-b0c6-55ea32d9069d",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-27T12:04:21.136327",
+            "balance_before": 2000.0,
+            "can_cancel": false
+        },
+        {
+            "id": "2d3bcfc3-2653-424c-8b39-3f7df3dbd1e8",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-27T12:04:21.136327",
+            "balance_before": 1429.0,
+            "can_cancel": false
+        },
+        {
+            "id": "6f987f49-ddb6-4c59-bacd-189195ee8d8b",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-27T12:04:23.455291",
+            "balance_before": 2029.0,
+            "can_cancel": false
+        },
+        {
+            "id": "0a0589a5-59ca-4af6-b3dd-ee0f73632627",
+            "amount": 1200,
+            "description": "Horror Games: reward for surviving level 2",
+            "time": "2025-08-27T12:04:23.455291",
+            "balance_before": 1458.0,
+            "can_cancel": false
+        },
+        {
+            "id": "5660d40a-8267-4eb9-81e7-3bad54409051",
+            "amount": 1200,
+            "description": "Escaped Horror with Reward",
+            "time": "2025-08-27T12:04:24.235467",
+            "balance_before": 2658.0,
+            "can_cancel": false
+        },
+        {
+            "id": "212480c1-2727-4a0b-ac5a-12c4a5197e41",
+            "amount": -571,
+            "description": "Horror Games: fee for level 1",
+            "time": "2025-08-27T12:04:24.936501",
+            "balance_before": 3858.0,
+            "can_cancel": false
+        },
+        {
+            "id": "79f98d35-a1ba-4466-af15-a227b8dd6477",
+            "amount": 600,
+            "description": "Horror Games: reward for surviving level 1",
+            "time": "2025-08-27T12:04:24.936501",
+            "balance_before": 3287.0,
+            "can_cancel": false
+        },
+        {
+            "id": "1e849a02-6456-43c3-90c5-46c567fe57b4",
+            "amount": -571,
+            "description": "Horror Games: fee for level 2",
+            "time": "2025-08-27T12:04:25.263140",
+            "balance_before": 3887.0,
+            "can_cancel": false
+        }
+    ],
+    "Muhammadali": [
+        {
+            "amount": 250.0,
+            "description": "Redeemed code: OMG (from HR)",
+            "time": "2025-08-27T17:13:17.362634",
+            "balance_before": 0.0
+        },
+        {
+            "amount": 100.0,
+            "description": "Redeemed code: PRS (from HR)",
+            "time": "2025-08-27T17:13:34.069360",
+            "balance_before": 250.0
+        },
+        {
+            "amount": 100.0,
+            "description": "Redeemed code: Elbek (from HR)",
+            "time": "2025-08-27T17:15:56.121063",
+            "balance_before": 350.0
+        },
+        {
+            "amount": 150.0,
+            "description": "Redeemed code: Redeem_ALL (from HR)",
+            "time": "2025-08-27T17:17:01.069699",
+            "balance_before": 450.0
+        },
+        {
+            "amount": 1500.0,
+            "description": "Redeemed code: METANMAN (from HR)",
+            "time": "2025-08-27T17:24:55.716472",
+            "balance_before": 600.0
+        },
+        {
+            "amount": 0,
+            "description": "Purchased from shop with coins : Power Admin-Panel",
+            "time": "2025-08-31T15:18:55.428901",
+            "balance_before": 2100.0
+        }
+    ]
+}

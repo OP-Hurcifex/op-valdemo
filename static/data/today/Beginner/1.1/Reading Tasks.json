@@ -1,0 +1,55 @@
+[
+  {
+    "id": 1,
+    "type": "reading",
+    "text": "<h1>Emma and the Old House</h1>\n<p>It is night. Emma walks with her dog Max. They see an old house. The house is big. The door is open.</p>\n<p>Emma says, “Let’s go inside.” Max is scared. But Emma goes in.</p>\n<p>Inside, it is cold. Then they hear a loud noise. Emma stops. Max barks.</p>\n<p>Emma sees a shadow. It moves! Emma runs. Max runs too.</p>\n<p>Outside, Emma says, “No more old houses!” Max is happy.</p>",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "What time is it?",
+        "options": ["Morning", "Afternoon", "Night"],
+        "correct": "Night"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "Who is with Emma?",
+        "options": ["Her cat", "Her friend", "Her dog Max"],
+        "correct": "Her dog Max"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "What does Max feel?",
+        "options": ["Happy", "Scared", "Angry"],
+        "correct": "Scared"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "What do they hear inside?",
+        "options": ["Music", "A noise", "A bell"],
+        "correct": "A noise"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "What does Emma see?",
+        "options": ["A tree", "A cat", "A shadow"],
+        "correct": "A shadow"
+      },
+      {
+        "id": "1.6",
+        "type": "multiple_choice",
+        "text": "What does Emma say at the end?",
+        "options": [
+          "Let's go again!",
+          "No more old houses!",
+          "I love this house!"
+        ],
+        "correct": "No more old houses!"
+      }
+    ]
+  }
+]

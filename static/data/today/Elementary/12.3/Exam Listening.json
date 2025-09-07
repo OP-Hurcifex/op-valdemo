@@ -1,0 +1,146 @@
+[
+{
+    "id": 1,
+    "text": "Are the sentences True (T) or False (F)?",
+    "type": "listening",
+    "audio": "/static/exam-files/EndTest.mp3",
+    "subquestions": [
+	  {
+        "id": "1.1",
+        "type": "select-options",
+        "text": "The woman is from Halifax. ____ (True/False**/No information)."
+      },
+	  {
+        "id": "1.2",
+        "type": "select-options",
+        "text": "It's snowy in Bedford in December. ____ (True**/False/No information)."
+      },
+	  {
+        "id": "1.3",
+        "type": "select-options",
+        "text": "There are old buildings in Halifax. ____ (True**/False/No information)."
+      },
+	  {
+        "id": "1.4",
+        "type": "select-options",
+        "text": "The man's father is in Canada. ____ (True/False**/No information)."
+      },
+	  {
+        "id": "1.5",
+        "type": "select-options",
+        "text": "The man wants to go to Toronto. ____ (True**/False/No information)."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "text": "Choose correct option.",
+    "type": "listening",
+    "audio": "/static/exam-files/ProgressTest1.mp3",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "multiple_choice",
+        "text": "The small wallets are £16",
+        "options": [
+          "True",
+          "False",
+          "No information"
+        ],
+        "correct": "False"
+      },
+      {
+        "id": "2.2",
+        "type": "multiple_choice",
+        "text": "The man wants a small wallet.",
+        "options": [
+          "True",
+          "False",
+          "No information"
+        ],
+        "correct": "False"
+      },
+      {
+        "id": "2.3",
+        "type": "multiple_choice",
+        "text": "The man wants an umbrella.",
+        "options": [
+          "True",
+          "False",
+          "No information"
+        ],
+        "correct": "True"
+      },
+      {
+        "id": "2.4",
+        "type": "multiple_choice",
+        "text": "The shop hasn't got any umbrellas.",
+        "options": [
+          "True",
+          "False",
+          "No information"
+        ],
+        "correct": "True"
+      },
+      {
+        "id": "2.5",
+        "type": "multiple_choice",
+        "text": "The man buys a wallet for £19.",
+        "options": [
+          "True",
+          "False",
+          "No information"
+        ],
+        "correct": "True"
+      }
+    ]
+  },
+    {
+    "id": 3,
+    "text": "Section 3. Listen and choose correct answer.",
+    "type": "listening",
+    "audio": "/static/exam-files/Section1.mp3",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "true_false",
+        "text": "John works at Old Time Toys.",
+        "correct": "False"
+      },
+      {
+        "id": "3.2",
+        "type": "multiple_choice",
+        "text": "Marina wants ...",
+        "options": [
+          "product information, a brochure and prices.",
+          "is warm in summer",
+          "to call John again later."
+        ],
+        "correct": "product information, a brochure and prices."
+      },
+      {
+        "id": "3.3",
+        "type": "multiple_choice",
+        "text": "Marina's number is ...",
+        "options": [
+          "0208 6557621",
+          "0208 6656721",
+          "0208 5718571",
+          "200120969",
+          "992320111"
+        ],
+        "correct": "0208 6557621"
+      },
+      {
+        "id": "3.4",
+        "type": "multiple_choice",
+        "text": "Marina's email address is ...",
+        "options": [
+          "marina.silva@oldtime_toys.com",
+          "marina.silva@oldtime-toys.com"
+        ],
+        "correct": "marina.silva@oldtime-toys.com"
+      }
+    ]
+  }
+]

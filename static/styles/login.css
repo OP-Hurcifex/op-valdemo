@@ -1,0 +1,846 @@
+@font-face {
+  font-display: block;
+  font-family: 'OriginEthnic';
+  src: url('/static/fonts/OriginEthnic.otf') format('opentype');
+}
+
+    * {
+	  user-select:none;
+    }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #0d0d1a;
+  color: white;
+  min-height: calc(var(--vh, 1vh) * 100);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* распределение: форма сверху, версия снизу */
+  align-items: center;
+}
+
+:root {
+  --toast-enter-duration: 0.5s;
+  --toast-exit-duration: 0.4s;
+  --toast-easing-in: cubic-bezier(0.22, 1, 0.36, 1);
+  --toast-easing-out: ease-in;
+}
+
+/* 1. Container stays the same... */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 2. Single enter/exit animation on each toast */
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  width: 320px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(-20px) scale(0.9);
+  animation:
+    toastEnter var(--toast-enter-duration) var(--toast-easing-in) forwards,
+    toastExit var(--toast-exit-duration) var(--toast-easing-out) var(--hide-delay) forwards;
+}
+
+.toast-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: #fff;
+  margin-right: 12px;
+}
+
+.toast-message {
+  flex: 1;
+  color: #333;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.toast-close {
+  margin-left: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.toast-close:hover {
+  opacity: 1;
+}
+
+/* Цвета под каждый тип */
+.toast.success {
+  background-color: #e6ffed;
+  border-color: #b8eac9;
+}
+.toast.success .toast-icon {
+  background-color: #2ecc71;
+}
+
+.toast.info {
+  background-color: #e6f4ff;
+  border-color: #b2d9f3;
+}
+.toast.info .toast-icon {
+  background-color: #3498db;
+}
+
+.toast.warning {
+  background-color: #fff8e1;
+  border-color: #f7e0a0;
+}
+.toast.warning .toast-icon {
+  background-color: #f39c12;
+}
+
+.toast.error {
+  background-color: #ffe5e5;
+  border-color: #f5bdbd;
+}
+.toast.error .toast-icon {
+  background-color: #e74c3c;
+}
+
+
+/* 3. “Springy” enter: pop in, overshoot a bit, settle */
+@keyframes toastEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 4. Smooth exit: shrink & fade out while sliding up */
+@keyframes toastExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+}
+
+  /* 3. Фоны под каждый тип */
+  .toast.error {
+    background: linear-gradient(135deg, #ffe5e5, #fff5f5);
+  }
+  .toast.warning {
+    background: linear-gradient(135deg, #fff8e1, #fffcf3);
+  }
+  .toast.success {
+    background: linear-gradient(135deg, #e6ffed, #f2fff4);
+  }
+  .toast.info {
+    background: linear-gradient(135deg, #e6f4ff, #f5fbff);
+  }
+
+  /* 4. Иконка слева */
+  .toast-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 18px;
+    color: #fff;
+  }
+  .toast.error .toast-icon   { background: #e74c3c; }
+  .toast.warning .toast-icon { background: #f39c12; }
+  .toast.success .toast-icon { background: #27ae60; }
+  .toast.info .toast-icon    { background: #2980b9; }
+  
+  @keyframes shake {
+  0%,100% { transform: translateX(0) }
+  25%,75% { transform: translateX(-4px) }
+  50%      { transform: translateX(4px) }
+}
+@keyframes pulse {
+  0%,100% { transform: scale(1) }
+  50%      { transform: scale(1.1) }
+}
+
+.toast.error   .toast-icon { animation: shake 0.8s ease-in-out; }
+.toast.success .toast-icon { animation: pulse 2s ease-in-out infinite; }
+.toast.warning .toast-icon { animation: shake 0.8s ease-in-out; }
+.toast.info    .toast-icon { animation: shake 0.8s ease-in-out }
+
+
+  /* 5. Текст */
+  .toast-message {
+    flex: 1;
+    font-family: sans-serif;
+    color: #333;
+    line-height: 1.4;
+  }
+  .toast-message b {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
+  }
+  .toast-message span {
+    font-size: 13px;
+  }
+  
+  
+
+  /* 6. Крестик закрытия */
+  .toast-close {
+    margin-left: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+    opacity: 0.6;
+    transition: opacity .2s;
+  }
+  .toast-close:hover {
+    opacity: 1;
+  }
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Контейнер */
+.login-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-top: 20px;
+  flex-shrink: 0;
+}
+
+/* Логотип Horizon */
+.fancy-logo {
+  font-family: 'OriginEthnic', serif;
+  font-size: 56px;
+  color: #ffffffcc;
+  letter-spacing: 2.5px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  text-align: center;
+  text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Форма */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+/* Метки */
+.login-form label {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 5px;
+}
+
+/* Поля ввода */
+.login-form input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  border-radius: 15px;
+  border: 1px solid #2a2a3a;
+  background: #101020;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-form input:focus {
+  border: 1px solid #007bff;
+}
+
+/* Пароль */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-wrapper input {
+  flex: 1;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Кнопка */
+.login-btn {
+  background: #0094ff;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn:hover {
+  background: #007bff;
+}
+
+/* Спиннер */
+.spinner {
+  font-size: 20px;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin: 0 auto;
+}
+
+.spinner-blade {
+  position: absolute;
+  left: 0.4629em;
+  bottom: 0;
+  width: 0.074em;
+  height: 0.2777em;
+  border-radius: 0.5em;
+  background-color: transparent;
+  transform-origin: center -0.2222em;
+  animation: spinner-fade 1s infinite linear;
+}
+
+.spinner-blade:nth-child(1) { transform: rotate(0deg);   animation-delay: 0s; }
+.spinner-blade:nth-child(2) { transform: rotate(30deg);  animation-delay: 0.083s; }
+.spinner-blade:nth-child(3) { transform: rotate(60deg);  animation-delay: 0.166s; }
+.spinner-blade:nth-child(4) { transform: rotate(90deg);  animation-delay: 0.249s; }
+.spinner-blade:nth-child(5) { transform: rotate(120deg); animation-delay: 0.332s; }
+.spinner-blade:nth-child(6) { transform: rotate(150deg); animation-delay: 0.415s; }
+.spinner-blade:nth-child(7) { transform: rotate(180deg); animation-delay: 0.498s; }
+.spinner-blade:nth-child(8) { transform: rotate(210deg); animation-delay: 0.581s; }
+.spinner-blade:nth-child(9) { transform: rotate(240deg); animation-delay: 0.664s; }
+.spinner-blade:nth-child(10){ transform: rotate(270deg); animation-delay: 0.747s; }
+.spinner-blade:nth-child(11){ transform: rotate(300deg); animation-delay: 0.830s; }
+.spinner-blade:nth-child(12){ transform: rotate(330deg); animation-delay: 0.913s; }
+
+@keyframes spinner-fade {
+  0%   { background-color: #fff; }
+  100% { background-color: transparent; }
+}
+
+/* скрываем спиннер по умолчанию */
+.login-btn .spinner {
+  display: none;
+}
+
+.login-btn.loading .btn-text {
+  display: none;
+}
+
+.login-btn.loading .spinner {
+  display: block;
+}
+
+
+/* Версия */
+.app-version {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 15px; /* отступ от нижнего края */
+  flex-shrink: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 92%;
+    margin-top: 10px;
+    padding: 12px;
+  }
+
+  .fancy-logo {
+    font-size: 48px;
+    margin-bottom: 30px;
+  }
+
+  .login-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .login-form input {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+/* OTP Modal UI — добавить в login.css */
+
+/* Общий оверлей */
+#otp-modal.otp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(6, 8, 15, 0.65);
+  z-index: 1200;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: otp-fade-in 220ms ease-out;
+}
+
+/* Карточка контента */
+#otp-modal .otp-modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  color: #e9eef8;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  position: relative;
+  transform: translateY(-6px);
+  transition: transform 180ms ease;
+}
+
+/* Заголовок и текст */
+#otp-modal .otp-modal-content h2 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#otp-modal .otp-modal-content p {
+  display: contents;
+  margin: 0 0 16px 0;
+  color: #cbd5e1;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Кнопка закрытия (иконка X) */
+#otp-modal .close-otp {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, transform 120ms ease;
+}
+#otp-modal .close-otp:hover { background: rgba(255,255,255,0.03); transform: scale(1.03); }
+
+/* Контейнер для инпутов */
+#otp-modal .otp-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 12px 0 18px 0;
+}
+
+/* Стили для каждой цифры */
+#otp-modal .otp-digit {
+  width: 44px;
+  height: 56px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  color: #ffffff;
+  outline: none;
+  caret-color: #ffffff;
+  -moz-appearance: textfield;
+  box-shadow: inset 0 -2px 6px rgba(0,0,0,0.45);
+  transition: border-color 120ms ease, transform 80ms ease, box-shadow 120ms ease;
+}
+
+/* Увеличиваем поле на больших экранах */
+@media (min-width: 520px) {
+  #otp-modal .otp-digit { width: 54px; height: 64px; font-size: 26px; }
+}
+
+/* Фокус и активное состояние */
+#otp-modal .otp-digit:focus {
+  border-color: rgba(0, 130, 255, 0.95);
+  box-shadow: 0 6px 20px rgba(3, 102, 214, 0.12), inset 0 -2px 6px rgba(0,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* Кнопка Verify */
+#otp-modal #verify-btn {
+  width: 100%;
+  display: block;
+  margin: 4px 0 12px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #007bff 0%, #00a3ff 100%);
+  color: white;
+  box-shadow: 0 8px 24px rgba(3,102,214,0.18);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+#otp-modal #verify-btn:active { transform: translateY(1px); }
+#otp-modal #verify-btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Текст ресенд / таймер */
+#otp-modal .otp-resend {
+  text-align: center;
+  color: #a9b5c9;
+  font-size: 13px;
+  margin-top: 6px;
+  line-height: 1.3;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Контейнер ресенда */
+#otp-modal .otp-resend {
+  display: flex;
+  justify-content: center;   /* выравнивание по центру */
+  align-items: center;       /* по вертикали */
+  margin-top: 4px;
+}
+
+/* Сам текст-кнопка */
+#otp-modal .otp-resend #resend-text {
+  margin: 15px;
+  padding: 10px 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;              /* чтобы содержимое внутри тоже центрировалось */
+  justify-content: center;
+  align-items: center;
+}
+
+
+#otp-modal .otp-resend span#resend-text:hover {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), inset 0 1px 3px rgba(255, 255, 255, 0.4);
+}
+
+#otp-modal .otp-resend span#resend-text:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Добавьте в login.css */
+
+/* Когда модал помечен как готовый к ресенду */
+#otp-modal.resend-ready .resend-code {
+  cursor: pointer;
+  color: #9be7ff;
+  text-decoration: underline;
+  transition: color 120ms ease, transform 120ms ease;
+}
+#otp-modal.resend-ready .resend-code:hover {
+  transform: translateY(-2px);
+}
+
+/* Состояние "идёт отправка" */
+.resend-code.resending {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Маленький спиннер для ресенда (вставляется в #resend-text) */
+.resend-spinner {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 6px;
+  position: relative;
+}
+.resend-spinner .spinner-blade {
+  position: absolute;
+  left: 0.43em;
+  bottom: 0;
+  width: 0.06em;
+  height: 0.22em;
+  border-radius: 0.4em;
+  background-color: #fff;
+  transform-origin: center -0.18em;
+  animation: resend-spinner-fade 1s infinite linear;
+  background-color: #ffffff;
+  opacity: 0.95;
+}
+.resend-spinner .spinner-blade:nth-child(1){ transform:rotate(0deg);   animation-delay:0s; }
+.resend-spinner .spinner-blade:nth-child(2){ transform:rotate(30deg);  animation-delay:0.083s; }
+.resend-spinner .spinner-blade:nth-child(3){ transform:rotate(60deg);  animation-delay:0.166s; }
+.resend-spinner .spinner-blade:nth-child(4){ transform:rotate(90deg);  animation-delay:0.249s; }
+.resend-spinner .spinner-blade:nth-child(5){ transform:rotate(120deg); animation-delay:0.332s; }
+.resend-spinner .spinner-blade:nth-child(6){ transform:rotate(150deg); animation-delay:0.415s; }
+.resend-spinner .spinner-blade:nth-child(7){ transform:rotate(180deg); animation-delay:0.498s; }
+.resend-spinner .spinner-blade:nth-child(8){ transform:rotate(210deg); animation-delay:0.581s; }
+.resend-spinner .spinner-blade:nth-child(9){ transform:rotate(240deg); animation-delay:0.664s; }
+.resend-spinner .spinner-blade:nth-child(10){ transform:rotate(270deg); animation-delay:0.747s; }
+.resend-spinner .spinner-blade:nth-child(11){ transform:rotate(300deg); animation-delay:0.830s; }
+.resend-spinner .spinner-blade:nth-child(12){ transform:rotate(330deg); animation-delay:0.913s; }
+
+@keyframes resend-spinner-fade {
+  0%   { opacity: 1; }
+  100% { opacity: 0.08; }
+}
+
+#otp-modal #countdown {
+  display: inline-block;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(255,255,255,0.06);
+  padding: 2px 8px;
+  border-radius: 8px;
+  margin-left: 6px;
+  font-size: 13px;
+}
+
+/* Small helper: success state for countdown turned off */
+#otp-modal .resend-ready #resend-text { color: #dff8ff; }
+#otp-modal .resend-ready #resend-text::after {
+  content: " • Click to resend";
+  font-weight: 500;
+  color: #9be7ff;
+  margin-left: 6px;
+}
+
+/* Мобильная оптимизация */
+@media (max-width: 420px) {
+  #otp-modal .otp-modal-content {
+    padding: 16px;
+    border-radius: 12px;
+    margin: 6px;
+  }
+  #otp-modal .otp-inputs { gap: 8px; }
+  #otp-modal .otp-digit { width: 40px; height: 52px; font-size: 20px; }
+}
+
+/* Анимации */
+@keyframes otp-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Если бы вы добавили overlay-click-to-close: */
+#otp-modal[data-click-close="true"] { cursor: pointer; }
+#otp-modal[data-click-close="true"] .otp-modal-content { cursor: auto; }
+
+/* === Общий оверлей === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 15, 15, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* === Контент модалки === */
+.ban-modal-content {
+  background: #1d1f27;
+  color: #eee;
+  border-radius: 14px;
+  padding: 24px;
+  width: 95%;
+  max-width: 420px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+}
+
+/* Заголовки */
+.ban-modal-content .modal-title {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+.ban-modal-content .modal-subtitle {
+  font-size: 14px;
+  color: #bbb;
+  margin-bottom: 16px;
+}
+
+/* Детали бана */
+.ban-details p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #ccc;
+}
+.ban-details strong {
+  color: #fff;
+}
+
+/* Кнопка */
+.btn.btn-blue {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px;
+  background: #00c2f0;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s;
+}
+.btn.btn-blue:disabled {
+  background: #3a3d4d;
+  cursor: not-allowed;
+}
+  .checkbox-wrapper-31:hover .check {
+    stroke-dashoffset: 0;
+  }
+
+  .checkbox-wrapper-31 {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+  }
+  .checkbox-wrapper-31 .background {
+    fill: #ccc;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  .checkbox-wrapper-31 .stroke {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  .checkbox-wrapper-31 .check {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    stroke-dashoffset: 22;
+    stroke-dasharray: 22;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+  }
+  .checkbox-wrapper-31 input[type=checkbox] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    -appearance: none;
+    -webkit-appearance: none;
+  }
+  .checkbox-wrapper-31 input[type=checkbox]:hover {
+    cursor: pointer;
+  }
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .background {
+    fill: #6cbe45;
+  }
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+    stroke-dashoffset: 0;
+  }
+  .checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
+    stroke-dashoffset: 0;
+  }
+

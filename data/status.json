@@ -1,0 +1,66 @@
+{
+  "Abdulmalik": {
+    "items": {
+      "6": {
+        "status": "Delivered"
+      },
+      "15": {
+        "status": "Product in packaging"
+      },
+      "19": {
+        "status": "Delivered"
+      }
+    }
+  },
+  "Legenda": {
+    "items": {
+      "9": {
+        "status": "Product in packaging"
+      },
+      "6": {
+        "status": "Delivered"
+      },
+      "1": {
+        "status": "In transit"
+      },
+      "11": {
+        "status": "Product in packaging"
+      }
+    }
+  },
+  "Muhammadiso": {
+    "items": {
+      "8": {
+        "status": "Product in packaging"
+      },
+      "17": {
+        "status": "Product in packaging"
+      }
+    }
+  },
+  "Elbek": {
+    "items": {
+      "14": {
+        "status": "In transit"
+      }
+    }
+  },
+  "Horizon Customer Support": {
+    "items": {
+      "6": {
+        "status": "Delivered",
+        "link": "/view/6"
+      }
+    }
+  },
+  "HR": {
+    "items": {
+      "3": {
+        "status": "Product in packaging"
+      },
+      "19": {
+        "status": "Product in packaging"
+      }
+    }
+  }
+}

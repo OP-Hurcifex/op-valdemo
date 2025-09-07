@@ -1,0 +1,99 @@
+[
+  {
+    "id": 7,
+    "text": "Choose the correct word to complete each sentence (Bo‘sh joyga mos so‘zni tanlang)",
+    "type": "box-choose",
+    "options": ["computer", "banana", "bag", "teacher", "blue", "chair", "school"],
+    "subquestions": [
+      {
+        "id": "7.1",
+        "type": "box-choose",
+        "text": "My ____ is very nice. She helps me with English.",
+        "correct": "teacher"
+      },
+      {
+        "id": "7.2",
+        "type": "box-choose",
+        "text": "We have a ____ room for art class.",
+        "correct": "blue"
+      },
+      {
+        "id": "7.3",
+        "type": "box-choose",
+        "text": "I always carry my books in a ____. It's black and heavy.",
+        "correct": "bag"
+      },
+      {
+        "id": "7.4",
+        "type": "box-choose",
+        "text": "I eat a ____ every day. It's sweet and yellow.",
+        "correct": "banana"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "text": "Fill in the blank with the correct word (So‘zni yozing)",
+    "type": "write-in-blank",
+    "subquestions": [
+      {
+        "id": "8.1",
+		"type": "write-in-blank",
+        "text": "I sit on a ____ when I study.",
+        "correct": "chair"
+      },
+      {
+        "id": "8.2",
+		"type": "write-in-blank",
+        "text": "We use a ____ to write emails and play games.",
+        "correct": "computer"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "text": "Choose the correct answer (To‘g‘ri javobni tanlang)",
+    "type": "multiple_choice",
+    "subquestions": [
+      {
+        "id": "9.1",
+		"type": "multiple_choice",
+        "text": "Where do students go to learn?",
+        "options": ["Hospital", "Market", "School"],
+        "correct": "School"
+      },
+      {
+        "id": "9.2",
+		"type": "multiple_choice",
+        "text": "Which one is used for sitting?",
+        "options": ["Pen", "Chair", "Window"],
+        "correct": "Chair"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "text": "Are these sentences true or false? (Gaplar to‘g‘rimi?)",
+    "type": "true_false",
+    "subquestions": [
+      {
+        "id": "11.1",
+		"type": "true_false",
+        "text": "A banana is a vegetable.",
+        "correct": "false"
+      },
+      {
+        "id": "11.2",
+		"type": "true_false",
+        "text": "You use a pen to write.",
+        "correct": "true"
+      },
+      {
+        "id": "11.3",
+		"type": "true_false",
+        "text": "A teacher works in a school.",
+        "correct": "true"
+      }
+    ]
+  }
+]

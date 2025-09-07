@@ -1,0 +1,18 @@
+[ 
+
+ {
+  "id": 1,
+  "text": "Section 1. Listen and complete the information about the day trip.",
+  "type": "listening",
+  "audio": "/static/exam-files/Preliminary1_test3_audio3.mp3",
+  "subquestions": [
+    {
+      "id": "1.14",
+      "type": "write-in-blank",
+      "text": "Bus leaves at: (14) ____ a.m.",
+      "correct": "8.15"
+    }
+  ]
+}
+
+]

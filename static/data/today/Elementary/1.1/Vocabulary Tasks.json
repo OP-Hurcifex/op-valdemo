@@ -1,0 +1,89 @@
+[
+  {
+    "id": 4,
+    "type": "words",
+    "text": "Unscramble the words (So‘zlarni to‘g‘rilang — fe’llar va zamonlar bilan bog‘liq so‘zlar)",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "unscramble",
+        "text": "yalp",
+        "correct": "play"
+      },
+      {
+        "id": "4.2",
+        "type": "unscramble",
+        "text": "krow",
+        "correct": "work"
+      },
+      {
+        "id": "4.3",
+        "type": "unscramble",
+        "text": "tadsyu",
+        "correct": "study"
+      },
+      {
+        "id": "4.4",
+        "type": "unscramble",
+        "text": "gnidaer",
+        "correct": "reading"
+      },
+      {
+        "id": "4.5",
+        "type": "unscramble",
+        "text": "gnikooC",
+        "correct": "Cooking"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Choose the correct word for each sentence (Bo‘sh joyga to‘g‘ri so‘zni qo‘ying — Present Simple / Continuous)",
+    "type": "box-choose",
+    "options": ["plays", "is studying", "watch", "is running", "goes", "am reading", "are playing"],
+    "subquestions": [
+      {
+        "id": "5.1",
+        "type": "box-choose",
+        "text": "He ____ football every weekend.",
+        "correct": "plays"
+      },
+      {
+        "id": "5.2",
+        "type": "box-choose",
+        "text": "She ____ English now.",
+        "correct": "is studying"
+      },
+      {
+        "id": "5.3",
+        "type": "box-choose",
+        "text": "We often ____ TV in the evenings.",
+        "correct": "watch"
+      },
+      {
+        "id": "5.4",
+        "type": "box-choose",
+        "text": "Look! The dog ____ in the garden.",
+        "correct": "is running"
+      },
+      {
+        "id": "5.5",
+        "type": "box-choose",
+        "text": "My father ____ to work every day by car.",
+        "correct": "goes"
+      },
+      {
+        "id": "5.6",
+        "type": "box-choose",
+        "text": "I ____ a book now.",
+        "correct": "am reading"
+      },
+      {
+        "id": "5.7",
+        "type": "box-choose",
+        "text": "The children ____ outside at the moment.",
+        "correct": "are playing"
+      }
+    ]
+  }
+]

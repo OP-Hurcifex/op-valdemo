@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon - Login</title>
+  <link rel="stylesheet" href="/static/styles/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div id="toast-container"></div>
+
+  <div class="login-container">
+    <h1 class="fancy-logo">Horizon</h1>
+
+    <form class="login-form">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username" autocomplete="off">
+
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Enter password">
+        <button type="button" id="togglePassword" class="toggle-password">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+
+      <button type="submit" class="login-btn">
+  <span class="btn-text">Get Started</span>
+  <span class="spinner">
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+    <span class="spinner-blade"></span>
+  </span>
+</button>
+
+    </form>
+  </div>
+
+  <p class="app-version">App version: so.5</p>
+
+  <script src="/static/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "text": "Section 1. Listen and complete the information about the day trip.",
+    "type": "listening",
+    "audio": "/static/exam-files/Progress1.mp3",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "write-in-blank",
+        "text": "Pedro has got a big ____.",
+        "correct": "head"
+      },
+      {
+        "id": "1.2",
+        "type": "write-in-blank",
+        "text": "Has she got a friendly ____?",
+        "correct": "face"
+      },
+      {
+        "id": "1.3",
+        "type": "write-in-blank",
+        "text": "Her hands are ____ small.",
+        "correct": "very"
+      },
+      {
+        "id": "1.4",
+        "type": "write-in-blank",
+        "text": "We haven't got brown ____",
+        "correct": "hair"
+      },
+      {
+        "id": "1.5",
+        "type": "write-in-blank",
+        "text": "My legs are ____ long.",
+        "correct": "really"
+      },
+      {
+        "id": "1.6",
+        "type": "write-in-blank",
+        "text": "He's got short ____",
+        "correct": "arms"
+      },
+      {
+        "id": "1.7",
+        "type": "write-in-blank",
+        "text": "I've got tired ____ after that long walk.",
+        "correct": "feet"
+      }
+    ]
+  }
+]

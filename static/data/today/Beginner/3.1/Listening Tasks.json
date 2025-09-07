@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "text": "Fill the gaps.",
+    "type": "listening",
+    "audio": "/static/workbook-audio/course-book-units-1-3/Navigate A1 Coursebook Audio 03-02.mp3",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "write-in-blank",
+        "text": "A man ____.",
+        "correct": "men"
+      },
+      {
+        "id": "1.2",
+        "type": "write-in-blank",
+        "text": "a woman ____",
+        "correct": "women"
+      },
+      {
+        "id": "1.3",
+        "type": "write-in-blank",
+        "text": "a person ____.",
+        "correct": "people"
+      },
+      {
+        "id": "1.4",
+        "type": "write-in-blank",
+        "text": "a child ____",
+        "correct": "children"
+      }
+    ]
+  }
+]

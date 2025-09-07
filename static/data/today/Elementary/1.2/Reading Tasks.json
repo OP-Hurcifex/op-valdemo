@@ -1,0 +1,39 @@
+[
+  {
+    "id": 3,
+    "type": "reading",
+    "text": "<h1>Tom’s Day in London</h1>\n<p>Last weekend Tom visited London for the first time. He traveled there by train early in the morning. The journey was long, but he was very excited.</p>\n<p>First, Tom went to the Tower of London. He learned many interesting facts about English history. After that, he took a boat trip on the River Thames and enjoyed the beautiful view of the city.</p>\n<p>At lunchtime, Tom ate fish and chips in a small restaurant. He really liked the food because it was fresh and tasty. In the afternoon, he went shopping on Oxford Street. He bought a T-shirt for himself and a gift for his sister.</p>\n<p>In the evening, Tom visited the London Eye. From the top, he saw all the lights of the city. It was an amazing view! Finally, he returned to his hotel, tired but very happy. Tom thought, “I want to come back to London one day.”</p>",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "select-options",
+        "text": "Tom traveled to London by ____ (bus / train** / car)."
+      },
+      {
+        "id": "3.2",
+        "type": "select-options",
+        "text": "At the Tower of London, Tom learned about ____ (history** / food / shopping)."
+      },
+      {
+        "id": "3.3",
+        "type": "select-options",
+        "text": "He ate ____ (fish and chips** / pasta / salad) for lunch."
+      },
+      {
+        "id": "3.4",
+        "type": "select-options",
+        "text": "In the afternoon, Tom bought ____ (a T-shirt and a gift** / a jacket and shoes / only food)."
+      },
+      {
+        "id": "3.5",
+        "type": "select-options",
+        "text": "Tom saw the city lights from ____ (the Tower / the London Eye** / the boat)."
+      },
+      {
+        "id": "3.6",
+        "type": "select-options",
+        "text": "At the end of the day, Tom felt ____ (bored / tired but happy** / angry)."
+      }
+    ]
+  }
+]

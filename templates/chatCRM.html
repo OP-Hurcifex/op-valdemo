@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard - Horizon</title>
+
+    <!-- Добавление шрифта из Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Добавление Font Awesome для иконок (оставляем для других элементов, кроме навигации) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="/static/styles/chatCRM.css">
+</head>
+<body>
+<div class="container">
+    <nav class="side-nav">
+        <!-- Добавляем название компании Horizon -->
+        <div class="company-logo">
+            <h2>Horizon</h2>
+        </div>
+        <ul>
+            <li class="nav-item active" data-section="dashboard">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg> Dashboard
+            </li>
+            <li class="nav-item" data-section="updates">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 3v18a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2z"></path>
+                    <path d="M16 10l-4 4-4-4"></path>
+                </svg> Updates
+            </li>
+            <li class="nav-item" data-section="chat">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                </svg> Chat
+            </li>
+            <li class="nav-item" data-section="ban">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                </svg> Ban User
+            </li>
+            <li class="nav-item" data-section="create-exam">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg> Exam
+            </li>
+            <li class="nav-item" data-section="exam-results">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg> Exam Results
+            </li>
+            <li class="nav-item" data-section="roadmap">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                    <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+                </svg> Roadmap
+            </li>
+            <li class="nav-item" data-section="exit">
+                <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg> Exit
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <h1>Dashboard</h1>
+            <div id="update-progress-container">
+                <h4>Update Student Progress</h4>
+                <input type="text" id="student-name" placeholder="Enter student name" />
+                <input type="number" id="progress-input" placeholder="Enter progress percentage" />
+                <input type="date" id="start-date-input" placeholder="Enter start date" />
+                <button id="update-progress-button">Update Progress</button>
+            </div>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter username" />
+            </div>
+            <div>
+                <label for="coins">Coins:</label>
+                <input type="number" id="coins" placeholder="Enter coins amount" />
+            </div>
+            <button id="addCoinsButton" class="action-button">Add Coins</button>
+            <p id="coinsMessage" class="message" style="color: green; display: none;">Coins added successfully!</p>
+            <div>
+                <label for="balanceUsername">Username:</label>
+                <input type="text" id="balanceUsername" placeholder="Enter username" />
+            </div>
+            <button id="getBalanceButton" class="action-button">Get Balance</button>
+            <p id="balanceMessage" class="message" style="color: blue; display: none;">Current balance: <span id="currentBalance"></span> Coins</p>
+        </section>
+
+        <!-- Updates Section -->
+        <section id="updates" class="content-section">
+            <h1>Updates</h1>
+            <button id="releaseUpdateButton" class="release-button">Release Update</button>
+            <p>Current version: <span id="currentVersion">v0</span></p>
+            <div id="timeline" class="timeline"></div>
+        </section>
+
+        <!-- Chat Section -->
+        <section id="chat" class="content-section">
+            <div class="lds-dual-ring" id="chatSpinner"></div>
+            <iframe id="chatIframe" src="" width="100%" height="680px" style="border: none; display: none;"></iframe>
+        </section>
+
+        <!-- Exit Section -->
+        <section id="exit" class="content-section">
+            <h1>Exit</h1>
+            <p>Are you sure you want to log out?</p>
+        </section>
+
+        <!-- Ban User Section -->
+        <section id="ban" class="content-section">
+            <h1>Ban User</h1>
+            <div class="permanent-ban">
+                <h2>Permanent Ban</h2>
+                <label for="banUsername">Username:</label>
+                <input type="text" id="banUsername" placeholder="Enter username to ban permanently" />
+                <button id="banButton" class="action-button">Ban User Permanently</button>
+                <p id="banMessage" class="message" style="color: red; display: none;"></p>
+            </div>
+            <div class="temporary-ban" style="margin-top: 30px;">
+                <h2>Temporary Ban</h2>
+                <label for="tempBanUsername">Username:</label>
+                <input type="text" id="tempBanUsername" placeholder="Enter username for temporary ban" />
+                <label for="tempBanDuration">Duration (seconds):</label>
+                <input type="number" id="tempBanDuration" placeholder="Enter ban duration" value="30" />
+                <button id="tempBanButton" class="action-button">Temporary Ban</button>
+                <p id="tempBanMessage" class="message" style="color: red; display: none;"></p>
+            </div>
+            <div class="unblock-user" style="margin-top: 30px;">
+                <h2>Unblock User</h2>
+                <button id="unblockButton" class="action-button">Unblock User</button>
+                <p id="unblockMessage" class="message" style="color: green; display: none;"></p>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="content-section">
+            <h1>Student Roadmap</h1>
+            <label for="student-select">Choose a Student:</label>
+            <select id="student-select">
+                <option value="">Select Student</option>
+            </select>
+            <div class="table-container">
+                <div id="loader" class="lds-ripple"><div></div><div></div></div>
+                <table id="roadmap-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Lesson Date</th>
+                            <th>Week</th>
+                            <th>Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Create Exam Section -->
+        <section id="create-exam" class="content-section">
+            <div class="orange-timer-box">
+                <div class="time-display" id="timeValue">-- Hours -- Minutes -- Seconds</div>
+                <p>Exam Results</p>
+                <div id="examResultsDisplay"></div>
+            </div>
+            <div id="startExamSliderContainer">
+                <span class="slider-text" id="sliderText">Waiting for the exam..</span>
+                <div id="startExamSliderHandle">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <div id="examQuestionsContainer"></div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="lds-facebook">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Exam Results Section -->
+        <section id="exam-results" class="content-section">
+            <h1>Exam Results</h1>
+            <div id="examResultsContainer"></div>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script src="/static/js/chatCRM.js"></script>
+</body>
+</html>

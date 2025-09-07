@@ -1,0 +1,89 @@
+[
+  {
+    "id": 4,
+    "type": "words",
+    "text": "Unscramble the words (So‘zlarni to‘g‘rilang)",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "unscramble",
+        "text": "pplea",
+        "correct": "apple"
+      },
+      {
+        "id": "4.2",
+        "type": "unscramble",
+        "text": "kooB",
+        "correct": "Book"
+      },
+      {
+        "id": "4.3",
+        "type": "unscramble",
+        "text": "teacher",
+        "correct": "teacher"
+      },
+      {
+        "id": "4.4",
+        "type": "unscramble",
+        "text": "computer",
+        "correct": "computer"
+      },
+      {
+        "id": "4.5",
+        "type": "unscramble",
+        "text": "table",
+        "correct": "table"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "text": "Choose the correct word for each sentence (Bo‘sh joyga to‘g‘ri so‘zni qo‘ying)",
+    "type": "box-choose",
+    "options": ["apple", "red", "teacher", "school", "pen", "book", "desk"],
+    "subquestions": [
+      {
+        "id": "5.1",
+        "type": "box-choose",
+        "text": "I have an ____. It is sweet and red.",
+        "correct": "apple"
+      },
+      {
+        "id": "5.2",
+        "type": "box-choose",
+        "text": "My favorite color is ____. It is the color of a strawberry.",
+        "correct": "red"
+      },
+      {
+        "id": "5.3",
+        "type": "box-choose",
+        "text": "Our ____ is very nice. She helps us learn English.",
+        "correct": "teacher"
+      },
+      {
+        "id": "5.4",
+        "type": "box-choose",
+        "text": "I go to ____ every day from Monday to Friday.",
+        "correct": "school"
+      },
+      {
+        "id": "5.5",
+        "type": "box-choose",
+        "text": "I write with a ____. It is blue.",
+        "correct": "pen"
+      },
+      {
+        "id": "5.6",
+        "type": "box-choose",
+        "text": "I read a ____. It is about animals.",
+        "correct": "book"
+      },
+      {
+        "id": "5.7",
+        "type": "box-choose",
+        "text": "My ____ is brown. I put my books on it.",
+        "correct": "desk"
+      }
+    ]
+  }
+]

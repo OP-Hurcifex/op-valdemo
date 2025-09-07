@@ -1,0 +1,40 @@
+[
+ {
+  "id": 2,
+  "type": "reading",
+  "text": "<h1>Public Transport in Uzbekistan</h1>\n<h2>Moving around the city</h2>\n<p>In Uzbekistan, public transport is cheap and popular. In big cities like Tashkent, people often use the metro, buses, and taxis. The Tashkent Metro is fast and clean. It has beautiful stations, and the trains come every five to ten minutes.</p>\n<p>Many people use buses to go to work or school. The tickets are not expensive, and you can buy them from the driver. Some new buses have air conditioning and are more comfortable.</p>\n<p>However, public transport can be very crowded in the morning and evening. Sometimes it is difficult to find a seat. In small towns, there are fewer buses, so people often use taxis or shared cars.</p>",
+  "subquestions": [
+    {
+      "id": "2.1",
+      "type": "write-in-blank",
+      "text": "The metro is popular in ____.",
+      "correct": "Tashkent"
+    },
+    {
+      "id": "2.2",
+      "type": "write-in-blank",
+      "text": "People buy bus tickets from the ____. ",
+      "correct": "driver"
+    },
+    {
+      "id": "2.3",
+      "type": "write-in-blank",
+      "text": "The metro trains come every five to ____ minutes.",
+      "correct": "ten"
+    },
+    {
+      "id": "2.4",
+      "type": "write-in-blank",
+      "text": "New buses sometimes have air ____.",
+      "correct": "conditioning"
+    },
+    {
+      "id": "2.5",
+      "type": "write-in-blank",
+      "text": "In small towns, people often use ____ instead of buses.",
+      "correct": "taxis"
+    }
+  ]
+}
+
+]

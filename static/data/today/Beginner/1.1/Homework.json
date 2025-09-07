@@ -1,0 +1,316 @@
+[
+  {
+    "id": 0,
+    "text": "Choose the correct word for each sentence (Bo‘sh joyga to‘g‘ri so‘zni qo‘ying)",
+    "type": "box-choose",
+    "options": ["business?", "you.", "I'm not.", "I am", "I'm Luz", "Murat.", "study?","to meet you"],
+    "subquestions": [
+      {
+        "id": "0.1",
+        "type": "box-choose",
+        "text": "Hello, ____",
+        "correct": "I'm Luz"
+      },
+      {
+        "id": "0.2",
+        "type": "box-choose",
+        "text": "Hi, I'm ____",
+        "correct": "Murat."
+      },
+      {
+        "id": "0.3",
+        "type": "box-choose",
+        "text": "Nice ____",
+        "correct": "to meet you"
+      },
+      {
+        "id": "0.4",
+        "type": "box-choose",
+        "text": "And ____",
+        "correct": "you."
+      },
+      {
+        "id": "0.5",
+        "type": "box-choose",
+        "text": "Are you here to ____ ",
+        "correct": "study?"
+      },
+      {
+        "id": "0.6",
+        "type": "box-choose",
+        "text": "No, ____",
+        "correct": "I'm not."
+      },
+      {
+        "id": "0.7",
+        "type": "box-choose",
+        "text": "Are you here on ____ .",
+        "correct": "business?"
+      },
+	  {
+        "id": "0.8",
+        "type": "box-choose",
+        "text": "Yes, ____ .",
+        "correct": "I am"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "type": "greetings",
+    "text": "Greetings and Introductions (Salomlashish va tanishish)",
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "multiple_choice",
+        "text": "How do you say 'Salom' in English?",
+        "options": ["Hello", "Goodbye", "Thanks"],
+        "correct": "Hello"
+      },
+      {
+        "id": "1.2",
+        "type": "multiple_choice",
+        "text": "What do you say when you leave? (Ketayotganingizda nima deysiz?)",
+        "options": ["Hi", "Bye", "Nice to meet you"],
+        "correct": "Bye"
+      },
+      {
+        "id": "1.3",
+        "type": "multiple_choice",
+        "text": "Choose the correct phrase: '___ name is Anna.' (To‘g‘ri variantni tanlang: '___ name is Anna.')",
+        "options": ["Me", "I", "My"],
+        "correct": "My"
+      },
+      {
+        "id": "1.4",
+        "type": "multiple_choice",
+        "text": "What is the correct response to 'Nice to meet you'? (Bu jumlaga to‘g‘ri javobni toping)",
+        "options": ["Bye!", "Nice to meet you too!", "I am fine!"],
+        "correct": "Nice to meet you too!"
+      },
+      {
+        "id": "1.5",
+        "type": "multiple_choice",
+        "text": "How do you introduce yourself? (O‘zingizni qanday tanishtirasiz?)",
+        "options": [
+          "I am student.",
+          "I name is Anna.",
+          "My name is Anna."
+        ],
+        "correct": "My name is Anna."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "alphabet",
+    "text": "The Alphabet (Inglizcha alifbo)",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "multiple_choice",
+        "text": "What is the first letter of the English alphabet? (Ingliz alifbosining birinchi harfi?)",
+        "options": ["B", "A", "C"],
+        "correct": "A"
+      },
+      {
+        "id": "2.2",
+        "type": "multiple_choice",
+        "text": "Which letter comes after 'C'? (C dan keyin qaysi harf keladi?)",
+        "options": ["D", "B", "E"],
+        "correct": "D"
+      },
+      {
+        "id": "2.3",
+        "type": "multiple_choice",
+        "text": "What is the last letter of the English alphabet? (Alifbodagi oxirgi harf?)",
+        "options": ["Y", "Z", "X"],
+        "correct": "Z"
+      },
+      {
+        "id": "2.4",
+        "type": "multiple_choice",
+        "text": "Which letter is a vowel? (Qaysi harf unli?)",
+        "options": ["K", "E", "P"],
+        "correct": "E"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "numbers",
+    "text": "Numbers 1–20 (1 dan 20 gacha sonlar)",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "multiple_choice",
+        "text": "What number comes after 5? (5 dan keyin qaysi son keladi?)",
+        "options": ["4", "6", "7"],
+        "correct": "6"
+      },
+      {
+        "id": "3.2",
+        "type": "multiple_choice",
+        "text": "What is '10' in English? (10 sonining inglizchasi?)",
+        "options": ["Ten", "Twelve", "Twenty"],
+        "correct": "Ten"
+      },
+      {
+        "id": "3.3",
+        "type": "multiple_choice",
+        "text": "How old are you? — I'm __ years old. (Bo‘shliqni to‘ldiring)",
+        "options": ["apple", "15", "phone"],
+        "correct": "15"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "type": "personal_info",
+    "text": "Basic Personal Information (Shaxsiy ma’lumotlar)",
+    "subquestions": [
+      {
+        "id": "4.1",
+        "type": "multiple_choice",
+        "text": "What’s your name? — __ name is Sam.",
+        "options": ["Me", "I", "My"],
+        "correct": "My"
+      },
+      {
+        "id": "4.2",
+        "type": "multiple_choice",
+        "text": "Where are you from? — I’m from __.",
+        "options": ["go", "Uzbekistan", "fine"],
+        "correct": "Uzbekistan"
+      },
+      {
+        "id": "4.3",
+        "type": "multiple_choice",
+        "text": "What do you do? — I’m a __.",
+        "options": ["book", "student", "banana"],
+        "correct": "student"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "type": "verb_to_be",
+    "text": "Verb 'to be' (Fe’l 'bo‘lmoq')",
+    "subquestions": [
+      {
+        "id": "5.1",
+        "type": "multiple_choice",
+        "text": "I __ a teacher. (Bo‘shliqni to‘ldiring)",
+        "options": ["am", "is", "are"],
+        "correct": "am"
+      },
+      {
+        "id": "5.2",
+        "type": "multiple_choice",
+        "text": "She __ 20 years old.",
+        "options": ["am", "is", "are"],
+        "correct": "is"
+      },
+      {
+        "id": "5.3",
+        "type": "multiple_choice",
+        "text": "You __ my friend.",
+        "options": ["is", "am", "are"],
+        "correct": "are"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "type": "classroom_language",
+    "text": "Classroom Language (Darsdagi iboralar)",
+    "subquestions": [
+      {
+        "id": "6.1",
+        "type": "multiple_choice",
+        "text": "What do you say if you didn’t hear? (Eshitmagan bo‘lsangiz nima deysiz?)",
+        "options": ["Can you repeat, please?", "Thanks!", "Goodbye!"],
+        "correct": "Can you repeat, please?"
+      },
+      {
+        "id": "6.2",
+        "type": "multiple_choice",
+        "text": "How do you ask the meaning of a word? (So‘z ma’nosini qanday so‘raysiz?)",
+        "options": [
+          "What does 'apple' mean?",
+          "Where are you?",
+          "Do you like apples?"
+        ],
+        "correct": "What does 'apple' mean?"
+      },
+      {
+        "id": "6.3",
+        "type": "multiple_choice",
+        "text": "Which one is polite? (Qaysi ibora xushmuomalalik bilan?)",
+        "options": ["Excuse me", "Go away", "What?"],
+        "correct": "Excuse me"
+      }
+    ]
+  },
+    {
+    "id": 7,
+    "text": "Complete the conversation Chris and David. Use these words: And,Hello,Hi,Holiday,Nice,No,Study,yes,you.",
+    "type": "write-in-blank",
+    "subquestions": [
+      {
+        "id": "7.1",
+        "type": "write-in-blank",
+        "text": "____, I'm Chris.",
+        "correct": "Hello"
+      },
+      {
+        "id": "7.2",
+        "type": "write-in-blank",
+        "text": "____, I'm David.",
+        "correct": "Hi"
+      },
+      {
+        "id": "7.3",
+        "type": "write-in-blank",
+        "text": "____ to meet you.",
+        "correct": "Nice"
+      },
+      {
+        "id": "7.4",
+        "type": "write-in-blank",
+        "text": "Chris: ____ you.",
+        "correct": "And"
+      },
+      {
+        "id": "7.5",
+        "type": "write-in-blank",
+        "text": "Are ____ here on holiday?",
+        "correct": "you"
+      },
+      {
+        "id": "7.6",
+        "type": "write-in-blank",
+        "text": "David: ____, I'm not.",
+        "correct": "No"
+      },
+      {
+        "id": "7.7",
+        "type": "write-in-blank",
+        "text": "I'm here to ____ and you?",
+        "correct": "study"
+      },
+	  {
+        "id": "7.8",
+        "type": "write-in-blank",
+        "text": "Are you here on ____ ?",
+        "correct": "holiday"
+      },
+	  {
+        "id": "7.9",
+        "type": "write-in-blank",
+        "text": "Chris: ____, I'm.",
+        "correct": "Yes"
+      }
+    ]
+  }
+]
