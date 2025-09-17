@@ -1,5 +1,149 @@
 [
   {
+    "id": 1,
+    "name": "Elbek Zapalar toplami",
+    "cost": 120,
+    "items_left": 8,
+    "type": "Zapal",
+    "image": "/static/images/Elbek.png"
+  },
+  {
+    "id": 2,
+    "name": "Behruz Zapal Rasmlar toplami",
+    "cost": 120,
+    "items_left": 981,
+    "type": "Zapal",
+    "image": "/static/images/Behruz.jpg"
+  },
+  {
+    "id": 3,
+    "name": "MLBB 20 diamonds",
+    "cost": 7999,
+    "items_left": 0,
+    "type": "MLBB",
+    "image": "/static/images/MLBB.jpg"
+  },
+  {
+    "id": 4,
+    "name": "MLBB 40 diamonds",
+    "cost": 10999,
+    "items_left": 0,
+    "type": "MLBB",
+    "image": "/static/images/MLBB.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Zakariyo Voice Zapalar To'plami",
+    "cost": 99,
+    "items_left": 9,
+    "type": "Zapal",
+    "image": "/static/images/Mic.png"
+  },
+  {
+    "id": 6,
+    "name": "Muhamadali zapalllar Toʻplami",
+    "cost": 90,
+    "items_left": 6,
+    "type": "video",
+    "image": "/static/images/Ali.jpg"
+  },
+  {
+    "id": 7,
+    "name": "MLBB Ranked x1",
+    "cost": 79,
+    "items_left": 0,
+    "type": "MLBB",
+    "image": "/static/images/Ranked.jpg"
+  },
+  {
+    "id": 8,
+    "name": "MLBB Weekly Diamond Pass",
+    "cost": 19990,
+    "items_left": 0,
+    "type": "MLBB",
+    "image": "/static/images/MLBB Weekly.png"
+  },
+  {
+    "id": 9,
+    "name": "Change Nickname",
+    "cost": 50,
+    "items_left": 3,
+    "type": "System",
+    "image": "/static/images/nickname-change.jpg"
+  },
+  {
+    "id": 10,
+    "name": "MLBB Custom Bobr kurbo Max Pro",
+    "cost": 45000,
+    "items_left": 100,
+    "type": "MLBB",
+    "image": "/static/images/MLBB.png"
+  },
+  {
+    "id": 11,
+    "name": "Abdulmalik Zaparil Pack.",
+    "cost": 120,
+    "items_left": 0,
+    "type": "Zapal",
+    "image": "/static/images/Abdulmalik.jpg"
+  },
+  {
+    "id": 12,
+    "name": "WiFi 1 day Access 2.4Ghz",
+    "cost": 125,
+    "items_left": 20,
+    "type": "System",
+    "image": "/static/images/Wifi.png"
+  },
+  {
+    "id": 13,
+    "name": "WiFi 1 day Access 5Ghz",
+    "cost": 199,
+    "items_left": 10,
+    "type": "System",
+    "image": "/static/images/Wifi5G.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Basseyn Ticket",
+    "cost": 99,
+    "items_left": 0,
+    "type": "Special",
+    "image": "/static/images/special.gif"
+  },
+  {
+    "id": 15,
+    "name": "Doubled points for Today section 3 Units ",
+    "cost": 1990,
+    "items_left": 9,
+    "type": "System",
+    "image": "/static/icons/star.png"
+  },
+  {
+    "id": 16,
+    "name": "Paid Meme Pack ",
+    "cost": 100,
+    "items_left": 10,
+    "type": "System",
+    "image": "/static/images/memes.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Power Save STRIKE ",
+    "cost": 1000,
+    "items_left": 9,
+    "type": "powers",
+    "image": "/static/icons/powers_flash.png"
+  },
+  {
+    "id": 18,
+    "name": "Power Today Reset One task",
+    "cost": 250,
+    "items_left": 20,
+    "type": "powers",
+    "image": "/static/images/today.png"
+  },
+  {
     "id": 19,
     "name": "Power Admin-Panel",
     "cost": 1190,

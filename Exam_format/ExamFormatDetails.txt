@@ -1,0 +1,20 @@
+{
+                "id": 3,
+                "text": "Read the interview about the Hollywood film Captain Phillips. Complete the questions with words/phrases from the box.",
+                "type": "box-choose",
+                "options": ["plot", "stars", "effects", "set", "performance", "character", "cast"],
+                "subquestions": [
+                    {
+                        "id": "3.1",
+                        "type": "box-choose",
+                        "text": "So, what is Captain Phillips about? What’s the ____ special of the film? Well, it tells the story of what happens when Somali pirates go on board an American ship. It’s a true story, and the idea for the film came from a book written by the real Captain Phillips.",
+                        "correct": "plot"
+                    },
+                    {
+                        "id": "3.2",
+                        "type": "box-choose",
+                        "text": "And where the film ____? It’s on a ship, of course, but we also filmed some scenes in other places to show the pirates’ lives on land.",
+                        "correct": "set"
+                    }
+                ]
+}

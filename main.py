@@ -8,6 +8,7 @@ from flask_socketio import SocketIO, emit, join_room , leave_room
 import os, re, glob
 import json
 import time
+import base64
 import requests 
 import random
 import uuid  # ?? Добавьте в начало файла
@@ -44,14 +45,6 @@ CORS(app)
 
 # Initialize messages as an empty list, not a dictionary
 messages = []  # Store messages locally
-
-API_KEY_EXPIRATION = 10
-
-exam_duration = 60 * 60  # 30 minutes in seconds
-exam_start_time = None  # Global variable to store exam start time
-exam_started = False  # Флаг начала экзамена
-exam_end_time = None
-
 
 NOTIFICATIONS_FILE = 'users_notifications.json'
 
@@ -118,72 +111,12 @@ def add_important():
 
 USER_DATA_FILE = "users.json"
 MESSAGE_DATA_FILE = "messages.json"
-exam_passed = []
 
 AVATAR_FOLDER = "static/avatars"
 USER_AVATAR_FILE = "users_avatar.json"
 
 app.config["AVATAR_FOLDER"] = AVATAR_FOLDER
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = {"png", "jpg", "jpeg", "gif"}
-
-active_keys = {}
-BASE_DIR = os.path.abspath("homework_files")
-
-@app.route('/generate-key', methods=['POST'])
-def generate_api_key():
-    # Генерация ключа без передачи user_id в payload
-    api_key = serializer.dumps({})
-    return jsonify({'api_key': api_key, 'expires_in': API_KEY_EXPIRATION})
-
-def verify_api_key(token):
-
-    try:
-        # Проверка валидности токена (не извлекаем user_id)
-        payload = serializer.loads(token, max_age=API_KEY_EXPIRATION)
-        print(f"Token Payload: {payload}")  # Логируем данные токена
-        return True  # Токен валиден
-    except SignatureExpired:
-        print("Token expired!")
-        return 'expired'
-    except BadSignature:
-        print("Invalid token!")
-        return False
-
-@app.route('/api/homework/<unit>', methods=['GET'])
-def get_homework(unit):
-    # Получаем ключ из заголовка
-    auth_header = request.headers.get('Authorization')
-    if not auth_header or not auth_header.startswith('Bearer '):
-        return jsonify({'error': 'Missing token'}), 403
-
-    token = auth_header.split(' ')[1]
-    print(f"Received Token: {token}")  # Логируем токен
-
-    # Проверка валидности токена
-    if verify_api_key(token) == 'expired':
-        return jsonify({'error': 'Token expired'}), 401
-    if not verify_api_key(token):
-        return jsonify({'error': 'Invalid token'}), 403
-
-    # Загружаем файл
-    filename = f"Unit{unit}.json"
-    filepath = os.path.join(BASE_DIR, filename)
-
-    if not os.path.isfile(filepath):
-        return jsonify({'error': 'File not found'}), 404
-
-    return send_file(filepath, mimetype='application/json')
-
-
-
-@app.route('/api/get_exam_times', methods=['GET'])
-def get_exam_times():
-    current_time = time.time()  # текущее время в секундах
-    return jsonify({
-        "current_time": current_time,
-        "exam_start_time": exam_start_time,
-        "exam_end_time": exam_end_time
-    })
         
 if not os.path.exists(AVATAR_FOLDER):
     os.makedirs(AVATAR_FOLDER)
@@ -1044,102 +977,6 @@ active_sessions = {}  # Track active sessions by username
 
 current_version = "2025-01-10-v1"
 
-exam_questions = [ 
-
-  {
-    "id": 1,
-    "text": "Section 1. Listen and choose correct answer.",
-    "type": "listening",
-    "audio_Exam": "/static/exam-files/Section1.mp3",
-    "subquestions": [
-      {
-        "id": "1.1",
-        "type": "true_false",
-        "text": "John works at Old Time Toys.",
-        "correct": "False"
-      },
-      {
-        "id": "1.2",
-        "type": "multiple_choice",
-        "text": "Marina wants ...",
-        "options": [
-          "product information, a brochure and prices.",
-          "is warm in summer",
-          "to call John again later."
-        ],
-        "correct": "product information, a brochure and prices."
-      },
-      {
-        "id": "1.3",
-        "type": "multiple_choice",
-        "text": "Marina's number is ...",
-        "options": [
-          "0208 6557621",
-          "0208 6656721",
-          "0208 5718571",
-          "200120969",
-          "992320111"
-        ],
-        "correct": "0208 6557621"
-      },
-      {
-        "id": "1.4",
-        "type": "multiple_choice",
-        "text": "Marina's email address is ...",
-        "options": [
-          "marina.silva@oldtime_toys.com",
-          "marina.silva@oldtime-toys.com"
-        ],
-        "correct": "marina.silva@oldtime-toys.com"
-      }
-    ]
-  },
-    {
-    "id": 4,
-    "text": "Section 4. Listen and decide if the statements are true or false.",
-    "type": "listening",
-    "audio_Exam": "/static/exam-files/LE_listening_A1_Meeting_a_new_team_member.mp3",
-    "subquestions": [
-      {
-        "id": "4.1",
-        "type": "true_false",
-        "text": "Peter is new in the company.",
-        "correct": "True"
-      },
-      {
-        "id": "4.2",
-        "type": "true_false",
-        "text": "Peter is a designer.",
-        "correct": "False"
-      },
-      {
-        "id": "4.3",
-        "type": "true_false",
-        "text": "Carla works in marketing.",
-        "correct": "True"
-      },
-      {
-        "id": "4.4",
-        "type": "true_false",
-        "text": "Peter plans events for new products.",
-        "correct": "True"
-      },
-      {
-        "id": "4.5",
-        "type": "true_false",
-        "text": "Carla is Brazilian.",
-        "correct": "False"
-      },
-      {
-        "id": "4.6",
-        "type": "true_false",
-        "text": "Peter started his job five years ago.",
-        "correct": "False"
-      }
-    ]
-  }
-]
-           
 # Путь к файлу с балансами
 BALANCE_FILE = 'balance.json'
 
@@ -1186,354 +1023,10 @@ def handle_unblock_user(data):
     username = data.get('username')
     # Эмиттируем событие обратно клиенту с именем пользователя
     socketio.emit('unblockUser', {'username': username})
-
-@socketio.on('unblockUserRequest')
-def handle_unblock(data):
-    print("Unblock request received.")
-    # Если нужно отправить событие всем клиентам, можно использовать аргумент room='all' 
-    # или вручную перебрать sid-ы, но в большинстве случаев достаточно обычного emit:
-    socketio.emit('unblockUser', {})  # отправляем всем подключенным клиентам
-
-
-# Получение баланса для пользователя
-@socketio.on('get_balance')
-def get_balance(username):
-    balance = load_balance()
-    if username in balance:
-        emit('balance', {'success': True, 'coins': balance[username]})
-    else:
-        emit('balance', {'success': False, 'message': 'User not found'})
-
-@socketio.on('add_coins')
-def add_coins(data):
-    username = data['username']
-    coins = data['coins']
-    balance = load_balance()
-    
-    # Если пользователя нет в файле, создаем запись с 0 монетами
-    if username not in balance:
-        balance[username] = 0
-    
-    balance[username] += coins
-    
-    save_balance(balance)  # Сохраняем обновленный баланс
-    
-    # Отправляем обновленный баланс всем клиентам
-    emit('coins_added', {'success': True, 'username': username, 'coins': balance[username]}, broadcast=True)
-    
-@app.route('/add_coins', methods=['POST'])
-def add_coins_api():
-    try:
-        data = request.get_json()
-        username = data.get("username")
-        coins = data.get("coins", 0)
-
-        if not username or not isinstance(coins, int) or coins <= 0:
-            return jsonify({"error": "Invalid data"}), 400
-
-        balance = load_balance()
-        balance[username] = balance.get(username, 0) + coins
-        save_balance(balance)
-
-        # Отправляем обновленный баланс через WebSocket
-        socketio.emit('coins_added', {'success': True, 'username': username, 'coins': balance[username]})
-
-        return jsonify({"success": True, "username": username, "coins": balance[username]})
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-    
+        
 @app.route('/ping', methods=['GET'])
 def ping():
     return '', 204  # Возвращает пустой успешный ответ
-
-@app.route('/create_exam', methods=['POST'])
-def create_exam():
-    try:
-        data = request.get_json()
-        questions = data.get('questions', [])
-
-        if not questions:
-            return jsonify({"error": "No questions provided"}), 400
-
-        # Set the exam start time and store duration
-        #exam_start_time = time.time()
-        global exam_start_time
-        #exam_start_time = None  # Track the time when exam starts, comment this line if not needed
-
-        # Store questions
-        exam_questions.clear()
-        #exam_passed.clear()
-        
-        for question in questions:
-            question_data = {
-                "id": question['id'],
-                "text": question['text'],
-                "type": question['type'],
-                "correct": question['correct']
-            }
-
-            if question['type'] == 'multiple_choice' and 'options' in question:
-                question_data["options"] = question['options']
-
-            exam_questions.append(question_data)
-
-        return jsonify({"success": True, "exam_duration": exam_duration})
-
-    except Exception as e:
-        app.logger.error(f"Error occurred in create_exam: {str(e)}")
-        return jsonify({"error": "Internal server error"}), 500
-        
-@app.route('/create_homework_exam', methods=['POST'])
-def create_homework_exam():
-    try:
-        data = request.get_json()
-        questions = data.get('questions', [])
-
-        if not questions:
-            return jsonify({"error": "No questions provided"}), 400
-
-        exam_questions.clear()
-
-        for q in questions:
-            question_data = {
-                "id": q["id"],
-                "text": q["text"],
-                "type": q["type"]
-            }
-
-            if "audio" in q:
-                question_data["audio"] = q["audio"]
-
-            if "images" in q:
-                question_data["images"] = q["images"]
-
-            # If it has subquestions, add them
-            if "subquestions" in q:
-                question_data["subquestions"] = q["subquestions"]
-            else:
-                # Otherwise, must have correct + options if applicable
-                question_data["correct"] = q["correct"]
-                if q["type"] == "multiple_choice" and "options" in q:
-                    question_data["options"] = q["options"]
-
-            exam_questions.append(question_data)
-
-        return jsonify({"success": True})
-
-    except Exception as e:
-        app.logger.error(f"Error in create_homework_exam: {e}")
-        return jsonify({"error": "Internal server error"}), 500
-
-
-@app.route('/get_homework_questions', methods=['GET'])
-def get_homework_questions():
-    username = request.args.get('username')  # you can still log or ignore this
-    if not exam_questions:
-        return jsonify({"error": "No questions available"}), 404
-
-    # Always return current questions
-    return jsonify({"questions": exam_questions})
-
-
-# Helper function to save homework submission data
-def save_homework_submission(result):
-    try:
-        # Load existing homework submissions
-        try:
-            with open('done_homework.json', 'r') as file:
-                done_homework = json.load(file)
-        except FileNotFoundError:
-            done_homework = []
-
-        # Append new result to done_homework list
-        done_homework.append(result)
-
-        # Save the updated data back to the JSON file
-        with open('done_homework.json', 'w') as file:
-            json.dump(done_homework, file, indent=4)
-
-    except Exception as e:
-        app.logger.error(f"Error saving homework submission: {e}")
-        raise  # Re-raise the exception so it can be handled later
-
-@app.route('/submit_homework', methods=['POST'])
-def submit_homework():
-    try:
-        # Получаем данные с клиента
-        data = request.get_json()
-        answers = data.get("answers")
-        username = data.get("username")
-        unit = data.get("unit")
-
-        if not answers or not username:
-            return jsonify({"error": "Missing data"}), 400
-
-        # Проверка, что вопросный банк существует
-        if not exam_questions:
-            return jsonify({"error": "No homework exam created"}), 404
-
-        # Загружаем предыдущие результаты, если они есть
-        try:
-            with open('done_homework.json', 'r') as file:
-                done_homework = json.load(file)
-        except FileNotFoundError:
-            done_homework = []
-
-        # Проверяем, сдавал ли уже пользователь экзамен для выбранного юнита
-        for record in done_homework:
-            if record["username"] == username and record["unit"] == unit:
-                return jsonify({"error": "You have already submitted homework for this unit"}), 403
-
-        correct = 0
-        incorrect = 0
-        skipped = 0
-        results = []
-
-        # Обработка вопросов и под-вопросов
-        for question in exam_questions:
-            if "subquestions" in question:
-                # Обрабатываем под-вопросы
-                for subq in question["subquestions"]:
-                    subq_id = f"q{subq['id']}"
-                    answer = answers.get(subq_id)
-
-                    if not answer or answer.strip() == "":
-                        skipped += 1
-                        results.append({
-                            "question_type": subq["type"],
-                            "question_id": subq["id"],
-                            "question": subq["text"],
-                            "user_answer": answer,
-                            "correct_answer": subq["correct"],
-                            "is_correct": False
-                        })
-                        continue
-
-                    is_correct = answer.strip().lower() == subq["correct"].strip().lower()
-                    if is_correct:
-                        correct += 1
-                    else:
-                        incorrect += 1
-
-                    results.append({
-                        "question_type": subq["type"],
-                        "question_id": subq["id"],
-                        "question": subq["text"],
-                        "user_answer": answer,
-                        "correct_answer": subq["correct"],
-                        "is_correct": is_correct
-                    })
-            else:
-                # Обработка обычных вопросов без под-вопросов
-                question_id = f"q{question['id']}"
-                answer = answers.get(question_id)
-
-                if not answer or answer.strip() == "":
-                    skipped += 1
-                    results.append({
-                        "question_type": question["type"],
-                        "question_id": question["id"],
-                        "question": question["text"],
-                        "user_answer": answer,
-                        "correct_answer": question["correct"],
-                        "is_correct": False
-                    })
-                    continue
-
-                is_correct = answer.strip().lower() == question["correct"].strip().lower()
-                if is_correct:
-                    correct += 1
-                else:
-                    incorrect += 1
-
-                results.append({
-                    "question_type": question["type"],
-                    "question_id": question["id"],
-                    "question": question["text"],
-                    "user_answer": answer,
-                    "correct_answer": question["correct"],
-                    "is_correct": is_correct
-                })
-
-        # Подсчитываем общее количество вопросов
-        total_questions = sum(
-            len(question["subquestions"]) if "subquestions" in question else 1
-            for question in exam_questions
-        )
-        correct_percentage = (correct / total_questions) * 100 if total_questions > 0 else 0
-        coins = 15 if correct_percentage >= 80 else 0
-
-        # Сохраняем результаты
-        time_finished = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-        done_homework.append({
-            "username": username,
-            "unit": unit,
-            "correct": correct,
-            "incorrect": incorrect,
-            "skipped": skipped,
-            "total_questions": total_questions,
-            "correct_percentage": correct_percentage,
-            "coins": coins,
-            "time_finished": time_finished,
-            "results": results
-        })
-
-        # Сохраняем обновленные данные
-        with open('done_homework.json', 'w') as file:
-            json.dump(done_homework, file, indent=4)
-
-        return jsonify({
-            "correct": correct,
-            "incorrect": incorrect,
-            "skipped": skipped,
-            "total_questions": total_questions,
-            "correct_percentage": correct_percentage,
-            "coins": coins,
-            "time_finished": time_finished
-        })
-
-    except Exception as e:
-        app.logger.error(f"Error in submit_homework: {str(e)}")
-        return jsonify({"error": "Internal server error"}), 500
-
-@app.route('/check_homework_status')
-def check_homework_status():
-    username = request.args.get('username')
-    unit = request.args.get('unit')
-
-    if not username or not unit:
-        return jsonify({"error": "Missing 'username' or 'unit' parameter"}), 400
-
-    try:
-        unit = int(unit)
-    except ValueError:
-        return jsonify({"error": "'unit' must be a number"}), 400
-
-    file_path = 'done_homework.json'
-    if not os.path.exists(file_path):
-        return jsonify({"error": "Data file not found"}), 500
-
-    with open(file_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-
-    # Ищем по имени пользователя и юниту
-    for entry in data:
-        if entry.get('username') == username and entry.get('unit') == unit:
-            return jsonify({"isCompleted": True})
-
-    return jsonify({"isCompleted": False})
-
-@socketio.on('exam_started')
-def handle_exam_started():
-    global exam_started
-    exam_started = True
-    emit('exam_started', {'message': 'Exam has started'}) 
-    
-@socketio.on('new_notification')
-def handle_new_notification():
-    emit('exam_started', {'message': 'New Notification'}) 
 
 UPLOAD_FOLDER_SECTION = 'data/upload-section'
 ALLOWED_EXTENSIONS_SECTION = {'zip', 'jpg', 'jpeg', 'png', 'gif', 'mp4', 'mov', 'avi'}
@@ -1569,274 +1062,6 @@ def upload_section():
     else:
         return jsonify({"error": "File type not allowed"}), 400
 
-
-
-@app.route('/api/start-exam', methods=['POST'])
-def start_exam():
-    global exam_start_time, exam_end_time, exam_passed
-
-    # Время начала экзамена
-    exam_start_time = time.time()
-
-    # Рассчитываем время окончания экзамена + 10 секунд
-    exam_end_time = exam_start_time + exam_duration + 3
-
-    # Очищаем список пользователей, которые прошли экзамен
-    exam_passed.clear()
-
-    # Очищаем файл с результатами экзамена
-    try:
-        with open('exam_results.json', 'w') as f:
-            json.dump({}, f)  # или [] в зависимости от структуры файла
-    except Exception as e:
-        return jsonify({"error": f"Failed to clear exam_results.json: {str(e)}"}), 500
-
-    # Отправляем сообщение о старте экзамена
-    socketio.emit('exam_started', {'message': 'Exam has started'})
-
-    return jsonify({"message": "Exam has started and the passed list is cleared."}), 200
-
-    
-@socketio.on('exam_ended')
-def handle_exam_ended():
-    global exam_started
-    exam_started = False
-    emit('exam_ended', {'message': 'Exam has ended, settings have been reset.'})
-
-@app.route('/api/end-exam', methods=['POST'])
-def end_exam():
-    global exam_start_time, exam_end_time, exam_started, exam_passed
-
-    # Сброс переменных экзамена к заводским настройкам
-    exam_start_time = None
-    exam_end_time = None
-    exam_started = False
-
-    # Очищаем список пользователей, которые прошли экзамен
-    exam_passed.clear()
-
-    # Отправляем сообщение о завершении экзамена
-    socketio.emit('exam_ended', {'message': 'Exam has ended and settings have been reset to factory defaults.'})
-
-    return jsonify({"message": "Exam ended and settings reset."}), 200
-
-@app.route('/get_remaining_time', methods=['GET'])
-def get_remaining_time():
-    if exam_start_time is None:
-        return jsonify({"error": "Exam has not been started yet."}), 400
-
-    # Calculate how much time has passed
-    time_elapsed = time.time() - exam_start_time
-    remaining_time = max(0, exam_duration - time_elapsed)  # Ensure no negative time
-
-    return jsonify({"remaining_time": remaining_time})
-
-
-def calculate_score(user_answers):
-    correct_count = 0
-    for question_id, user_answer in user_answers.items():
-        # Поиск вопроса по ID
-        question = next((q for q in exam_questions if q["id"] == question_id), None)
-        
-        # Если вопрос найден и ответ совпадает
-        if question and user_answer == question["correct"]:
-            correct_count += 1
-
-    return (correct_count / len(exam_questions)) * 100 if exam_questions else 0
-
-
-@app.route('/get_exam_questions_result', methods=['GET'])
-def get_exam_questions_result():
-
-    return jsonify({"questions": exam_questions})
-
-@app.route('/get_exam_questions', methods=['GET'])
-def get_exam_questions():
-    time.sleep(1)
-
-    username = request.args.get("username")  # Получаем имя пользователя из запроса
-
-    if username in exam_passed:
-        return jsonify({"error": "You have already passed the exam."}), 403  # Ошибка для уже прошедших
-
-    if not exam_questions:
-        return jsonify({"error": "No upcoming exams."}), 404
-
-    if exam_start_time is None:
-        return jsonify({"error": "Exam has not started yet."}), 403  # Ошибка, если экзамен ещё не начался
-
-    current_time = time.time()
-    exam_end_time = exam_start_time + exam_duration
-
-    if current_time > exam_end_time:
-        return jsonify({"error": "Exam time has expired."}), 403  # Ошибка, если время истекло
-
-    return jsonify({"questions": exam_questions})
-
-@app.route('/api/get_exam_results', methods=['GET'])
-def get_exam_results():
-    try:
-        time.sleep(2)
-        # Проверяем, существует ли файл с результатами
-        if not os.path.exists('exam_results.json'):
-            return jsonify({"error": "No exam results found"}), 404
-
-        # Открываем и читаем файл с результатами
-        with open('exam_results.json', 'r') as f:
-            exam_results = json.load(f)
-
-        # Возвращаем все данные в формате JSON
-        return jsonify(exam_results)
-
-    except Exception as e:
-        app.logger.error(f"Error in get_exam_results: {str(e)}")
-        return jsonify({"error": "Internal server error"}), 500
-
-@app.route('/submit_exam', methods=['POST'])
-def submit_exam():
-    try:
-        # Проверка на истечение времени экзамена
-        current_time = time.time()  # Получаем текущее время
-        if current_time > exam_end_time:
-            return jsonify({"error": "Exam time has expired."}), 403  # Ошибка, если время истекло
-
-        data = request.get_json(silent=True)
-        answers = data.get("answers")
-        username = data.get("username")
-
-        if not username:
-            return jsonify({"error": "Missing data"}), 400
-
-        if username in exam_passed:
-            return jsonify({"error": "You have already passed the exam."}), 403
-
-        correct = 0
-        incorrect = 0
-        skipped = 0
-        results = []
-
-        # Обработка вопросов и под-вопросов
-        for question in exam_questions:
-            if "subquestions" in question:
-                # Обрабатываем только под-вопросы, основной текст не считается
-                for subq in question["subquestions"]:
-                    subq_id = f"q{subq['id']}"
-                    answer = answers.get(subq_id)
-                    if not answer or answer.strip() == "":
-                        skipped += 1
-                        results.append({
-                            "question_type": subq["type"],
-                            "question_id": subq["id"],
-                            "question": subq["text"],
-                            "user_answer": answer,
-                            "correct_answer": subq["correct"],
-                            "is_correct": False
-                        })
-                        continue
-
-                    is_correct = answer.strip().lower() == subq["correct"].strip().lower()
-                    if is_correct:
-                        correct += 1
-                    else:
-                        incorrect += 1
-
-                    results.append({
-                        "question_type": subq["type"],
-                        "question_id": subq["id"],
-                        "question": subq["text"],
-                        "user_answer": answer,
-                        "correct_answer": subq["correct"],
-                        "is_correct": is_correct
-                    })
-            else:
-                # Обработка обычных вопросов (без под-вопросов)
-                if 'id' not in question:
-                    app.logger.error(f"Missing 'id' in question: {question}")
-                    continue
-
-                question_id = f"q{question['id']}"
-                answer = answers.get(question_id)
-
-                if not answer or answer.strip() == "":
-                    skipped += 1
-                    results.append({
-                        "question_type": question["type"],
-                        "question_id": question["id"],
-                        "question": question["text"],
-                        "user_answer": answer,
-                        "correct_answer": question["correct"],
-                        "is_correct": False
-                    })
-                    continue
-
-                is_correct = answer.strip().lower() == question["correct"].strip().lower()
-                if is_correct:
-                    correct += 1
-                else:
-                    incorrect += 1
-
-                results.append({
-                    "question_type": question["type"],
-                    "question_id": question["id"],
-                    "question": question["text"],
-                    "user_answer": answer,
-                    "correct_answer": question["correct"],
-                    "is_correct": is_correct
-                })
-
-        # Подсчитываем общее количество вопросов:
-        # Если у вопроса есть под-вопросы, считаем только их, иначе считаем сам вопрос.
-        total_questions = sum(
-            len(question["subquestions"]) if "subquestions" in question else 1
-            for question in exam_questions
-        )
-        correct_percentage = (correct / total_questions) * 100 if total_questions > 0 else 0
-        coins = 15 if correct_percentage >= 80 else 0 
-
-        exam_passed.append(username)
-        time_finished = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-        # Сохраняем результаты в файл
-        exam_results = {}
-        if os.path.exists('exam_results.json'):
-            with open('exam_results.json', 'r') as f:
-                exam_results = json.load(f)
-
-        exam_results[username] = {
-            "correct": correct,
-            "incorrect": incorrect,
-            "skipped": skipped,
-            "total_questions": total_questions,
-            "correct_percentage": correct_percentage,
-            "rewarded": coins > 0,
-            "coins": coins,
-            "time_finished": time_finished,
-            "results": results
-        }
-
-        with open('exam_results.json', 'w') as f:
-            json.dump(exam_results, f, indent=4)
-
-        return jsonify({
-            "correct": correct,
-            "incorrect": incorrect,
-            "skipped": skipped,
-            "total_questions": total_questions,
-            "correct_percentage": correct_percentage,
-            "rewarded": coins > 0,
-            "time_finished": time_finished,
-            "coins": coins
-        })
-
-    except Exception as e:
-        app.logger.error(f"Error in submit_exam: {str(e)}")
-        return jsonify({"error": "Internal server error"}), 500
-
-@socketio.on('submitted_exam')
-def handle_submitted_exam():
-    emit('update-results', broadcast=True)  # broadcast=True => всем
-
-
 @app.route("/app")
 def app_remake():
     username = session.get('username')
@@ -1844,6 +1069,110 @@ def app_remake():
         return redirect('/login')
     return render_template("app.html")
     
+@app.route("/exam")
+def exam_remake():
+    return render_template("exam.html")
+    
+candidates_data_file = os.path.join("data", "candidates", "candidates.json")
+
+with open(candidates_data_file, "r", encoding="utf-8") as f:
+    candidates = json.load(f)
+
+candidates_dict = {str(c["id"]).lower(): c for c in candidates}    
+   
+@app.route("/api/candidate/id")
+def get_candidate():
+    time.sleep(1)
+    candidate_id = request.args.get("id")
+    if not candidate_id:
+        return jsonify({"error": "Missing candidate id"}), 400
+
+    candidate = candidates_dict.get(candidate_id.lower())
+    if not candidate:
+        return jsonify({"error": "Candidate not found"}), 404
+
+    return jsonify({
+        "id": candidate["id"],
+        "dob": candidate["dob"],
+        "name": candidate["name"]
+    })    
+    
+exam_sessions = []
+
+
+@app.route('/api/start-exam/<exam_type>/<start_time>/<end_time>', methods=['GET'])
+def start_exam(exam_type, start_time, end_time):
+    try:
+        exam_start = datetime.fromisoformat(start_time)
+        exam_end = datetime.fromisoformat(end_time)
+    except ValueError:
+        return jsonify({"error": "Invalid time format. Use ISO format: YYYY-MM-DDTHH:MM:SS"}), 400
+
+    if exam_end <= exam_start:
+        return jsonify({"error": "end_time must be after start_time"}), 400
+
+    session = {
+        "exam_type": exam_type,
+        "start_time": exam_start.isoformat(),
+        "end_time": exam_end.isoformat(),
+        "status": "started"   # сразу started
+    }
+
+    exam_sessions.append(session)
+
+    return jsonify({
+        "message": f"{exam_type.capitalize()} exam started",
+        "data": session
+    }), 200
+
+
+@app.route('/api/exam-sessions', methods=['GET'])
+def get_exam_sessions():
+    now = datetime.now()
+
+    # обновляем статусы
+    for session in exam_sessions:
+        end_time = datetime.fromisoformat(session["end_time"])
+        if session["status"] == "started" and now > end_time:
+            session["status"] = "finished"
+
+    return jsonify({"sessions": exam_sessions})
+    
+BASE_EXAM_PATH = "data/exam-files"  # папка с экзамен файлами
+
+
+@app.route("/api/get-exam-files/<exam_type>", methods=["GET"])
+def get_exam_files(exam_type):
+    exam_dir = os.path.join(BASE_EXAM_PATH, exam_type)
+
+    if not os.path.exists(exam_dir):
+        return jsonify({"error": f"No exam files found for type: {exam_type}"}), 404
+
+    # собираем все file.json
+    candidates = []
+    for root, _, files in os.walk(exam_dir):
+        for f in files:
+            if f.endswith(".json"):
+                candidates.append(os.path.join(root, f))
+
+    if not candidates:
+        return jsonify({"error": "No exam JSON files available"}), 404
+
+    # выбираем рандомно один
+    chosen_file = random.choice(candidates)
+
+    try:
+        with open(chosen_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        return jsonify({"error": f"Failed to read JSON file: {str(e)}"}), 500
+
+    return jsonify({"exam_type": exam_type, "file": os.path.basename(chosen_file), "data": data})    
+    
+@app.route("/api/server-time", methods=["GET"])
+def server_time():
+    return jsonify({"now": datetime.now().isoformat()})    
+ 
 @app.route("/chatCRM")
 def crm():
     return render_template("chatCRM.html")
@@ -2325,8 +1654,7 @@ def upload_face_id():
     Принимает multipart/form-data:
     - file field: 'photo'
     - form field: 'sessionId'
-    Сохраняет фото только если найдено лицо.
-    Блокировка: одновременно может выполняться только 1 Face ID проверка на сервер.
+    Сохраняет фото (без проверки DeepFace).
     """
     username = session.get('username')
     if not username:
@@ -2348,133 +1676,90 @@ def upload_face_id():
     if filename == '':
         return jsonify({'error': 'Empty filename'}), 400
 
+    # Проверка расширения
     ext = filename.rsplit('.', 1)[-1].lower() if '.' in filename else ''
     if ext not in ALLOWED_EXT:
         return jsonify({'error': f'File extension not allowed. Allowed: {ALLOWED_EXT}'}), 400
 
+    # Проверка формата имени файла (YYYYMMDD_HHMMSS.ext)
     m = re.match(r'^(\d{8})_(\d{6})\.(jpe?g|png)$', filename, re.IGNORECASE)
     if not m:
         return jsonify({'error': 'Filename must be in format YYYYMMDD_HHMMSS.jpg'}), 400
 
+    # Валидация корректности даты/времени в названии (оставляем, но без сравнения с серверной датой)
     try:
         photo_dt = datetime.strptime(m.group(1) + m.group(2), '%Y%m%d%H%M%S')
     except ValueError:
         return jsonify({'error': 'Invalid date/time in filename'}), 400
 
-    # сравниваем по дате UTC (как в вашем оригинальном коде)
-    if photo_dt.date() != datetime.utcnow().date():
-        return jsonify({'error': 'Photo date does not match server date'}), 400
+    # NOTE: removed server-date comparison per request
+    # if photo_dt.date() != datetime.utcnow().date():
+    #     return jsonify({'error': 'Photo date does not match server date'}), 400
 
-    # Проверка — уже есть ли фото для этой сессии
+    # Проверка, что фото для этой сессии ещё не загружено
     user_dir = os.path.join('data', 'face-ID', 'files', username)
     os.makedirs(user_dir, exist_ok=True)
     if glob.glob(os.path.join(user_dir, f"{session_id}.*")):
         return jsonify({'error': 'A photo for this session already exists'}), 409
 
-    # Попытка получить глобальную блокировку — если не смогли, возвращаем 429 (busy)
-    with FileLock() as lock:
-        if not lock.acquired:
-            logger.info(f"Face ID busy: user={username}, session_id={session_id}")
-            return jsonify({'error': 'Another Face ID check is in progress'}), 429
+    final_path = os.path.join(user_dir, f"{session_id}.{ext}")
+    try:
+        file.save(final_path)
+    except Exception as e:
+        return jsonify({'error': f'Failed to save uploaded file: {e}'}), 500
 
-        # Внутри блока — безопасно выполнять детекцию (только один процесс/поток здесь)
-        temp_path = os.path.join(user_dir, f"temp_{session_id}.{ext}")
-        try:
-            file.save(temp_path)
-        except Exception as e:
-            logger.exception("Failed to save uploaded file to temp path")
-            return jsonify({'error': 'Failed to save uploaded file'}), 500
+    return jsonify({
+        'success': True,
+        'message': 'Face ID photo saved',
+        'path': final_path
+    }), 200
 
-        # --- Детекция лица ---
-        face_count = 0
-        bboxes = []
-        used_detector = None
 
-        # 1) DeepFace detectFace
-        try:
-            from deepface import DeepFace
-            try:
-                face_img = DeepFace.detectFace(img_path=temp_path, detector_backend='retinaface', enforce_detection=True)
-                if face_img is not None:
-                    face_count = 1
-                    used_detector = 'deepface.detectFace(retinaface)'
-                    bboxes.append({'x': 0, 'y': 0, 'w': int(face_img.shape[1]), 'h': int(face_img.shape[0])})
-                    logger.info(f"Face detected via {used_detector}")
-            except Exception as e:
-                logger.warning(f"DeepFace.detectFace failed: {e}")
-        except Exception as e:
-            logger.warning(f"DeepFace import failed: {e}")
+FACEID_FILES = os.path.join(os.getcwd(), "data", "faceID")
+os.makedirs(FACEID_FILES, exist_ok=True)
 
-        # 2) fallback RetinaFace
-        if face_count == 0:
-            try:
-                from retinaface import RetinaFace
-                rf_res = RetinaFace.detect_faces(temp_path)
-                if isinstance(rf_res, dict) and len(rf_res) > 0:
-                    used_detector = 'retinaface.pkg'
-                    for k, info in rf_res.items():
-                        if 'facial_area' in info:
-                            x, y, w, h = info['facial_area']
-                            bboxes.append({'x': int(x), 'y': int(y), 'w': int(w), 'h': int(h)})
-                    face_count = len(bboxes)
-                    logger.info(f"Face detected via {used_detector}: {face_count} face(s)")
-            except Exception as e:
-                logger.warning(f"RetinaFace.detect_faces failed: {e}")
 
-        # 3) fallback MTCNN
-        if face_count == 0:
-            try:
-                import cv2
-                from mtcnn import MTCNN
-                img_bgr = cv2.imread(temp_path)
-                if img_bgr is not None:
-                    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
-                    detector = MTCNN()
-                    mt_res = detector.detect_faces(img_rgb)
-                    if isinstance(mt_res, list) and len(mt_res) > 0:
-                        used_detector = 'mtcnn'
-                        for r in mt_res:
-                            box = r.get('box')
-                            if box and len(box) == 4:
-                                x, y, w, h = box
-                                bboxes.append({'x': int(x), 'y': int(y), 'w': int(w), 'h': int(h)})
-                        face_count = len(bboxes)
-                        logger.info(f"Face detected via {used_detector}: {face_count} face(s)")
-            except Exception as e:
-                logger.warning(f"MTCNN detection failed: {e}")
+# ================== РЕГИСТРАЦИЯ ФОТО ==================
+@app.route("/api/face-id/register/<username>", methods=["POST"])
+def register_face(username):
+    try:
+        if "file" not in request.files:
+            return jsonify({"error": "No file uploaded"}), 400
 
-        # Если лицо не найдено — удаляем temp и возвращаем ошибку
-        if face_count == 0:
-            try:
-                os.remove(temp_path)
-            except Exception:
-                pass
-            return jsonify({'error': 'No face detected in photo', 'detector': used_detector}), 400
+        file = request.files["file"]
+        if file.filename == "":
+            return jsonify({"error": "Empty filename"}), 400
 
-        # --- Сохраняем окончательно ---
-        final_path = os.path.join(user_dir, f"{session_id}.{ext}")
-        try:
-            # безопасная замена (atomic on many FS)
-            os.replace(temp_path, final_path)
-        except Exception:
-            try:
-                os.rename(temp_path, final_path)
-            except Exception:
-                try:
-                    os.remove(temp_path)
-                except Exception:
-                    pass
-                return jsonify({'error': 'Failed to save file on server'}), 500
+        # Директория пользователя
+        user_dir = os.path.join(FACEID_FILES, username)
+        os.makedirs(user_dir, exist_ok=True)
 
-        # Возвращаем успешный ответ (блокировка автоматически освободится при выходе из with)
-        return jsonify({
-            'success': True,
-            'message': 'Face ID photo saved',
-            'faces': face_count,
-            'bboxes': bboxes,
-            'detector': used_detector
-        }), 200
+        save_path = os.path.join(user_dir, "photo.jpg")
+        file.save(save_path)
 
+        return jsonify({"status": "success", "path": save_path})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+# ================== ВЫДАЧА ФОТО ДЛЯ MATCHING ==================
+@app.route("/api/face-id/registered/<username>", methods=["GET"])
+def get_registered_face(username):
+    try:
+        user_dir = os.path.join(FACEID_FILES, username)
+        photo_path = os.path.join(user_dir, "photo.jpg")
+
+        if not os.path.exists(photo_path):
+            return jsonify({"error": "No registered photo"}), 404
+
+        # Читаем и кодируем в base64
+        with open(photo_path, "rb") as f:
+            img_bytes = f.read()
+            img_b64 = "data:image/jpeg;base64," + base64.b64encode(img_bytes).decode("utf-8")
+
+        return jsonify({"image": img_b64})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 @app.route('/api/sessions/face-id/photo')
 def get_face_id_photo():

@@ -291,8 +291,59 @@ function initLoginIfReady() {
   }
 
 // Основная логика submit
+
+// Проверяем наличие формы логина
+
+if (!loginForm) {
+  console.warn('loginForm not found — убедитесь, что на странице есть форма логина.');
+}
+
+// Простые fallback-helpers если не определены в проекте
+if (typeof window.showToastNotification !== 'function') {
+  window.showToastNotification = function (msg, type = 'info', timeout = 3000) {
+    console[type === 'error' ? 'error' : 'log']('[Toast]', msg);
+    const t = document.createElement('div');
+    t.className = `fi-toast ${type}`;
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.classList.add('visible'), 50);
+    setTimeout(() => t.classList.remove('visible'), timeout);
+    setTimeout(() => t.remove(), timeout + 400);
+  };
+}
+if (typeof window.showButtonLoading !== 'function') {
+  window.showButtonLoading = function () {
+    const btn = loginForm ? loginForm.querySelector('button[type="submit"]') : null;
+    if (btn) {
+      btn.disabled = true;
+      btn.dataset.origText = btn.innerHTML;
+      btn.innerHTML = `<span class="fi-spinner"></span> Loading...`;
+    }
+  };
+}
+if (typeof window.hideButtonLoading !== 'function') {
+  window.hideButtonLoading = function () {
+    const btn = loginForm ? loginForm.querySelector('button[type="submit"]') : null;
+    if (btn) {
+      btn.disabled = false;
+      if (btn.dataset.origText) btn.innerHTML = btn.dataset.origText;
+    }
+  };
+}
+if (typeof window.showOtpUI !== 'function') {
+  window.showOtpUI = function (maskedEmail) {
+    window.showToastNotification('OTP sent to ' + (maskedEmail || 'your email'), 'info');
+  };
+}
+if (typeof window.showBanNoticePage !== 'function') {
+  window.showBanNoticePage = function (banData) {
+    window.showToastNotification('Account banned: ' + JSON.stringify(banData), 'error', 6000);
+  };
+}
+
+// ---------- Основная логика submit (обновленная версия) ----------
 async function handleSubmit(e) {
-  e.preventDefault();
+  if (e && typeof e.preventDefault === 'function') e.preventDefault();
   showButtonLoading();
 
   const usernameInput = loginForm.querySelector("input[name='username']") || loginForm.querySelector("#username");
@@ -300,7 +351,7 @@ async function handleSubmit(e) {
   const username = usernameInput ? (usernameInput.value || "").trim() : "";
   const password = passwordInput ? (passwordInput.value || "").trim() : "";
 
-  tempUsernameUntilLog = username;
+  window.tempUsernameUntilLog = username;
 
   if (!username || !password) {
     hideButtonLoading();
@@ -325,14 +376,31 @@ async function handleSubmit(e) {
       data = {};
     }
 
-    // Не прячет loading здесь — мы держим его включённым пока не решим исход:
     if (response.ok && data.success) {
+      try {
+        const faceIdResponse = await fetch(`/api/face-id/registered/${username}`, {
+          method: "GET"
+        });
+
+        if (faceIdResponse.ok) {
+          // FaceID уже зарегистрирован
+        } else {
+          hideButtonLoading();
+          showFaceIDRequiredModal(username, password);
+          return;
+        }
+      } catch (faceIdErr) {
+        hideButtonLoading();
+        console.error("FaceID check error:", faceIdErr);
+        showToastNotification("Failed to check FaceID status. Please try again.", "error");
+        return;
+      }
+
       const otpKey = `otpVerifiedUntil_${username}`;
       const otpUntil = parseInt(localStorage.getItem(otpKey) || "0", 10);
       const alreadyVerified = otpUntil > Date.now();
 
       if (alreadyVerified) {
-        // Пользователь уже верифицирован — можно завершить загрузку и перейти в приложение
         let storedAccounts = JSON.parse(localStorage.getItem("savedAccounts") || "[]");
         const exists = storedAccounts.find(acc =>
           acc.username === username &&
@@ -354,7 +422,6 @@ async function handleSubmit(e) {
         return;
       }
 
-      // Нужно 2FA — отправляем запрос на отправку письма и держим loading до результата
       try {
         const otpRes = await fetch("/send-2fa-email", {
           method: "POST",
@@ -370,7 +437,6 @@ async function handleSubmit(e) {
         }
 
         if (otpRes.ok) {
-          // OTP успешно отправлен — можно убрать индикатор загрузки и показать UI для ввода OTP
           hideButtonLoading();
           if (typeof showOtpUI === "function") {
             showOtpUI(otpData.masked_email);
@@ -378,7 +444,6 @@ async function handleSubmit(e) {
             showToastNotification("OTP sent: " + (otpData.masked_email || ""), "info");
           }
         } else {
-          // Ошибка при отправке OTP — скрываем загрузку и показываем ошибку
           hideButtonLoading();
           showToastNotification(otpData.error || "Failed to send OTP", "error");
         }
@@ -388,7 +453,6 @@ async function handleSubmit(e) {
         showToastNotification("Failed to send OTP. Please check your connection.", "error");
       }
     } else if (data.ban_notice) {
-      // Use the ban_notice directly from JSON
       hideButtonLoading();
       const banData = data.ban_notice;
       showBanNoticePage(banData);
@@ -406,12 +470,448 @@ async function handleSubmit(e) {
   }
 }
 
+// Функция для показа модального окна FaceID_Required
+function showFaceIDRequiredModal(username, password) {
+  if (document.querySelector('.faceid-required-modal')) return;
 
-  // Привязываем обработчик submit
-  loginForm.removeEventListener("submit", handleSubmit);
-  loginForm.addEventListener("submit", handleSubmit);
+  const modal = document.createElement('div');
+  modal.className = 'faceid-required-modal';
 
-  return true;
+  modal.innerHTML = `
+    <div class="fi-card" role="dialog" aria-modal="true" aria-label="Face ID Registration Required">
+      <div class="fi-icon-wrap">
+        <div class="fi-icon-square">
+          <img src="/static/icons/FaceID.svg" alt="Face ID Icon" class="fi-face-icon">
+        </div>
+      </div>
+
+      <h2 class="fi-title">Face ID</h2>
+      <p class="fi-desc">Use Face ID to sign in to your account securely. This photo will be used only for authentication.</p>
+
+      <div class="fi-actions">
+        <button class="fi-btn fi-btn-secondary" id="fi-cancel-btn">Not now</button>
+        <button class="fi-btn fi-btn-primary" id="fi-continue-btn">Use Face ID</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  const cancelBtn = modal.querySelector('#fi-cancel-btn');
+  const continueBtn = modal.querySelector('#fi-continue-btn');
+
+  cancelBtn.addEventListener('click', () => {
+    modal.remove();
+  });
+
+  continueBtn.addEventListener('click', () => {
+    modal.remove();
+    openCameraUIForRegistration(username, async () => {
+      await new Promise(r => setTimeout(r, 200));
+      handleSubmit({ preventDefault: () => {} });
+    });
+  });
+}
+
+// Модифицированная версия openCameraUI для регистрации
+function openCameraUIForRegistration(username, onSuccess) {
+  if (document.querySelector('.faceid-camera-modal')) return;
+
+  const camModal = document.createElement('div');
+  camModal.className = 'faceid-camera-modal';
+
+  camModal.innerHTML = `
+    <div class="fi-camera-card">
+      <button class="fi-camera-close" aria-label="Close camera"><i class="fa fa-times"></i></button>
+      <div class="fi-camera-top">
+        <div class="fi-processing-title">Processing</div>
+        <div class="fi-processing-sub">Look directly at the camera to verify your identity</div>
+      </div>
+
+      <div class="fi-scanner-area">
+        <div id="lottie-loading" style="width: 200px; height: 200px;"></div>
+        <div class="spinner" style="display: none;">
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+          <div class="spinner-blade"></div>
+        </div>
+        <video class="fi-camera-video" autoplay playsinline muted style="display: none;"></video>
+        <canvas class="fi-detect-canvas" style="display:none"></canvas>
+      </div>
+
+      <div class="fi-scanner-info">
+        <div class="fi-status-text">Initializing camera...</div>
+        <div class="fi-progress-wrap"><div class="fi-progress-bar"><div class="fi-progress-fill" style="width:0%"></div></div></div>
+        <div class="fi-hint">Hold still and then smile when prompted</div>
+      </div>
+
+    </div>
+  `;
+
+  document.body.appendChild(camModal);
+
+  const video = camModal.querySelector('video.fi-camera-video');
+  const statusTextEl = camModal.querySelector('.fi-status-text');
+  const detectCanvas = camModal.querySelector('.fi-detect-canvas');
+  const progressFill = camModal.querySelector('.fi-progress-fill');
+  const closeBtn = camModal.querySelector('.fi-camera-close');
+  const lottieContainer = camModal.querySelector('#lottie-loading');
+  const spinner = camModal.querySelector('.spinner');
+
+  const ctx = detectCanvas.getContext ? detectCanvas.getContext('2d') : null;
+
+  let cameraStream = null;
+  let rafId = null;
+  let stopped = false;
+  let observer = null;
+  let lottieAnimation = null;
+
+  const REQUIRED_STABLE_FRAMES = 5;
+  const REQUIRED_SCORE = 0.85;
+  const MIN_BOX_REL = 0.12;
+  const REQUIRED_SMILE_FRAMES = 3;
+  const SMILE_THRESHOLD = 0.7;
+  const SMILE_FAIL_TOLERANCE = 8;
+
+  let stableCount = 0;
+  let smileMode = false;
+  let smileCount = 0;
+  let consecutiveSmileFails = 0;
+
+  // Load Lottie script if not present
+  if (!window.lottie) {
+    const lottieScript = document.createElement('script');
+    lottieScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js';
+    lottieScript.onload = () => initLottie();
+    document.head.appendChild(lottieScript);
+  } else {
+    initLottie();
+  }
+
+  function initLottie() {
+    // Assume a loading animation JSON, replace with actual path
+    lottieAnimation = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: '/static/animations/faceID.json' // Replace with actual Lottie JSON path
+    });
+  }
+
+  async function initDetectorAndStartLoop() {
+    try {
+      if (!window.faceapi) {
+        statusTextEl.textContent = 'Loading FaceAPI...';
+        await loadFaceApiScript();
+      }
+      statusTextEl.textContent = 'Loading models...';
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('/static/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/static/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('/static/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('/static/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('/static/models')
+      ]);
+      statusTextEl.textContent = 'Models loaded — starting camera...';
+
+      // Hide Lottie after models loaded
+      if (lottieAnimation) lottieAnimation.destroy();
+      lottieContainer.style.display = 'none';
+
+      // Show spinner for camera start
+      spinner.style.display = 'block';
+
+      await startCamera();
+      spinner.style.display = 'none';
+      video.style.display = 'block';
+
+      statusTextEl.textContent = 'Detecting face...';
+      startDetectionLoop();
+    } catch (err) {
+      console.error('Model loading error:', err);
+      statusTextEl.textContent = 'Failed to load models';
+      showToastNotification('Face detection models failed to load.', 'error');
+      if (lottieAnimation) lottieAnimation.destroy();
+      spinner.style.display = 'none';
+    }
+  }
+
+  async function startCamera(constraints = { video: { width: 640, height: 480 }, audio: false }) {
+    try {
+      if (cameraStream) return;
+      cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = cameraStream;
+      await video.play();
+    } catch (err) {
+      console.error('Camera access failed', err);
+      statusTextEl.textContent = 'Failed to access camera';
+      showToastNotification('Camera access failed. Please allow camera permission.', 'error', 5000);
+      spinner.style.display = 'none';
+    }
+  }
+
+  function loadFaceApiScript() {
+    return new Promise((resolve, reject) => {
+      if (window.faceapi) return resolve();
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/@vladmandic/face-api@latest/dist/face-api.js';
+      script.onload = () => resolve();
+      script.onerror = () => reject(new Error('Failed to load face-api script'));
+      document.head.appendChild(script);
+    });
+  }
+
+  function updateCanvasSize() {
+    detectCanvas.width = video.videoWidth || 640;
+    detectCanvas.height = video.videoHeight || 480;
+  }
+
+  function setProgress(percent) {
+    if (progressFill) progressFill.style.width = Math.min(100, Math.max(0, percent)) + '%';
+  }
+
+  function startDetectionLoop() {
+    updateCanvasSize();
+
+    async function frame() {
+      if (stopped) return;
+      if (video.readyState < 2) {
+        rafId = requestAnimationFrame(frame);
+        return;
+      }
+      updateCanvasSize();
+      if (ctx) ctx.drawImage(video, 0, 0, detectCanvas.width, detectCanvas.height);
+
+      try {
+        const options = new faceapi.SsdMobilenetv1Options({ minConfidence: REQUIRED_SCORE });
+        let detection;
+        if (smileMode) {
+          detection = await faceapi.detectSingleFace(detectCanvas, options).withFaceLandmarks().withFaceExpressions();
+        } else {
+          detection = await faceapi.detectSingleFace(detectCanvas, options).withFaceLandmarks();
+        }
+
+        if (detection && detection.detection) {
+          const score = detection.detection.score || 0;
+          const box = detection.detection.box;
+          const relW = box.width / detectCanvas.width;
+
+          if (relW < MIN_BOX_REL) {
+            if (smileMode) {
+              consecutiveSmileFails++;
+              statusTextEl.textContent = 'Face too small — move closer';
+              if (consecutiveSmileFails >= SMILE_FAIL_TOLERANCE) {
+                smileMode = false; consecutiveSmileFails = 0;
+              }
+            } else {
+              stableCount = 0;
+              statusTextEl.textContent = 'Face too small — move closer';
+            }
+            setProgress(10);
+            rafId = requestAnimationFrame(frame);
+            return;
+          }
+
+          consecutiveSmileFails = 0;
+
+          if (smileMode) {
+            const expressions = detection.expressions || {};
+            const happyScore = expressions.happy || 0;
+            if (happyScore >= SMILE_THRESHOLD) {
+              smileCount++;
+              statusTextEl.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+              setProgress(50 + (smileCount / REQUIRED_SMILE_FRAMES) * 40);
+              if (smileCount >= REQUIRED_SMILE_FRAMES) {
+                detectCanvas.toBlob(async blob => {
+                  const now = new Date();
+                  const pad = n => n.toString().padStart(2, '0');
+                  const filename = `${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.jpg`;
+                  const file = new File([blob], filename, { type: 'image/jpeg' });
+
+                  statusTextEl.textContent = 'Face processing...';
+                  setProgress(95);
+
+                  const registerSuccess = await registerFaceFile(file, username);
+                  if (!registerSuccess) {
+                    showToastNotification('Face registration failed. Please try again.', 'error', 7000);
+                    cleanupAll();
+                    return;
+                  }
+
+                  statusTextEl.textContent = 'Face processing successful';
+                  setProgress(100);
+                  await new Promise(r => setTimeout(r, 800));
+                  cleanupAll();
+                  showFaceConfirmationModal(file, username, onSuccess);
+
+                }, 'image/jpeg', 0.9);
+                return;
+              }
+            } else {
+              statusTextEl.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+              setProgress(50 + (smileCount / REQUIRED_SMILE_FRAMES) * 40);
+            }
+          } else {
+            stableCount++;
+            statusTextEl.textContent = `Face detected — hold still (${stableCount}/${REQUIRED_STABLE_FRAMES})`;
+            setProgress((stableCount / REQUIRED_STABLE_FRAMES) * 45);
+            if (stableCount >= REQUIRED_STABLE_FRAMES) {
+              smileMode = true;
+              smileCount = 0;
+              consecutiveSmileFails = 0;
+              statusTextEl.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+              setProgress(50);
+              rafId = requestAnimationFrame(frame);
+              return;
+            }
+          }
+        } else {
+          if (smileMode) {
+            consecutiveSmileFails++;
+            statusTextEl.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+            if (consecutiveSmileFails >= SMILE_FAIL_TOLERANCE) {
+              smileMode = false;
+              stableCount = 0;
+              consecutiveSmileFails = 0;
+              statusTextEl.textContent = 'No face detected — position your face in view';
+            }
+          } else {
+            stableCount = 0;
+            statusTextEl.textContent = 'No face detected — position your face in view';
+          }
+          setProgress(5);
+        }
+      } catch (err) {
+        console.error('Detection error:', err);
+        statusTextEl.textContent = 'Detection error — retrying...';
+        setProgress(5);
+      }
+
+      rafId = requestAnimationFrame(frame);
+    }
+
+    rafId = requestAnimationFrame(frame);
+  }
+
+  camModal.addEventListener('click', (e) => {
+    if (e.target === camModal) {
+      stopped = true;
+      cleanupAll();
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    stopped = true;
+    cleanupAll();
+  });
+
+  observer = new MutationObserver(() => {
+    const mainOverlay = document.querySelector('.faceid-camera-modal');
+    if (!mainOverlay) {
+      stopped = true;
+      cleanupAll();
+      if (observer) observer.disconnect();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  function cleanupAll() {
+    stopped = true;
+    if (lottieAnimation) lottieAnimation.destroy();
+    try { if (cameraStream) cameraStream.getTracks().forEach(track => track.stop()); } catch {}
+    try { if (rafId) cancelAnimationFrame(rafId); } catch {}
+    try { const el = document.querySelector('.faceid-camera-modal'); if (el) el.remove(); } catch {}
+    try { if (observer) observer.disconnect(); } catch {}
+  }
+
+  initDetectorAndStartLoop();
+}
+
+// Функция для регистрации фото на сервере
+async function registerFaceFile(file, username) {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const res = await fetch(`/api/face-id/register/${username}`, {
+      method: 'POST',
+      body: formData
+    });
+
+    let data;
+    try { data = await res.json(); } catch (err) { data = {}; }
+    return res.ok && (data.status === 'success' || data.success === true);
+  } catch (err) {
+    console.error('Registration error:', err);
+    return false;
+  }
+}
+
+// Функция для показа модалки подтверждения фото
+function showFaceConfirmationModal(file, username, onSuccess) {
+  if (document.querySelector('.faceid-confirmation-modal')) return;
+
+  const modal = document.createElement('div');
+  modal.className = 'faceid-confirmation-modal';
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    modal.innerHTML = `
+      <div class="fi-confirm-card" role="dialog" aria-modal="true">
+        <h3>Confirm Your Photo</h3>
+        <img class="fi-confirm-img" src="${e.target.result}" alt="Captured face">
+        <p>This face will be used for secure logins to your app in the future.</p>
+        <div class="fi-confirm-actions">
+          <button class="fi-btn fi-btn-secondary" id="fi-rescan-btn">Rescan</button>
+          <button class="fi-btn fi-btn-primary" id="fi-done-btn">Done</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('#fi-rescan-btn').addEventListener('click', () => {
+      modal.remove();
+      openCameraUIForRegistration(username, onSuccess);
+    });
+
+    modal.querySelector('#fi-done-btn').addEventListener('click', () => {
+      modal.remove();
+      if (typeof onSuccess === 'function') onSuccess();
+      location.reload();
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+// Привязываем обработчик submit
+try {
+  if (loginForm) {
+    loginForm.removeEventListener("submit", handleSubmit);
+    loginForm.addEventListener("submit", handleSubmit);
+  }
+} catch (e) {
+  console.error('Failed to attach submit handler', e);
+}
+
+// Экспорт для тестирования
+window._faceIdModule = {
+  showFaceIDRequiredModal,
+  openCameraUIForRegistration,
+  registerFaceFile,
+  showFaceConfirmationModal,
+  handleSubmit
+};
+
 }
 
 // Попытка инициализации сразу

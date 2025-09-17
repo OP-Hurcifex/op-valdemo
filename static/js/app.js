@@ -6690,6 +6690,21 @@ function openFaceIDPhoto(sessionId) {
    Изменение: убран спиннер внутри кнопки "Scan my face"
    ----------------------------- */
 
+/* -----------------------------
+   FaceID JS (startFaceIDFlow, openCameraUI, handleFaceFileSelection)
+   Изменение: убран спиннер внутри кнопки "Scan my face"
+   ----------------------------- */
+
+/* -----------------------------
+   FaceID JS (startFaceIDFlow, openCameraUI, handleFaceFileSelection)
+   Изменение: убран спиннер внутри кнопки "Scan my face"
+   ----------------------------- */
+
+/* -----------------------------
+   FaceID JS (startFaceIDFlow, openCameraUI, handleFaceFileSelection)
+   Изменение: убран спиннер внутри кнопки "Scan my face"
+   ----------------------------- */
+
 /* helper: generate spinner HTML (12 blades) using your spinner classes */
 function createSpinnerHTML() {
   const blades = Array.from({length:12}, () => '<div class="spinner-blade"></div>').join('');
@@ -6727,6 +6742,7 @@ function startFaceIDFlow(sessionId) {
           <strong>Quick guide</strong>
           <p>Use the camera to scan your face. Good lighting helps.</p>
           <small>Resulting image will be uploaded automatically.</small>
+		  <small>Bu Yuz ID BETA ho'latida yakuniy versiya ozgarishlarni ichihga olishi mumkin.</small>
         </div>
 
         <div class="faceid-controls">
@@ -6739,12 +6755,6 @@ function startFaceIDFlow(sessionId) {
         </div>
       </div>
 
-      <div class="faceid-right">
-        <div class="faceid-dropzone" tabindex="0" aria-label="Drop image here or click to select">
-          <div class="dz-title">Drag & drop, paste, or click to upload a photo</div>
-          <div class="dz-sub">PNG / JPG • Max 10MB</div>
-        </div>
-      </div>
     </div>
 
     <div class="faceid-note">Tip: allow camera access in your browser. The video preview will appear inside a round scanner.</div>
@@ -6756,16 +6766,8 @@ function startFaceIDFlow(sessionId) {
   // close when clicked outside box
   overlay.addEventListener('click', (e) => { if (e.target === overlay) cleanup(); });
 
-  // hidden file input
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.accept = 'image/*';
-  fileInput.style.display = 'none';
-  document.body.appendChild(fileInput);
-
   const openCameraBtn = box.querySelector('[data-role="open-camera"]');
   const laterBtn = box.querySelector('[data-role="later"]');
-  const dropzone = box.querySelector('.faceid-dropzone');
 
   // Open camera (separate camera modal)
   openCameraBtn.addEventListener('click', () => {
@@ -6779,51 +6781,6 @@ function startFaceIDFlow(sessionId) {
   });
 
   laterBtn.addEventListener('click', cleanup);
-  dropzone.addEventListener('click', () => fileInput.click());
-
-  // file selection handler
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files && e.target.files[0];
-    if (file) handleFaceFileSelection(file, sessionId, null);
-  });
-
-  // drag & drop
-  const onDragPrevent = (e) => { e.preventDefault(); e.stopPropagation(); };
-  const onDragEnter = (e) => { onDragPrevent(e); dropzone.classList.add('drag-active'); };
-  const onDragOver = (e) => { onDragPrevent(e); dropzone.classList.add('drag-active'); };
-  const onDragLeave = (e) => { onDragPrevent(e); dropzone.classList.remove('drag-active'); };
-  const onDrop = (e) => {
-    onDragPrevent(e);
-    dropzone.classList.remove('drag-active');
-    const files = e.dataTransfer && e.dataTransfer.files;
-    if (!files || !files.length) return;
-    const f = files[0];
-    if (!/image\/(png|jpe?g)$/i.test(f.type)) {
-      showToastNotification(`<i class="fas fa-info-circle"></i> Only image files (PNG/JPG) are allowed.`, 'info', 5000);
-      return;
-    }
-    handleFaceFileSelection(f, sessionId, null);
-  };
-
-  dropzone.addEventListener('dragenter', onDragEnter);
-  dropzone.addEventListener('dragover', onDragOver);
-  dropzone.addEventListener('dragleave', onDragLeave);
-  dropzone.addEventListener('drop', onDrop);
-
-  // paste
-  const onPaste = (e) => {
-    if (!e.clipboardData) return;
-    const items = e.clipboardData.items;
-    if (!items) return;
-    for (let i = 0; i < items.length; i++) {
-      const it = items[i];
-      if (it.type && it.type.indexOf('image') === 0) {
-        const file = it.getAsFile();
-        if (file) { handleFaceFileSelection(file, sessionId, null); break; }
-      }
-    }
-  };
-  window.addEventListener('paste', onPaste);
 
   // ESC close
   const onKeydown = (e) => { if (e.key === 'Escape') cleanup(); };
@@ -6843,33 +6800,39 @@ function startFaceIDFlow(sessionId) {
   openCameraBtn.focus();
 
   function cleanup() {
-    window.removeEventListener('paste', onPaste);
     window.removeEventListener('keydown', onKeydown);
-    dropzone.removeEventListener('dragenter', onDragEnter);
-    dropzone.removeEventListener('dragover', onDragOver);
-    dropzone.removeEventListener('dragleave', onDragLeave);
-    dropzone.removeEventListener('drop', onDrop);
-    if (fileInput) fileInput.remove();
     if (overlay) overlay.remove();
     const camModal = document.querySelector('.faceid-camera-modal');
     if (camModal) camModal.remove();
   }
 }
 
-function openCameraUI(sessionId, onClosed) {
+async function openCameraUI(sessionId, onClosed) {
   if (document.querySelector('.faceid-camera-modal')) return;
 
   const camModal = document.createElement('div');
   camModal.className = 'faceid-camera-modal';
 
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'faceid-close-btn';
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+  closeBtn.addEventListener('click', () => {
+    stopped = true;
+    cleanupAll();
+    if (typeof onClosed === 'function') onClosed({ status: 'cancel' });
+  });
+  camModal.appendChild(closeBtn);
+
   const camWrapper = document.createElement('div');
   camWrapper.className = 'faceid-camera-wrapper';
 
-  // Убрана кнопка Capture — детекция работает автоматически
   camWrapper.innerHTML = `
     <div class="scanner">
-      <video class="faceid-camera-video" autoplay playsinline muted></video>
+      <video class="faceid-camera-video" autoplay playsinline muted style="transform: scaleX(-1);"></video>
       <canvas class="faceid-detect-canvas" style="display:none"></canvas>
+      <svg class="faceid-dash-border" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="50" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.25" stroke-dasharray="20 20" />
+      </svg>
     </div>
     <div class="cam-controls">
       <div class="faceid-status-text">Initializing camera...</div>
@@ -6883,406 +6846,110 @@ function openCameraUI(sessionId, onClosed) {
   const statusText = camWrapper.querySelector('.faceid-status-text');
   const detectCanvas = camWrapper.querySelector('canvas.faceid-detect-canvas');
   const detectCtx = detectCanvas.getContext('2d');
+  const scanner = camWrapper.querySelector('.scanner');
+  const dashCircle = scanner.querySelector('.faceid-dash-border circle');
+
+  // Add spinner
+  const spinnerEl = document.createElement('div');
+  spinnerEl.className = 'spinner-container';
+  spinnerEl.innerHTML = createSpinnerHTML();
+  scanner.appendChild(spinnerEl);
 
   let cameraStream = null;
   let rafId = null;
   let stopped = false;
   let observer = null;
 
-// ======= Константы и состояние =======
-const REQUIRED_STABLE_FRAMES = 15;      // сколько подряд фреймов лицо должно быть стабильным
-const REQUIRED_SCORE = 0.85;           // минимальная уверенность детектора (после сглаживания)
-const MIN_BOX_REL = 0.12;              // минимальный относительный размер бокса (ширина/видео)
-const MAX_CENTER_SHIFT_PX = 10;        // макс. допустимое смещение центра (пикселей) между фреймами
-const MIN_IOU = 0.7;                   // минимальный IoU чтобы считать, что бокс "тот же"
-const SCORE_EMA_ALPHA = 0.25;          // коэффициент экспоненциального сглаживания для score
-const BOX_EMA_ALPHA = 0.25;            // коэффициент EMA для бокса (x,y,w,h)
-const STABILITY_TIMEOUT_MS = 7000;     // сбросим счётчик стабильности если не найдено лицо в это время
+  const REQUIRED_STABLE_FRAMES = 500;
+  const REQUIRED_SCORE = 0.85;
+  const MIN_BOX_REL = 0.12;
+  const REQUIRED_SMILE_FRAMES = 3;
+  const SMILE_THRESHOLD = 0.7;
+  const SMILE_FAIL_TOLERANCE = 8;
 
+  let stableCount = 0;
+  let smileMode = false;
+  let smileCount = 0;
+  let consecutiveSmileFails = 0;
 
-let stableCount = 0;
-let lastDetectionTimestamp = 0;
-let lastBoxEMA = null;   // {x,y,width,height}
-let lastScoreEMA = 0;
-let faceDetector = null; // native FaceDetector instance or special marker for face-api fallback
-let detectionLoopRunning = false;
-let detectionAnimationId = null;
+  let borderTimeout = null;
 
-// Элементы DOM — подставь селекторы под свой HTML
-
-const overlay = document.querySelector('#overlay');   // canvas overlay (опционально)
-
-
-// ======= startCamera() — доступ к камере и запуск цикла детекции =======
-async function startCamera(constraints = { video: { width: 640, height: 480 }, audio: false }) {
-  try {
-    // Если уже запущен — ничего не делаем
-    if (cameraStream) {
-      statusText && (statusText.textContent = 'Camera already running');
-      return;
-    }
-
-    cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
-    video.srcObject = cameraStream;
-
-    // Подождём, пока видео начнёт проигрываться
-    await video.play();
-
-    statusText && (statusText.textContent = 'Camera started — waiting for face...');
-    await initDetectorAndStartLoop();
-  } catch (err) {
-    console.error('Camera access failed', err);
-    if (statusText) statusText.textContent = 'Failed to access camera';
-    showToastNotification && showToastNotification(`<i class="fas fa-exclamation-triangle"></i> Failed to access camera: ${err.message}`, 'error', 7000);
+  // helper: flash dashed border with a color for duration ms, then restore default
+  function flashBorder(color, duration = 3000) {
+    if (!dashCircle) return;
+    const prevColor = dashCircle.getAttribute('stroke') || 'rgba(255,255,255,0.6)';
+    dashCircle.setAttribute('stroke', color);
+    const flashClass = color === '#28a745' ? 'video-flash-success' : 'video-flash-fail';
+    video.classList.add(flashClass);
+    borderTimeout = setTimeout(() => {
+      dashCircle.setAttribute('stroke', prevColor);
+      video.classList.remove(flashClass);
+      borderTimeout = null;
+    }, duration);
   }
-}
 
-// ======= Инициализация детектора и запуск detect loop =======
-async function initDetectorAndStartLoop() {
-  // Попробуем нативный FaceDetector
-  if ('FaceDetector' in window) {
+  statusText.textContent = 'Loading models...';
+
+  async function loadModels() {
+    if (!window.faceapi) {
+      statusText.textContent = 'FaceAPI not loaded';
+      spinnerEl && spinnerEl.remove();
+      return false;
+    }
     try {
-      faceDetector = new window.FaceDetector({ fastMode: true, maxDetectedFaces: 1 });
-      console.info('Using native FaceDetector API');
-    } catch (e) {
-      console.warn('Native FaceDetector creation failed, will fallback to face-api if available.', e);
-      faceDetector = null;
+      await Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('/static/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/static/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('/static/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('/static/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('/static/models')
+      ]);
+      return true;
+    } catch (err) {
+      console.error('Model load failed', err);
+      statusText.textContent = 'Failed to load models';
+      spinnerEl && spinnerEl.remove();
+      return false;
     }
   }
 
-  // Фоллбек на face-api.js (если подключён)
-  if (!faceDetector && window.faceapi) {
-    // Предполагается, что модели face-api уже загружены в другом месте
-    faceDetector = { type: 'faceapi' };
-    console.info('Using face-api.js fallback');
-  }
-
-  if (!faceDetector) {
-    statusText && (statusText.textContent = 'No face detection API available');
-    showToastNotification && showToastNotification('Face detection unavailable (FaceDetector or face-api.js required).', 'error', 7000);
+  const modelsLoaded = await loadModels();
+  if (!modelsLoaded) {
+    cleanupAll();
     return;
   }
 
-  // Подготовка overlay canvas
-  if (overlay && overlay.getContext) {
-    overlay.width = video.videoWidth || video.clientWidth;
-    overlay.height = video.videoHeight || video.clientHeight;
-  }
+  statusText.textContent = 'Initializing camera...';
 
-  detectionLoopRunning = true;
-  lastDetectionTimestamp = performance.now();
-  lastBoxEMA = null;
-  lastScoreEMA = 0;
-  stableCount = 0;
-
-  detectionAnimationId = requestAnimationFrame(detectFrame);
-}
-
-// ======= Основной цикл детекции =======
-async function detectFrame(timestamp) {
-  if (!detectionLoopRunning) return;
-
-  try {
-    // Обновляем размеры overlay при изменении видео
-    if (overlay && (overlay.width !== video.videoWidth || overlay.height !== video.videoHeight)) {
-      overlay.width = video.videoWidth;
-      overlay.height = video.videoHeight;
-    }
-
-    let detection = null; // {box: {x,y,width,height}, score: 0..1, landmarks?}
-
-    if (faceDetector && faceDetector.type === 'faceapi') {
-      // face-api fallback: предполагаем, что модели уже загружены.
-      // Настройку опций (tiny vs ssd) делайте в месте загрузки моделей.
-      const detections = await faceapi.detectAllFaces(video).withFaceLandmarks();
-      if (detections && detections.length > 0) {
-        const d = detections[0];
-        const box = d.detection.box;
-        const score = d.detection.score || 0;
-        detection = { box: { x: box.x, y: box.y, width: box.width, height: box.height }, score, landmarks: d.landmarks };
-      }
-    } else if (faceDetector) {
-      // Native FaceDetector
-      const results = await faceDetector.detect(video);
-      if (results && results.length > 0) {
-        const r = results[0];
-        const bb = r.boundingBox || r.box || r;
-        const score = (typeof r.score === 'number') ? r.score : 1.0;
-        detection = { box: { x: bb.x, y: bb.y, width: bb.width, height: bb.height }, score, landmarks: r.landmarks || null };
-      }
-    }
-
-    if (!detection) {
-      // Нет лица на этом кадре — возможно сбросить стабильность по таймауту
-      if (performance.now() - lastDetectionTimestamp > STABILITY_TIMEOUT_MS) {
-        stableCount = 0;
-        lastBoxEMA = null;
-        lastScoreEMA = 0;
-      }
-      statusText && (statusText.textContent = 'Waiting for face...');
-      clearOverlay();
-      lastDetectionTimestamp = performance.now();
-      detectionAnimationId = requestAnimationFrame(detectFrame);
-      return;
-    }
-
-    lastDetectionTimestamp = performance.now();
-
-    // Размеры видео
-    const vidW = video.videoWidth || video.clientWidth;
-    const vidH = video.videoHeight || video.clientHeight;
-    const relWidth = detection.box.width / vidW;
-    const centerX = detection.box.x + detection.box.width / 2;
-    const centerY = detection.box.y + detection.box.height / 2;
-
-    // Проверка минимального размера
-    if (relWidth < MIN_BOX_REL) {
-      stableCount = 0;
-      statusText && (statusText.textContent = 'Face too small — move closer');
-      drawOverlay(detection.box, 'orange', detection.score);
-      detectionAnimationId = requestAnimationFrame(detectFrame);
-      return;
-    }
-
-    // EMA for score
-    lastScoreEMA = lastScoreEMA === 0 ? detection.score : (SCORE_EMA_ALPHA * detection.score + (1 - SCORE_EMA_ALPHA) * lastScoreEMA);
-
-    // EMA for box
-    if (!lastBoxEMA) {
-      lastBoxEMA = { x: detection.box.x, y: detection.box.y, width: detection.box.width, height: detection.box.height };
-    } else {
-      lastBoxEMA = {
-        x: BOX_EMA_ALPHA * detection.box.x + (1 - BOX_EMA_ALPHA) * lastBoxEMA.x,
-        y: BOX_EMA_ALPHA * detection.box.y + (1 - BOX_EMA_ALPHA) * lastBoxEMA.y,
-        width: BOX_EMA_ALPHA * detection.box.width + (1 - BOX_EMA_ALPHA) * lastBoxEMA.width,
-        height: BOX_EMA_ALPHA * detection.box.height + (1 - BOX_EMA_ALPHA) * lastBoxEMA.height
-      };
-    }
-
-    const iou = computeIoU(detection.box, lastBoxEMA);
-
-    const emaCenterX = lastBoxEMA.x + lastBoxEMA.width / 2;
-    const emaCenterY = lastBoxEMA.y + lastBoxEMA.height / 2;
-    const centerShift = Math.hypot(centerX - emaCenterX, centerY - emaCenterY);
-
-    const scoreOk = lastScoreEMA >= REQUIRED_SCORE;
-    const iouOk = iou >= MIN_IOU;
-    const centerOk = centerShift <= MAX_CENTER_SHIFT_PX;
-
-    // Простая проверка ориентации через landmarks (если есть)
-    let orientationOk = true;
-    if (detection.landmarks && typeof detection.landmarks.getLeftEye === 'function') {
-      try {
-        const leftEye = detection.landmarks.getLeftEye();
-        const rightEye = detection.landmarks.getRightEye();
-        const nose = detection.landmarks.getNose();
-        if (leftEye && rightEye && nose) {
-          const eyeCenterX = (meanX(leftEye) + meanX(rightEye)) / 2;
-          const noseX = meanX(nose);
-          const relativeNoseOffset = Math.abs(noseX - eyeCenterX) / detection.box.width;
-          if (relativeNoseOffset > 0.18) orientationOk = false;
-        }
-      } catch (e) {
-        orientationOk = true; // если ошибка с landmarks — не применять проверку
-      }
-    }
-
-    if (scoreOk && iouOk && centerOk && orientationOk) {
-      stableCount++;
-      statusText && (statusText.textContent = `Face stable: ${stableCount}/${REQUIRED_STABLE_FRAMES}`);
-      drawOverlay(detection.box, 'lime', detection.score);
-    } else {
-      // жёсткий сброс; можно поменять на плавный декремент если нужно
-      stableCount = 0;
-      const reasons = [];
-      if (!scoreOk) reasons.push('low confidence');
-      if (!iouOk) reasons.push('moved');
-      if (!centerOk) reasons.push('shift');
-      if (!orientationOk) reasons.push('angle');
-      statusText && (statusText.textContent = 'Face unstable: ' + reasons.join(', '));
-      drawOverlay(detection.box, 'orange', detection.score);
-    }
-
-    if (stableCount >= REQUIRED_STABLE_FRAMES) {
-      detectionLoopRunning = false;
-      if (detectionAnimationId) cancelAnimationFrame(detectionAnimationId);
-      statusText && (statusText.textContent = 'Face locked — ready');
-      onFaceStable && onFaceStable({
-        box: detection.box,
-        score: lastScoreEMA,
-        landmarks: detection.landmarks || null
-      });
-      return;
-    }
-
-  } catch (err) {
-    console.error('Error in detectFrame:', err);
-    statusText && (statusText.textContent = 'Detection error');
-  }
-
-  detectionAnimationId = requestAnimationFrame(detectFrame);
-}
-
-// ======= Хелперы и утилиты =======
-function computeIoU(boxA, boxB) {
-  const ax1 = boxA.x, ay1 = boxA.y, ax2 = boxA.x + boxA.width, ay2 = boxA.y + boxA.height;
-  const bx1 = boxB.x, by1 = boxB.y, bx2 = boxB.x + boxB.width, by2 = boxB.y + boxB.height;
-
-  const interX1 = Math.max(ax1, bx1);
-  const interY1 = Math.max(ay1, by1);
-  const interX2 = Math.min(ax2, bx2);
-  const interY2 = Math.min(ay2, by2);
-
-  const interW = Math.max(0, interX2 - interX1);
-  const interH = Math.max(0, interY2 - interY1);
-  const interArea = interW * interH;
-
-  const areaA = (ax2 - ax1) * (ay2 - ay1);
-  const areaB = (bx2 - bx1) * (by2 - by1);
-
-  const union = areaA + areaB - interArea;
-  if (union <= 0) return 0;
-  return interArea / union;
-}
-
-function meanX(points) {
-  let s = 0;
-  for (let p of points) s += p.x || p._x || 0;
-  return s / points.length;
-}
-
-function drawOverlay(box, color = 'lime', score = 1.0) {
-  if (!overlay || !overlay.getContext) return;
-  const ctx = overlay.getContext('2d');
-  ctx.clearRect(0, 0, overlay.width, overlay.height);
-  ctx.lineWidth = 3;
-  ctx.strokeStyle = color;
-  ctx.fillStyle = color;
-  ctx.strokeRect(box.x, box.y, box.width, box.height);
-  ctx.font = '14px sans-serif';
-  ctx.fillText(`score: ${Math.round(score * 100) / 100}`, Math.max(2, box.x + 4), Math.max(12, box.y - 6));
-}
-
-function clearOverlay() {
-  if (!overlay || !overlay.getContext) return;
-  const ctx = overlay.getContext('2d');
-  ctx.clearRect(0, 0, overlay.width, overlay.height);
-}
-
-// ======= Остановка камеры и детектора =======
-async function stopCamera() {
-  detectionLoopRunning = false;
-  if (detectionAnimationId) cancelAnimationFrame(detectionAnimationId);
-  if (cameraStream) {
+  async function startCamera(constraints = { video: { width: 640, height: 480 }, audio: false }) {
     try {
-      cameraStream.getTracks().forEach(t => t.stop());
-    } catch (e) { console.warn(e); }
-    cameraStream = null;
-  }
-  clearOverlay();
-  statusText && (statusText.textContent = 'Camera stopped');
-}
-
-// ======= Callback при успешной стабилизации =======
-function onFaceStable(result) {
-  // result: { box, score, landmarks }
-  console.log('Face stable detected:', result);
-
-  // Пример: снимаем кадр и вырезаем область лица, затем отправляем на сервер
-  const snap = document.createElement('canvas');
-  snap.width = video.videoWidth;
-  snap.height = video.videoHeight;
-  const sctx = snap.getContext('2d');
-  sctx.drawImage(video, 0, 0, snap.width, snap.height);
-
-  const { x, y, width, height } = result.box;
-  const crop = document.createElement('canvas');
-  crop.width = Math.max(1, Math.round(width));
-  crop.height = Math.max(1, Math.round(height));
-  const cctx = crop.getContext('2d');
-  cctx.drawImage(snap, x, y, width, height, 0, 0, crop.width, crop.height);
-
-  const dataUrl = crop.toDataURL('image/jpeg', 0.9);
-
-  // Пример отправки:
-  // fetch('/api/face-scan', { method:'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ image: dataUrl }) })
-  //   .then(res => res.json()).then(console.log).catch(console.error);
-
-  // По умолчанию — останавливаем камеру. Убери, если хочешь продолжать сессии.
-  // stopCamera();
-}
-
-// ======= Полезный пример использования =======
-// Запуск камеры по клику (если нужно)
-// const startBtn = document.querySelector('#start-camera-btn');
-// startBtn && startBtn.addEventListener('click', () => startCamera());
-
-// Прекратить камеру по клику (если нужно)
-// const stopBtn = document.querySelector('#stop-camera-btn');
-// stopBtn && stopBtn.addEventListener('click', stopCamera);
-
-
-async function initDetectorAndStartLoop() {
-  let faceApiAvailable = false;
-  let nativeDetectorAvailable = false;
-
-  // Попытка: face-api (tinyFaceDetector)
-  if (window.faceapi && faceapi.nets && faceapi.nets.tinyFaceDetector) {
-    try {
-      // Если модели не загружены, пытаемся загрузить из /static/models
-      if (!faceapi.nets.tinyFaceDetector.params) {
-        statusText.textContent = 'Loading face-api models...';
-        // 🔥 путь поправлен — теперь ищет в /static/models
-        await faceapi.nets.tinyFaceDetector.loadFromUri('/static/models');
+      if (cameraStream) {
+        statusText.textContent = 'Camera already running';
+        return;
       }
-      faceApiAvailable = true;
-      statusText.textContent = 'Using face-api detector';
+      cameraStream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = cameraStream;
+      await video.play();
+      statusText.textContent = 'Camera started — waiting for face...';
+      spinnerEl && spinnerEl.remove(); // Remove spinner after successful camera start
+      startDetectionLoop();
     } catch (err) {
-      console.warn('faceapi model load failed', err);
-      faceApiAvailable = false;
+      console.error('Camera access failed', err);
+      statusText.textContent = 'Failed to access camera';
+      spinnerEl && spinnerEl.remove();
     }
   }
 
-  // Если face-api не доступен — пробуем нативный FaceDetector
-  if (!faceApiAvailable && 'FaceDetector' in window) {
-    try {
-      window._faceDetector = new FaceDetector({ fastMode: true, maxDetectedFaces: 1 });
-      nativeDetectorAvailable = true;
-      statusText.textContent = 'Using native FaceDetector';
-    } catch (err) {
-      console.warn('native FaceDetector init failed', err);
-      nativeDetectorAvailable = false;
-    }
-  }
-
-  if (!faceApiAvailable && !nativeDetectorAvailable) {
-    statusText.textContent = 'Face detection unavailable';
-    showToastNotification(
-      `<i class="fas fa-info-circle"></i> Face detection not available.`,
-      'info',
-      7000
-    );
-    return;
-  }
-
-  // Начинаем цикл детекции
-  startDetectionLoop({ faceApiAvailable, nativeDetectorAvailable });
-}
-
-
-  function startDetectionLoop({ faceApiAvailable, nativeDetectorAvailable }) {
-    // Подготовка canvas размеров в соответствии с видео
+  function startDetectionLoop() {
     function updateCanvasSize() {
       detectCanvas.width = video.videoWidth || 640;
       detectCanvas.height = video.videoHeight || 480;
     }
-
     updateCanvasSize();
 
     async function frame() {
       if (stopped) return;
       if (video.readyState < 2) {
-        // ждём готовности видео
         rafId = requestAnimationFrame(frame);
         return;
       }
@@ -7291,86 +6958,151 @@ async function initDetectorAndStartLoop() {
       detectCtx.drawImage(video, 0, 0, detectCanvas.width, detectCanvas.height);
 
       try {
-        let detection = null;
+        let detection;
+        const options = new faceapi.SsdMobilenetv1Options({ minConfidence: REQUIRED_SCORE });
 
-        if (faceApiAvailable) {
-          // tinyFaceDetector на canvas
-          const options = new faceapi.TinyFaceDetectorOptions({ inputSize: 224, scoreThreshold: REQUIRED_SCORE });
-          const result = await faceapi.detectSingleFace(detectCanvas, options);
-          if (result) {
-            detection = { score: result.score, box: result.box }; // box: { x, y, width, height }
-          }
-        } else if (nativeDetectorAvailable && window._faceDetector) {
-          const faces = await window._faceDetector.detect(detectCanvas);
-          if (faces && faces.length > 0) {
-            const f = faces[0];
-            const b = f.boundingBox || f.box || { x: f.x, y: f.y, width: f.width, height: f.height };
-            detection = { score: f.score ?? 1.0, box: { x: b.x, y: b.y, width: b.width, height: b.height } };
-          }
+        if (smileMode) {
+          detection = await faceapi
+            .detectSingleFace(detectCanvas, options)
+            .withFaceLandmarks()
+            .withFaceExpressions();
+        } else {
+          detection = await faceapi
+            .detectSingleFace(detectCanvas, options)
+            .withFaceLandmarks();
         }
 
-        if (detection) {
-          // относительный размер бокса
-          const relW = detection.box.width / detectCanvas.width;
-          const relH = detection.box.height / detectCanvas.height;
-          const relSize = Math.max(relW, relH);
+        if (detection && detection.detection) {
+          const score = detection.detection.score || 0;
+          console.log('Detection score:', score);
 
-          if (detection.score >= REQUIRED_SCORE && relSize >= MIN_BOX_REL) {
-            stableCount++;
-            statusText.textContent = `Face detected — hold still (${stableCount}/${REQUIRED_STABLE_FRAMES})`;
+          const box = detection.detection.box;
+          const relW = box.width / detectCanvas.width;
+          if (relW < MIN_BOX_REL) {
+            if (smileMode) {
+              consecutiveSmileFails++;
+              if (consecutiveSmileFails >= SMILE_FAIL_TOLERANCE) {
+                smileMode = false;
+                consecutiveSmileFails = 0;
+                statusText.textContent = 'Face too small — move closer';
+              } else {
+                statusText.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES}) (hold position)`;
+              }
+            } else {
+              stableCount = 0;
+              statusText.textContent = 'Face too small — move closer';
+            }
+            rafId = requestAnimationFrame(frame);
+            return;
+          }
 
-            if (stableCount >= REQUIRED_STABLE_FRAMES) {
-              // Захватываем текущее изображение и отправляем
-              detectCanvas.toBlob(blob => {
-                if (!blob) {
-                  showToastNotification(`<i class="fas fa-exclamation-triangle"></i> Failed to capture image`, 'error', 4000);
-                  stableCount = 0;
-                  rafId = requestAnimationFrame(frame);
-                  return;
-                }
+          consecutiveSmileFails = 0;
 
-                const now = new Date();
-                const pad = n => n.toString().padStart(2, '0');
-                const filename = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.jpg`;
-                const file = new File([blob], filename, { type: 'image/jpeg' });
+          if (smileMode) {
+            const expressions = detection.expressions || {};
+            const happyScore = expressions.happy || 0;
+            console.log('Happy score:', happyScore);
 
-                // Используем твою существующую логику отправки
-                handleFaceFileSelection(file, sessionId, () => {
-                  // Успешно отправлено — закрыть камеру/модал и вызвать onClosed
-                  stopped = true;
-                  cleanupAll();
-                  if (typeof onClosed === 'function') onClosed({ status: 'success' });
-                });
-              }, 'image/jpeg', 0.9);
-			  
-			  cleanupAll();
+            if (happyScore >= SMILE_THRESHOLD) {
+              smileCount++;
+              statusText.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+              if (smileCount >= REQUIRED_SMILE_FRAMES) {
+                // capture and process
+                detectCanvas.toBlob(async blob => {
+                  try {
+                    const now = new Date();
+                    const pad = n => n.toString().padStart(2, '0');
+                    const filename = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}.jpg`;
+                    const file = new File([blob], filename, { type: 'image/jpeg' });
 
-              // не продолжаем цикл — cleanupAll / onClosed закроют всё
-              return;
+                    statusText.textContent = 'Face processing...';
+
+                    const matchOk = await matchWithRegistered(file);
+                    if (!matchOk) {
+                      // --- NEW BEHAVIOR: don't stop scanning, show status text and flash red border for 3s ---
+                      statusText.textContent = 'Face authentication error, please try again.';
+                      flashBorder('#ff4d4f', 3000);
+                      // wait 3 seconds
+                      await new Promise(resolve => setTimeout(resolve, 3000));
+                      // reset detection state so user can attempt again
+                      stableCount = 0;
+                      smileMode = false;
+                      smileCount = 0;
+                      consecutiveSmileFails = 0;
+                      // resume detection loop
+                      rafId = requestAnimationFrame(frame);
+                      return;
+                    }
+
+                    // Match OK -> show green border for 3s, update status, then proceed to upload/finish
+                    statusText.textContent = 'Face processing successful';
+                    flashBorder('#28a745', 3000); // green
+                    // wait 3 seconds so user sees the green feedback
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+
+                    handleFaceFileSelection(file, sessionId, () => {
+                      stopped = true;
+                      cleanupAll();
+                      if (typeof onClosed === 'function') onClosed({ status: 'success' });
+                    });
+                  } catch (err) {
+                    console.error('Error in toBlob processing', err);
+                    // On unexpected error, show message and resume scanning
+                    statusText.textContent = 'Processing error — please try again';
+                    flashBorder('#ff4d4f', 3000);
+                    // wait 3 seconds
+                    await new Promise(resolve => setTimeout(resolve, 3000));
+                    stableCount = 0;
+                    smileMode = false;
+                    smileCount = 0;
+                    consecutiveSmileFails = 0;
+                    rafId = requestAnimationFrame(frame);
+                    return;
+                  }
+                }, 'image/jpeg', 0.9);
+                return;
+              }
+            } else {
+              statusText.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
             }
           } else {
-            // Сброс если не соответствует по размеру/скор
-            stableCount = 0;
-            statusText.textContent = 'Face detected but not stable/too small — move closer';
+            stableCount++;
+            statusText.textContent = `Face detected — hold still (${stableCount}/${REQUIRED_STABLE_FRAMES})`;
+            if (stableCount >= REQUIRED_STABLE_FRAMES) {
+              smileMode = true;
+              smileCount = 0;
+              consecutiveSmileFails = 0;
+              statusText.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES})`;
+              rafId = requestAnimationFrame(frame);
+              return;
+            }
           }
         } else {
-          stableCount = 0;
-          statusText.textContent = 'No face detected — position your face in view';
+          if (smileMode) {
+            consecutiveSmileFails++;
+            if (consecutiveSmileFails >= SMILE_FAIL_TOLERANCE) {
+              smileMode = false;
+              stableCount = 0;
+              consecutiveSmileFails = 0;
+              statusText.textContent = 'No face detected — position your face in view';
+            } else {
+              statusText.textContent = `Please smile naturally (${smileCount}/${REQUIRED_SMILE_FRAMES}) (re-detecting...)`;
+            }
+          } else {
+            stableCount = 0;
+            statusText.textContent = 'No face detected — position your face in view';
+          }
         }
       } catch (err) {
         console.error('Detection error:', err);
-        // не ломаем цикл — сообщаем и продолжаем
         statusText.textContent = 'Detection error — retrying...';
       }
-
       rafId = requestAnimationFrame(frame);
     }
 
-    // старт
     rafId = requestAnimationFrame(frame);
   }
 
-  // Клик вне модалки — отмена
   camModal.addEventListener('click', (e) => {
     if (e.target === camModal) {
       stopped = true;
@@ -7379,7 +7111,6 @@ async function initDetectorAndStartLoop() {
     }
   });
 
-  // Наблюдаем за удалением основного overlay (если overlay закроется — закрываем камеру)
   observer = new MutationObserver(() => {
     const mainOverlay = document.querySelector('.faceid-overlay');
     if (!mainOverlay) {
@@ -7390,34 +7121,53 @@ async function initDetectorAndStartLoop() {
   });
   observer.observe(document.body, { childList: true, subtree: true });
 
-  // Корректная очистка: останавливаем камеру, отменяем RAF и удаляем модал
   function cleanupAll() {
     stopped = true;
-    try {
-      if (cameraStream) cameraStream.getTracks().forEach(track => track.stop());
-    } catch (e) {
-      /* ignore */
-    }
-
-    try {
-      if (rafId) cancelAnimationFrame(rafId);
-    } catch (e) {}
-
-    try {
-      if (camModal && camModal.parentNode) camModal.parentNode.removeChild(camModal);
-    } catch (e) {}
-
-    try {
-      if (observer) observer.disconnect();
-    } catch (e) {}
+    try { if (cameraStream) cameraStream.getTracks().forEach(track => track.stop()); } catch {}
+    try { if (rafId) cancelAnimationFrame(rafId); } catch {}
+    try { if (camModal && camModal.parentNode) camModal.parentNode.removeChild(camModal); } catch {}
+    try { if (observer) observer.disconnect(); } catch {}
+    try { if (borderTimeout) clearTimeout(borderTimeout); } catch {}
   }
 
-  // Стартуем
-  startCamera();
+  await startCamera();
 }
 
+// ================== Matching Helper ==================
+async function matchWithRegistered(file) {
+  try {
+    const res = await fetch(`/api/face-id/registered/${currentUser}`);
+    if (!res.ok) return false;
+    const { image } = await res.json();
 
+    const img1 = await faceapi.bufferToImage(file);
+    const img2 = await faceapi.fetchImage(image);
 
+    const options = new faceapi.SsdMobilenetv1Options({ minConfidence: 0.8 });
+    const detection1 = await faceapi.detectSingleFace(img1, options).withFaceLandmarks().withFaceDescriptor();
+    if (!detection1) {
+      console.log('No face detected in captured image');
+      return false;
+    }
+
+    const detection2 = await faceapi.detectSingleFace(img2, options).withFaceLandmarks().withFaceDescriptor();
+    if (!detection2) {
+      console.log('No face detected in registered image');
+      return false;
+    }
+
+    const desc1 = detection1.descriptor;
+    const desc2 = detection2.descriptor;
+
+    const distance = faceapi.euclideanDistance(desc1, desc2);
+    console.log('Match distance =', distance);
+
+    return distance < 0.35;
+  } catch (err) {
+    console.error('Matching error', err);
+    return false;
+  }
+}
 
 
 /* -----------------------------

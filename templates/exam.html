@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Horizon Test</title>
+  <link rel="stylesheet" href="/static/styles/exam.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <div class="fancy-logo">Horizon</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Card с формой -->
+    <section class="card fade" id="form-card" aria-labelledby="form-title">
+      <h1 id="form-title">Final Exam Test</h1>
+      <p>This is the final exam test. The test has 4 parts: Reading, Listening, Writing, Speaking.</p>
+
+      <form id="candidate-form" autocomplete="off">
+        <div class="field full">
+          <label for="candidate-number">Candidate number</label>
+          <input id="candidate-number" 
+                name="candidate-number" 
+                type="text" 
+                placeholder="Enter your candidate number" 
+                maxlength="8" 
+                required />
+        </div>
+
+        <div class="field">
+          <label for="dob">Date of birth</label>
+          <input id="dob" name="dob" type="date" readonly class="locked"/>
+        </div>
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" readonly class="locked"/>
+        </div>
+
+        <div class="field full actions">
+          <button type="submit" id="continue" disabled>Continue</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Card с правилами -->
+    <section class="card fade hidden" id="rules-card">
+      <h1>Exam Rules & Guidelines</h1>
+      <p>Welcome to the Horizon Final Exam. Please read the following rules carefully:</p>
+      
+      <ul class="rules-list">
+        <li>
+          <div class="icon"><i class="fa-solid fa-book-open"></i></div>
+          <span>The exam consists of 4 parts: Reading, Listening, Writing, Speaking.</span>
+        </li>
+        <li>
+          <div class="icon"><i class="fa-solid fa-clock"></i></div>
+          <span>Each section has a strict time limit. Do not exceed it.</span>
+        </li>
+        <li>
+          <div class="icon"><i class="fa-solid fa-ban"></i></div>
+          <span>Electronic devices are strictly prohibited during the exam.</span>
+        </li>
+        <li>
+          <div class="icon"><i class="fa-solid fa-chair"></i></div>
+          <span>You must remain seated until the exam supervisor announces the end.</span>
+        </li>
+        <li>
+          <div class="icon"><i class="fa-solid fa-user-shield"></i></div>
+          <span>Cheating or misconduct will result in disqualification.</span>
+        </li>
+      </ul>
+
+      <div class="field full actions">
+        <button id="rules-continue">Continue</button>
+      </div>
+    </section>
+
+    <!-- Card Listening Part -->
+<!-- Card Listening Part -->
+<section class="card fade hidden" id="listening-card">
+  <div class="big-icon">
+    <i class="fa-solid fa-headphones"></i>
+  </div>
+
+  <h1>Listening Part</h1>
+  <p>In this section, you will listen to recordings and answer questions. The listening test has four parts:</p>
+
+<div class="listening-parts">
+  <div class="part">
+    <span class="part-title">Part 1</span>
+    <span class="part-text">Daily life conversations</span>
+  </div>
+  <div class="part">
+    <span class="part-title">Part 2</span>
+    <span class="part-text">Short talks & announcements</span>
+  </div>
+  <div class="part">
+    <span class="part-title">Part 3</span>
+    <span class="part-text">Discussion (education/work)</span>
+  </div>
+  <div class="part">
+    <span class="part-title">Part 4</span>
+    <span class="part-text">Academic lecture</span>
+  </div>
+</div>
+
+
+  <div class="warning">
+    <div class="icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+    <span>Do not press the button until the examiner instructs you!</span>
+  </div>
+
+  <div class="field full actions">
+    <button id="start-listening">Start</button>
+  </div>
+</section>
+
+
+
+  </main>
+
+<script src="/static/js/exam.js"></script>
+</body>
+</html>

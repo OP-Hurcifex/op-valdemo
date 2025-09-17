@@ -1,0 +1,188 @@
+today_questions = [ 
+
+  {
+    "id": 1,
+    "type": "box-choose",
+    "text": "Quyidagi savollarni qavs ichidagi so‘zlar bilan to‘ldiring.",
+    "options": ["Islom", "Muhammad", "Hanafiya", "Qur'on", "Ramazon", "Alloh", "shahodat"],
+    "subquestions": [
+      {
+        "id": "1.1",
+        "type": "box-choose",
+        "text": "Sening dining nima? – Mening dinim ____.",
+        "correct": "Islom"
+      },
+      {
+        "id": "1.2",
+        "type": "box-choose",
+        "text": "Payg‘ambaring kim? – Mening payg‘ambariyim ____ sallallohu alayhi vasallam.",
+        "correct": "Muhammad"
+      },
+      {
+        "id": "1.3",
+        "type": "box-choose",
+        "text": "Qaysi mazhabga mansubsan? – Men ____ mazhabidaman.",
+        "correct": "Hanafiya"
+      },
+      {
+        "id": "1.4",
+        "type": "box-choose",
+        "text": "Islom dinining muqaddas kitobi nima? – Bu ____.",
+        "correct": "Qur'on"
+      },
+      {
+        "id": "1.5",
+        "type": "box-choose",
+        "text": "Musulmonlar ro‘za tutadigan oy qaysi? – Bu ____ oyidir.",
+        "correct": "Ramazon"
+      },
+      {
+        "id": "1.6",
+        "type": "box-choose",
+        "text": "Musulmonlarning yagona ilohi kim? – Bu ____.",
+        "correct": "Alloh"
+      },
+      {
+        "id": "1.7",
+        "type": "box-choose",
+        "text": "Islomga kirish uchun aytiladigan kalima nima deb ataladi? – Bu ____ kalimasidir.",
+        "correct": "shahodat"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "type": "multiple_choice",
+    "text": "Quyidagi savollarga to‘g‘ri javobni tanlang.",
+    "subquestions": [
+      {
+        "id": "2.1",
+        "type": "multiple_choice",
+        "text": "Islom dinining nechta ustuni bor?",
+        "options": ["3", "4", "5", "6"],
+        "correct": "5"
+      },
+      {
+        "id": "2.2",
+        "type": "multiple_choice",
+        "text": "Qur’on kimga nozil bo‘lgan?",
+        "options": ["Iso", "Muso", "Muhammad", "Umar"],
+        "correct": "Muhammad"
+      },
+      {
+        "id": "2.3",
+        "type": "multiple_choice",
+        "text": "Allohning nechta go‘zal ismi mavjud?",
+        "options": ["7", "33", "99", "114"],
+        "correct": "99"
+      },
+      {
+        "id": "2.4",
+        "type": "multiple_choice",
+        "text": "Namoz kuniga necha marta o‘qiladi?",
+        "options": ["2", "3", "5", "7"],
+        "correct": "5"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "type": "write-in-blank",
+    "text": "Bo‘sh joylarni to‘g‘ri so‘z bilan to‘ldiring.",
+    "subquestions": [
+      {
+        "id": "3.1",
+        "type": "write-in-blank",
+        "text": "Musulmonlar har yili ____ oyida ro‘za tutishadi.",
+        "correct": "Ramazon"
+      },
+      {
+        "id": "3.2",
+        "type": "write-in-blank",
+        "text": "Namoz o‘qishdan oldin ____ qilish kerak.",
+        "correct": "tahorat"
+      },
+      {
+        "id": "3.3",
+        "type": "write-in-blank",
+        "text": "Kalima shahodat: La ilaha illalloh, Muhammadur ____.",
+        "correct": "Rasululloh"
+      }
+    ]
+  },
+  {
+  "id": 4,
+  "type": "multiple_choice",
+  "text": "Islomiy bilimlarni tekshirish uchun savollar",
+  "subquestions": [
+    {
+      "id": "4.1",
+      "type": "multiple_choice",
+      "text": "Islom dini qanday din?",
+      "options": ["Togʻli din", "Yagona haq din", "Shaxsiy falsafa", "Hududiy eʼtiqod"],
+      "correct": "Yagona haq din"
+    },
+    {
+      "id": "4.2",
+      "type": "multiple_choice",
+      "text": "Payg‘ambarimiz Muhammad (s.a.v) qaysi shaharda tug‘ilganlar?",
+      "options": ["Toshkent", "Madina", "Makka", "Bag‘dod"],
+      "correct": "Makka"
+    },
+    {
+      "id": "4.3",
+      "type": "multiple_choice",
+      "text": "Islomdagi to‘rt asosiy mazhabdan biri bu...",
+      "options": ["Nasroniylik", "Xanafiylik", "Majusiylik", "Sufiylik"],
+      "correct": "Xanafiylik"
+    },
+    {
+      "id": "4.4",
+      "type": "multiple_choice",
+      "text": "Qur’oni Karimdagi birinchi sura nima?",
+      "options": ["Yosin", "Ixlos", "Fotiha", "Baqara"],
+      "correct": "Fotiha"
+    },
+    {
+      "id": "4.5",
+      "type": "multiple_choice",
+      "text": "Ro‘za tutish qaysi oyda farz qilingan?",
+      "options": ["Muharram", "Shavvol", "Ramazon", "Zulhijja"],
+      "correct": "Ramazon"
+    }
+  ]
+}, 
+{
+  "id": 5,
+  "text": "Matnni o‘qing va gaplarni to‘ldiring. Pastdagi so‘zlardan foydalaning.",
+  "type": "box-choose",
+  "options": ["ilm", "iman", "qurbonlik", "sabr", "duo", "taqvo", "halol"],
+  "subquestions": [
+    {
+      "id": "5.1",
+      "type": "box-choose",
+      "text": "Islom dini har bir musulmondan ____ va yaxshi axloqni talab qiladi.",
+      "correct": "taqvo"
+    },
+    {
+      "id": "5.2",
+      "type": "box-choose",
+      "text": "Har bir ishda musulmon kishiga ____ zarur, shunda u Allohga yaqinlashadi.",
+      "correct": "sabr"
+    },
+    {
+      "id": "5.3",
+      "type": "box-choose",
+      "text": "Allohga yaqin bo‘lish uchun qilinadigan ibodatlardan biri bu ____dir.",
+      "correct": "qurbonlik"
+    },
+    {
+      "id": "5.4",
+      "type": "box-choose",
+      "text": "Musulmon kishining qalbida birinchi bo‘lishi kerak bo‘lgan narsa — bu ____. ",
+      "correct": "iman"
+    }
+  ]
+}
+
+]

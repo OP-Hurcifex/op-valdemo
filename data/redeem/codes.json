@@ -77,17 +77,6 @@
     "created_at": "2025-08-25T20:15:35.554146",
     "last_redeemed_at": "2025-08-26T14:02:53.937468"
   },
-  "METANMAN": {
-    "amount": 1500.0,
-    "creator": "HR",
-    "activated_by": [
-      "Muhammadali"
-    ],
-    "uses": 1,
-    "max_uses": 1,
-    "created_at": "2025-08-27T17:23:52.927665",
-    "last_redeemed_at": "2025-08-27T17:24:55.716472"
-  },
   "MANBOTMAN": {
     "amount": 1.0,
     "creator": "Muhammadali",

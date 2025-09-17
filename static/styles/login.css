@@ -460,7 +460,7 @@ body {
   width: 100%;
   max-width: 420px;
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border-radius: 14px;
+  border-radius: 25px;
   padding: 22px;
   box-shadow: 0 10px 30px rgba(2,6,23,0.6);
   color: #e9eef8;
@@ -550,7 +550,7 @@ body {
   display: block;
   margin: 4px 0 12px 0;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   font-weight: 600;
   font-size: 15px;
@@ -592,7 +592,7 @@ body {
   padding: 10px 20px;
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  border-radius: 15px;
   backdrop-filter: blur(10px);
   box-shadow: 
     0 4px 15px rgba(0, 0, 0, 0.1),
@@ -844,3 +844,252 @@ body {
     stroke-dashoffset: 0;
   }
 
+/* faceid.css — улучшенный стиль с Liquid Glass эффектом (glassmorphism), более красивыми градиентами и оптимизацией */
+
+/* ---------- Общие модальные контейнеры ---------- */
+.faceid-required-modal,
+.faceid-camera-modal,
+.faceid-confirmation-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  background: rgba(2,6,23,0.55);
+  backdrop-filter: blur(4px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Toast с glass эффектом */
+.fi-toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 32px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: rgba(34,34,34,0.8);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  z-index: 12000;
+}
+.fi-toast.visible { opacity: 1; transform: translateX(-50%) translateY(-8px); }
+.fi-toast.error { background: rgba(197,48,48,0.8); }
+
+/* Spinner в кнопке с улучшенной анимацией */
+.fi-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid rgba(0,0,0,0.15);
+  border-top-color: rgba(0,0,0,0.7);
+  margin-right: 10px;
+  vertical-align: middle;
+  animation: fi-spin 0.8s linear infinite;
+}
+@keyframes fi-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Card с Liquid Glass стилем ---------- */
+.fi-card {
+  width: 380px;
+  max-width: 94%;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 50px rgba(2,6,23,0.25), inset 0 0 60px rgba(255,255,255,0.05);
+  text-align: center;
+  color: #f1f5f9;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.fi-icon-wrap { margin-bottom: 14px; }
+.fi-icon-square {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(242,247,255,0.3), rgba(255,255,255,0.1));
+  border: 1px solid rgba(230,239,255,0.3);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.1);
+}
+.fi-face-icon { width: 60px; height: 60px; filter: brightness(0) invert(1); }
+
+.fi-title {
+  margin: 8px 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #e0f2fe;
+}
+.fi-desc {
+  font-size: 15px;
+  color: #cbd5e1;
+  margin-bottom: 20px;
+  line-height: 1.45;
+}
+
+/* Actions с градиентами */
+.fi-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.fi-btn {
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 120px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 20px rgba(2,6,23,0.08);
+}
+
+.fi-btn-primary {
+  background: #0094ff;
+  color: #fff;
+}
+.fi-btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: #e0f2fe;
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Camera/scanner card с Liquid Glass и улучшенными градиентами ---------- */
+.fi-camera-card {
+  width: 440px;
+  max-width: 96%;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11,18,32,0.9) 0%, rgba(7,16,38,0.9) 100%);
+  color: #fff;
+  padding: 20px;
+  box-shadow: 0 35px 90px rgba(2,6,23,0.65), inset 0 0 50px rgba(59,130,246,0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Close button улучшенный */
+.fi-camera-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.95);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+.fi-camera-close:hover { color: #3b82f6; }
+
+/* Top texts */
+.fi-camera-top { text-align: center; margin-top: 8px; }
+.fi-processing-title { font-size: 22px; font-weight: 700; color: #fff; }
+.fi-processing-sub { font-size: 14px; color: rgba(255,255,255,0.8); margin-top: 5px; }
+
+/* Scanner area полностью переделан: теперь с овальной рамкой, сканирующей линией анимацией, улучшенными градиентами и glow эффектами */
+.fi-scanner-area {
+  width: 100%;
+  height: 360px;
+  max-height: 74vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(9,17,34,1) 0%, rgba(5,10,20,1) 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 60px rgba(59,130,246,0.15);
+  backdrop-filter: blur(8px);
+}
+
+/* Video element с улучшениями */
+.fi-camera-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  filter: saturate(1.1) contrast(1.1) brightness(1.05);
+}
+
+/* Info area */
+.fi-scanner-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.fi-status-text {
+  color: #e6f0ff;
+  font-size: 15px;
+  font-weight: 600;
+}
+.fi-hint { color: rgba(230,240,255,0.75); font-size: 13px; }
+
+/* Progress bar с liquid градиентом и добавленной анимацией (двигающийся градиент) */
+.fi-progress-wrap { width: 94%; max-width: 380px; }
+.fi-progress-bar {
+  height: 10px;
+  width: 100%;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  position: relative;
+}
+.fi-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(135deg, #34d399, #06b6d4, #3b82f6, #06b6d4, #34d399);
+  background-size: 200% 100%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 15px rgba(59,130,246,0.3);
+  animation: movingGradient 3s linear infinite;
+}
+@keyframes movingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- Confirmation modal с Liquid Glass ---------- */
+.fi-confirm-card {
+  width: 440px;
+  max-width: 94%;
+  background: rgba(255,255,255,0.15);
+  color: #e0f2fe;
+  padding: 22px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 35px 90px rgba(2,6,23,0.15), inset 0 0 50px rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.fi-confirm-img { width: 100%; height: auto; border-radius: 12px; margin: 14px 0; box-shadow: 0 8px 20px rgba(2,6,23,0.1); }
+.fi-confirm-actions { display: flex; gap: 10px; justify-content: center; }
+
+/* Responsive tweaks */
+@media (max-width: 520px) {
+  .fi-camera-card { width: calc(100% - 32px); padding: 16px; }
+  .fi-scanner-area { height: 62vw; }
+  .fi-card { width: calc(100% - 32px); padding: 22px; }
+}
